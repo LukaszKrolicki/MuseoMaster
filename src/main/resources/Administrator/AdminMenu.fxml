@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.AdminMenu">
+   <children>
+      <VBox layoutX="40.0" layoutY="7.0" prefHeight="130.0" prefWidth="180.0" styleClass="title_container" stylesheets="@../Styles/AdministratorStyles/AdminMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <FontAwesomeIconView glyphName="UNIVERSITY" size="30" />
+            <Label text="MuseoMaster" />
+         </children>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="131.0" prefHeight="370.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+         <children>
+            <Label fx:id="create_user_lbl" prefWidth="146.0" text="Utwórz użytkownika">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" size="20" />
+               </graphic>
+            </Label>
+            <Label fx:id="add_place_lbl" text="Dodaj miejsce">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CUBE" size="20" text="" />
+               </graphic>
+            </Label>
+            <Label fx:id="user_list_lbl" text="Lista użytkowników">
+               <graphic>
+                  <FontAwesomeIconView glyphName="ID_CARD" size="20" />
+               </graphic>
+            </Label>
+            <Label fx:id="error_raports_lbl" text="Raporty dt. błędów">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TACHOMETER" size="20" text="" />
+               </graphic>
+            </Label>
+            <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TIMES" size="20" text="" />
+               </graphic>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="menu_container" />
+            <String fx:value="left_container" />
+         </styleClass>
+      </VBox>
+   </children>
+</AnchorPane>

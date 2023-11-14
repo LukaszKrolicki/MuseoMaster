@@ -1,0 +1,67 @@
+
+.main_menu_container{
+    -fx-background-color: #EEEEEE;
+    -fx-alignments: center;
+}
+
+.left_container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-effect:dropshadow(two-pass-box, #AAAAAA,5,0,0,4)
+}
+
+/* Title / logo section */
+.title_container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20 20 0 0;
+    -fx-alignment:center;
+    -fx-padding: 20;
+}
+
+.title_container FontAwesomeIconView{
+    -fx-fill: #008022;
+}
+
+.title_container Label{
+    -fx-fill: #000000;
+    -fx-font-size:1.5em;
+}
+
+/* Navigation Section */
+.menu_container{
+    -fx-padding: 10 10 10 20;
+    -fx-spacing: 20;
+}
+
+.menu_container Label{
+    -fx-pref-width: 150;
+    -fx-padding:5;
+    -fx-pref-height:40;
+    -fx-background-color: linear-gradient(to right, #008022,#00f742);
+    -fx-font-style:"Calibri";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size:1em;
+    -fx-alignment: center_left;
+    -fx-effect: dropshadow(three-pass-box, #dddddd, 5, 0,0,6);
+
+}
+.menu_container Label:hover{
+    -fx-cursor: hand;
+}
+
+.menu_container Label FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+
+.alt_menu_btn{
+    -fx-pref-width:150;
+    -fx-pref-height:40;
+    -fx-background-color: linear-gradient(to right, #008022, #00751f);
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment:center_left;
+}
+
+.alt_menu_btn FontAwesomeIconView{
+    -fx-fill:#FFFFFF;
+}
+

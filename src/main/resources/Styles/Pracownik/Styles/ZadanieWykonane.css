@@ -1,0 +1,39 @@
+.client_cell_container{
+    -fx-background-color: #cfffe0;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, #cfffe0, 5,0,0,7);
+}
+
+
+.client_cell_container HBox{
+    -fx-spacing:10;
+    -fx-alignment: Center_left;
+}
+
+.client_cell_container HBox Label{
+    -fx-text-fill: #444444;
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1em;
+}
+
+.acc_display_lbl{
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size:1.5em;
+}
+
+
+.report_btn{
+    -fx-background-color: linear-gradient(to right, #008022,#00f742);
+
+    -fx-text-fill: #FFFFFF;
+}
+
+.report_btn FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+
+.report_btn:hover{
+    -fx-cursor: hand;
+}
+
