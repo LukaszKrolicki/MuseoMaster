@@ -20,12 +20,17 @@
             <children>
                 <Label fx:id="lista_zadan_lbl" text="Lista zadań">
                     <graphic>
-                        <FontAwesomeIconView glyphName="ENVELOPE" />
+                        <FontAwesomeIconView glyphName="ENVELOPE" size="20" />
                     </graphic>
                 </Label>
+            <Label fx:id="lista_zabytkow_lbl" text="Lista Zabytków">
+               <graphic>
+                  <FontAwesomeIconView glyphName="LIST" size="20" />
+               </graphic>
+            </Label>
                 <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
                     <graphic>
-                        <FontAwesomeIconView glyphName="TIMES" size="20" text="" />
+                        <FontAwesomeIconView glyphName="TIMES" size="20" />
                     </graphic>
                 </Label>
             </children>
