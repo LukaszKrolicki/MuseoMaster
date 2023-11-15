@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="850.0" prefWidth="755.0" styleClass="zabytki_container" stylesheets="@../Styles/UtilsStyles/WyborZabytkowDlaZadania.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kurator.KuratorDashboard">
+   <children>
+      <VBox layoutX="328.0" layoutY="325.0" prefHeight="850.0" prefWidth="655.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lista wybranych zabytków" />
+            <ListView fx:id="lista_wybranych_zab" prefHeight="400.0" prefWidth="200.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Typ zadania" />
+            <ChoiceBox fx:id="typ_zadania" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sala (opcjonalne)" />
+            <ChoiceBox fx:id="sala_choice" prefWidth="150.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
