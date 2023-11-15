@@ -16,12 +16,12 @@
       </VBox>
       <VBox layoutX="14.0" layoutY="131.0" prefHeight="370.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
          <children>
-            <Label fx:id="create_user_btn" prefWidth="146.0" text="Utwórz użytkownika">
+            <Label fx:id="create_user_lbl" prefWidth="146.0" text="Utwórz użytkownika">
                <graphic>
                   <FontAwesomeIconView glyphName="USER" size="20" />
                </graphic>
             </Label>
-            <Label fx:id="add_place_btn" text="Dodaj miejsce">
+            <Label fx:id="add_place_lbl" text="Dodaj miejsce">
                <graphic>
                   <FontAwesomeIconView glyphName="CUBE" size="20" text="" />
                </graphic>

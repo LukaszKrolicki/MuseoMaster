@@ -11,10 +11,10 @@
         <HBox layoutX="7.0" prefHeight="50.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0">
             <children>
                 <Label fx:id="id_lbl" text="ID:1123" />
-                <Label fx:id="nazwa_wystawy_lbl" text="Starożytny egipt i jego wielka rzeka" />
+                <Label fx:id="ex_name_lbl" text="Starożytny egipt i jego wielka rzeka" />
                 <FontAwesomeIconView glyphName="USER" />
-                <Label fx:id="nazwa_autora_lbl" text="Jacek niedzielski" />
-            <Label fx:id="tematyka_lbl" text="Starożytny Egipt" />
+                <Label fx:id="author_lbl" text="Jacek niedzielski" />
+            <Label fx:id="subject_lbl" text="Starożytny Egipt" />
                 <Label fx:id="email_lbl" />
                 <Label fx:id="start_date_lbl" text="2022-03-03">
                <graphic>

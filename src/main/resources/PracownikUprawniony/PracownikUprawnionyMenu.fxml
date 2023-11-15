@@ -18,12 +18,12 @@
         </VBox>
         <VBox layoutX="14.0" layoutY="131.0" prefHeight="187.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
             <children>
-                <Label fx:id="task_lbl" text="Lista zadań">
+                <Label fx:id="lista_zadan_lbl" text="Lista zadań">
                     <graphic>
                         <FontAwesomeIconView glyphName="ENVELOPE" />
                     </graphic>
                 </Label>
-            <Label fx:id="give_task_lbl" text="Przydziel zadanie">
+            <Label fx:id="przydziel_zadanie" text="Przydziel zadanie">
                <graphic>
                   <FontAwesomeIconView glyphName="GROUP" />
                </graphic>
