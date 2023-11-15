@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="755.0" prefWidth="800.0" stylesheets="@../Styles/PracownikUprawnionyStyles/PrzydzielZadanie.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PracownikUprawniony.PracownikUprawnionyPrzydzielZadanie">
    <children>
       <VBox layoutX="13.0" layoutY="33.0" prefHeight="690.0" prefWidth="650.0" styleClass="search_box" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
@@ -21,7 +20,7 @@
                   <TextField fx:id="input_name_lbl" prefWidth="432.0" />
                   <Button fx:id="search_button" mnemonicParsing="false" text="Szukaj">
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />
+                        <FontAwesomeIconView fx:id="search_lbl" fill="WHITE" glyphName="SEARCH" size="20" />
                      </graphic>
                   </Button>
                </children>
@@ -29,8 +28,8 @@
             <Label text="Wyszukaj po roli:" />
             <ComboBox fx:id="role_combobox" prefWidth="150.0" />
             <Label text="Lista znalezionych użytkowników:" />
-            <ListView prefHeight="546.0" prefWidth="764.0" styleClass="deposit_container" />
-            <Button mnemonicParsing="false" text="Przydziel zadanie" />
+            <ListView fx:id="ser_found_list" prefHeight="546.0" prefWidth="764.0" styleClass="deposit_container" />
+            <Button fx:id="give_task" mnemonicParsing="false" text="Przydziel zadanie" />
          </children>
       </VBox>
    </children>

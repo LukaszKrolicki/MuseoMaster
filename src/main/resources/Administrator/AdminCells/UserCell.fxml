@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="50.0" prefWidth="710.0" styleClass="client_cell_container" stylesheets="@../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.UserCells.UserCell">
    <children>
-      <HBox layoutX="7.0" prefHeight="50.0" prefWidth="710.0">
+      <HBox layoutX="7.0" prefHeight="50.0" prefWidth="643.0">
          <children>
             <Label fx:id="id_lbl" text="ID:1123" />
             <Label fx:id="name_lbl" text="Łukson Krolicki" />
@@ -29,13 +29,13 @@
                   <FontAwesomeIconView glyphName="BRIEFCASE" />
                </graphic>
             </Label>
-            <Label text="YES">
+            <Label fx:id="permission_lbl" text="YES">
                <graphic>
                   <FontAwesomeIconView fx:id="permission_lbl" glyphName="KEY" />
                </graphic>
             </Label>
-            <Button fx:id="delete_btn" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" />
          </children>
       </HBox>
+      <Button fx:id="delete_btn" layoutX="650.0" layoutY="13.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" />
    </children>
 </AnchorPane>

@@ -22,20 +22,20 @@
         <VBox layoutX="151.2" layoutY="54.0" prefHeight="659.0" prefWidth="549.0" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="150.0">
             <children>
                 <Label text="Nazwa eksponatu:" />
-                <TextField fx:id="nazwa_eksponatu_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
+                <TextField fx:id="ex_name_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
             <Label text="Twórca:" />
-            <TextField fx:id="twórca_eksponatu_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
+            <TextField fx:id="author_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
                 <Label text="Tematyka:" />
-                <ComboBox fx:id="tematyka_choice_box" prefWidth="150.0" />
+                <ComboBox fx:id="subject_combobox" prefWidth="150.0" />
             <Label text="Okres powstania:" />
-            <ComboBox fx:id="okres_poswstania_choicebox" prefWidth="150.0" />
+            <ComboBox fx:id="time_made_combobox" prefWidth="150.0" />
             <Label text="Wybierz z zakresu:" />
             <HBox prefHeight="75.0" prefWidth="200.0">
                <children>
                   <VBox prefHeight="75.0" prefWidth="260.0">
                      <children>
                         <Label text="Rok 1:" />
-                        <TextField fx:id="rok_pierwszy_lbl" />
+                        <TextField fx:id="firs_year_input" />
                      </children>
                   </VBox>
                   <VBox prefHeight="100.0" prefWidth="260.0" spacing="10.0">
@@ -44,15 +44,15 @@
                      </HBox.margin>
                      <children>
                         <Label text="Rok 2:" />
-                        <TextField fx:id="rok_drugi_lbl" />
+                        <TextField fx:id="second_year_input" />
                      </children>
                   </VBox>
                </children>
             </HBox>
             <Label text="Aktualne miejsce przechowywania:" />
-            <ChoiceBox fx:id="aktualne_miejsce_choicebox" prefWidth="150.0" />
-                <Button fx:id="wyszukaj_btn" mnemonicParsing="false" text="Wyszukaj" />
-                <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" />
+            <ChoiceBox fx:id="current_place_combobox" prefWidth="150.0" />
+                <Button fx:id="search_btn" mnemonicParsing="false" text="Wyszukaj" />
+                <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" />
             </children>
         </VBox>
     </children>

@@ -6,24 +6,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-
-
+gi
 <AnchorPane prefHeight="60.0" prefWidth="550.0" styleClass="client_cell_container" stylesheets="@../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.AdminCells.ReportCell">
    <children>
-      <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="550.0" stylesheets="@../../Styles/AdministratorStyles/UserCells/UserCell.css" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="delete_btn" layoutX="287.0" layoutY="18.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń raport" AnchorPane.leftAnchor="287.0" AnchorPane.topAnchor="18.0">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" />
+         </graphic>
+      </Button>
+      <Button fx:id="report_details_btn" layoutX="399.0" layoutY="18.0" mnemonicParsing="false" styleClass="report_btn" text="Szczegóły raportu" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="18.0">
+         <graphic>
+            <FontAwesomeIconView glyphName="BELL" />
+         </graphic>
+      </Button>
+      <HBox alignment="CENTER_LEFT" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="275.0" stylesheets="@../../Styles/AdministratorStyles/UserCells/UserCell.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="#ID:1123" />
-            <Label text="\@lKrol123" />
-            <Button mnemonicParsing="false" styleClass="report_btn" text="Szczegóły raportu">
-               <graphic>
-                  <FontAwesomeIconView glyphName="BELL" />
-               </graphic>
-            </Button>
-            <Button mnemonicParsing="false" styleClass="delete_btn" text="Usuń raport">
-               <graphic>
-                  <FontAwesomeIconView glyphName="TIMES" />
-               </graphic>
-            </Button>
+            <Label fx:id="id_lbl" text="#ID:1123" />
+            <Label fx:id="username_lbl" text="\@lKrol123" />
          </children>
          <padding>
             <Insets left="85.0" />

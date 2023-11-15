@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,7 +8,7 @@
 
 <AnchorPane prefHeight="50.0" prefWidth="584.0" styleClass="client_cell_container" stylesheets="@../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.UserCells.UserCell">
     <children>
-        <HBox layoutX="7.0" prefHeight="50.0" prefWidth="600.0">
+        <HBox layoutX="7.0" prefHeight="50.0" prefWidth="402.0">
             <children>
                 <Label fx:id="id_lbl" text="ID:1123" />
                 <Label fx:id="name_lbl" text="Łukson Krolicki" />
@@ -25,15 +24,8 @@
                         <FontAwesomeIconView glyphName="BRIEFCASE" />
                     </graphic>
                 </Label>
-            <CheckBox mnemonicParsing="false" text="Przydziel zadanie">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </CheckBox>
             </children>
         </HBox>
+      <CheckBox fx:id="add_task_checkbox" layoutX="453.0" layoutY="17.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="117.0" text="Przydziel zadanie" />
     </children>
 </AnchorPane>

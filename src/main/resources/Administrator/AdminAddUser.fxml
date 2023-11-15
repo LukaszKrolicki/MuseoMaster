@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="create_client_container" stylesheets="@../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Administrator.AdminAddUser">
    <children>
       <Label layoutX="160.0" layoutY="24.0" text="Tworzenie użytkownika">
@@ -22,27 +21,27 @@
       <VBox layoutX="14.0" layoutY="54.0" prefHeight="577.0" prefWidth="798.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <children>
             <Label text="Imię:" />
-            <TextField alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
+            <TextField fx:id="name_input" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
             <Label text="Nazwisko:" />
-            <TextField />
+            <TextField fx:id="second_name_input" />
             <Label text="E-mail:" />
-            <TextField />
+            <TextField fx:id="email_input" />
             <Label text="Numer telfonu:" />
-            <TextField />
+            <TextField fx:id="phone_input" />
             <Label text="Wiek:" />
-            <TextField />
+            <TextField fx:id="age_input" />
             <Label text="Rola:" />
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="role_comboBox" prefWidth="150.0" />
             <Label text="Unikalna nazwa użytkownika:" />
-            <TextField disable="true" />
+            <TextField fx:id="unique_name_input" disable="true" />
             <Label text="Czy posiada uprawnienia do zażądzania zasobami ludzkimi?" />
-            <CheckBox mnemonicParsing="false" />
-            <Button mnemonicParsing="false" text="Utwórz użytkownika">
+            <CheckBox fx:id="permission_checkbox" mnemonicParsing="false" />
+            <Button fx:id="create_user_button" mnemonicParsing="false" text="Utwórz użytkownika">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="KEY" size="20" />
                </graphic>
             </Button>
-            <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" />
+            <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" />
          </children>
       </VBox>
    </children>

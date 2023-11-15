@@ -18,7 +18,7 @@
         </VBox>
         <VBox layoutX="14.0" layoutY="131.0" prefHeight="138.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
             <children>
-                <Label fx:id="lista_zadan_lbl" text="Lista zadań">
+                <Label fx:id="task_list_lbl" text="Lista zadań">
                <graphic>
                   <FontAwesomeIconView glyphName="ENVELOPE" />
                </graphic>

@@ -9,24 +9,21 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="client_cell_container" stylesheets="@../../Styles/Pracownik/Styles/ZadanieNieWykonane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pracownik.PracownikCells.ZadanieCell">
     <children>
-        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="800.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="495.0" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="id_zadania" text="ID:2215" />
+                <Label fx:id="task_id" text="ID:2215" />
                 <Label fx:id="user_name_lbl" text="\@lKrollllll" />
                 <Label fx:id="start_date_lbl" text="Start: 2023-03-03" />
                 <Label fx:id="end_date_lbl" text="Koniec: 2023-03-06" />
-                <Button disable="true" mnemonicParsing="false" styleClass="delete_btn" text="Brak wykonania">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="TIMES" />
-                    </graphic>
-               <HBox.margin>
-                  <Insets left="350.0" />
-               </HBox.margin>
-                </Button>
             </children>
          <padding>
             <Insets left="10.0" />
          </padding>
         </HBox>
+          <Button disable="true" layoutX="659.0" layoutY="18.0" mnemonicParsing="false" styleClass="delete_btn" text="Brak wykonania" AnchorPane.rightAnchor="30.0">
+              <graphic>
+                  <FontAwesomeIconView glyphName="TIMES" />
+              </graphic>
+          </Button>
     </children>
 </AnchorPane>

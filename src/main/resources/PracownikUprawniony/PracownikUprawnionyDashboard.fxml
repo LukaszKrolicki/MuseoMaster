@@ -12,13 +12,13 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <ListView layoutX="20.0" layoutY="97.0" prefHeight="180.0" prefWidth="798.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="97.0" />
+        <ListView fx:id="task_list" layoutX="20.0" layoutY="97.0" prefHeight="180.0" prefWidth="798.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="97.0" />
         <Label layoutX="23.0" layoutY="290.0" text="Lista zakończonych zadań:" AnchorPane.leftAnchor="20.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <ListView layoutX="22.0" layoutY="317.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+        <ListView fx:id="ended_task_list" layoutX="22.0" layoutY="317.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
         <Label layoutX="18.0" layoutY="14.0" text="Witaj Łukasz Krolik!" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
             <font>
                 <Font size="18.0" />
@@ -31,6 +31,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView layoutX="20.0" layoutY="524.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.leftAnchor="20.0" />
+      <ListView fx:id="given_task_list" layoutX="20.0" layoutY="524.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.leftAnchor="20.0" />
     </children>
 </AnchorPane>

@@ -21,19 +21,19 @@
         <VBox fx:id="przydziel_zadanie_btn" layoutX="14.0" layoutY="54.0" prefHeight="577.0" prefWidth="798.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <children>
                 <Label text="Temat:" />
-                <TextField fx:id="temat_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
+                <TextField fx:id="subject_lbl" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
                 <Label text="Opis:" />
-            <TextArea fx:id="opis_lbl" prefHeight="101.0" prefWidth="530.0" />
+            <TextArea fx:id="desc_textfield" prefHeight="101.0" prefWidth="530.0" />
                 <Label text="Data początku:" />
-            <DatePicker fx:id="data_początkowa_datepicker" />
+            <DatePicker fx:id="stard_date_datePicker" />
                 <Label text="Data końca:" />
-            <DatePicker fx:id="data_koncowa_datepicker" />
-            <Button fx:id="do_eksponatow_btn" alignment="TOP_LEFT" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="293.0" styleClass="commit" text="Przejdź do eksponatów (opcojnalne)" VBox.vgrow="NEVER">
+            <DatePicker fx:id="end_date_datePicker" />
+            <Button fx:id="ego_to_ex_btn" alignment="TOP_LEFT" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="293.0" styleClass="commit" text="Przejdź do eksponatów (opcojnalne)" VBox.vgrow="NEVER">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" size="20" text="" />
                </graphic>
             </Button>
-                <Button mnemonicParsing="false" styleClass="goto_zabytki" text="Przydziel zadanie">
+                <Button fx:id="give_task_btn" mnemonicParsing="false" styleClass="goto_zabytki" text="Przydziel zadanie">
                     <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="KEY" size="20" />
                     </graphic>
