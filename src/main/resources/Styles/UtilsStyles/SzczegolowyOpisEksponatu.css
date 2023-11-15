@@ -1,0 +1,21 @@
+.zabytki_container{
+    -fx-background-color: #EEEEEE;
+}
+.zabytki_container VBox{
+    -fx-spacing: 5;
+}
+
+.zabytki_container Text{
+    -fx-fill: #777777;
+    -fx-font-size: 1em;
+    -fx-font-family: "Calibri Light";
+}
+.zabytki_container Label{
+    -fx-fill: #555555;
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
+}
+.zabytki_container .text-area{
+    -fx-background-color: #EEEEEE;
+    -fx-border-width: 0;
+}
