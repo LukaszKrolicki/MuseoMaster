@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="client_cell_container" stylesheets="@../../Styles/ZwyklyKonserwatorStyles/ZadanieKonserwatorPrzydzieloneCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox prefHeight="60.0" prefWidth="800.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="id_zadania" text="ID:2215">
+                    <HBox.margin>
+                        <Insets left="5.0" />
+                    </HBox.margin></Label>
+                <Label fx:id="user_name_lbl" text="MaskaTutenhamona" />
+                <Label fx:id="start_date_lbl" text="Starożytny Egipt" />
+            <Button mnemonicParsing="false" text="Szczególowy Opis Eksponatu" />
+            <CheckBox mnemonicParsing="false">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </CheckBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
