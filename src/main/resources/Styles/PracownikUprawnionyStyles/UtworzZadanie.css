@@ -18,20 +18,20 @@
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
 }
 
-.create_client_container Button {
+.commit{
+    -fx-background-color: linear-gradient(to right, #6ea5ff,#518ff5);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+    -fx-font-size: 1.3em;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: #FFFFFF;
+}
+
+.goto_zabytki{
     -fx-background-color: linear-gradient(to right, #008022,#00f742);
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
-    -fx-pref-width: 200;
     -fx-font-size: 1.3em;
     -fx-font-family: "Calibri Light";
     -fx-text-fill: #FFFFFF;
 }
 
 
-.create_client_container Button:hover {
-    -fx-cursor: hand;
-}
-
-.mainText{
-    -fx-font-size: 1.5em;
-}
