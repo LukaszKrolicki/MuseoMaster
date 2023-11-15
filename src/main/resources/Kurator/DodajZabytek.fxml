@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="dodajZabytek" stylesheets="@../Styles/KuratorStyles/DodajZabytek.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kurator.DodajZabytek">
+   <children>
+      <Text layoutX="162.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title_txt" text="Dodawanie Zabytku" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="15.0" />
+      <VBox layoutX="151.2" layoutY="37.0" prefHeight="705.0" prefWidth="548.0" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="151.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nazwa Zabytku:" />
+            <TextField fx:id="nazwa_zabytku_tf" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Okres Powstawnia" />
+            <TextField fx:id="okres_powstawnia_tf" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tematyka:" />
+            <TextField fx:id="tematyka_tf" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Twórca" />
+            <TextField fx:id="tworca_tf" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Warunki Przechowywania:" />
+            <TextArea fx:id="warunki_przech_ta" prefHeight="45.0" prefWidth="550.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aktualne Miejsce Przechowywania:" />
+            <TextField fx:id="akt_miej_przech_tf" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opis:" />
+            <TextArea fx:id="opis_ta" prefHeight="133.0" prefWidth="528.0" styleClass="textAreaAlt" />
+            <Button fx:id="dodaj_zabytek_btn" mnemonicParsing="false" text="Dodaj Zabytek">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="KEY" size="20" />
+               </graphic>
+            </Button>
+            <Label fx:id="error_lbl" styleClass="error_lbl" text="ERROR:" />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
