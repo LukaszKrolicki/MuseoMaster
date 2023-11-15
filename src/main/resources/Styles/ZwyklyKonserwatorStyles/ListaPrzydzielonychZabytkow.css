@@ -1,0 +1,19 @@
+.lista_zabytkow{
+    -fx-background-color: #EEEEEE;
+}
+
+.lista_zabytkow Text{
+    -fx-fill: #555555;
+    -fx-font-size: 1.8em;
+    -fx-font-family: "Calibri Light";
+}
+
+.lista_zabytkow .list-view{
+    -fx-background-color: #EEEEEE;
+    -fx-border-width: 0;
+}
+
+.lista_zabytkow .list-cell{
+    -fx-background-color: #EEEEEE;
+    -fx-padding: 10 0 10 0;
+}

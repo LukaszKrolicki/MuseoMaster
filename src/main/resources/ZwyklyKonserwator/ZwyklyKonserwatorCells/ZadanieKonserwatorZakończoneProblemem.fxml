@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="client_cell_container" stylesheets="@../../Styles/Pracownik/Styles/ZadanieZakończoneProblemem.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox prefHeight="60.0" prefWidth="800.0" styleClass="client_cell_container" stylesheets="@../../Styles/ZwyklyKonserwatorStyles/ZadanieKonserwatorZakończoneProblemem.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox prefHeight="60.0" prefWidth="664.0" stylesheets="@../../Styles/ZwyklyKonserwatorStyles/ZadanieKonserwatorZakończoneProblemem.css" AnchorPane.rightAnchor="136.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="id_zadania" text="ID:2215">
                <HBox.margin>
@@ -18,15 +18,12 @@
                 <Label fx:id="user_name_lbl" text="\@Kurator1" />
                 <Label fx:id="start_date_lbl" text="Start: 2023-03-03" />
                 <Label fx:id="end_date_lbl" text="Koniec: 2023-03-06" />
-                <Button fx:id="problem_btn" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" styleClass="problem_btn" text="Problem">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="QUESTION" size="20" />
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="250.0" />
-                    </HBox.margin>
-                </Button>
             </children>
         </HBox>
+          <Button fx:id="problem_btn" layoutX="702.0" layoutY="12.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" styleClass="problem_btn" text="Problem" AnchorPane.rightAnchor="20.0">
+              <graphic>
+                  <FontAwesomeIconView glyphName="QUESTION" size="20" />
+              </graphic>
+          </Button>
     </children>
 </AnchorPane>
