@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="850.0" prefWidth="755.0" styleClass="zabytki_container" stylesheets="@../Styles/UtilsStyles/WyborZabytkowDlaZadania.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Kurator.KuratorDashboard">
+<AnchorPane prefHeight="850.0" prefWidth="755.0" styleClass="zabytki_container" stylesheets="@../Styles/UtilsStyles/WyborZabytkowDlaZadania.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <VBox layoutX="328.0" layoutY="325.0" prefHeight="850.0" prefWidth="655.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
          <children>

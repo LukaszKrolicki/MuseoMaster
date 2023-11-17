@@ -5,4 +5,6 @@ module com.museomaster.museomaster {
 
     opens com.museomaster.museomaster to javafx.fxml;
     exports com.museomaster.museomaster;
+    exports com.museomaster.museomaster.TypyUzytkownikow;
+    exports com.museomaster.museomaster.TypyUzytkownikow.Administrator;
 }
