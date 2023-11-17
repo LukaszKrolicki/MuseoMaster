@@ -1,9 +1,9 @@
 package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
+import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +30,12 @@ public class ViewFactory {
         return adminSelectedMenuItem;
     }
 
+
+    private AnchorPane view;
+
+    //Admin Views
+    ////////////////////////////////////////////////////////////////////////
+
     public void showAdminWindow(){
         System.out.println(getClass().getResource("/Fxml/Administrator/AdminDashboard.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Administrator/AdminDashboard.fxml"));
@@ -44,7 +50,6 @@ public class ViewFactory {
     private AnchorPane userListView;
     private AnchorPane ReportListView;
 
-    private AnchorPane view;
     public AnchorPane getAdminView(String fxmlPath, String anchorPaneName){
 
 
@@ -65,6 +70,22 @@ public class ViewFactory {
 
         return view;
     }
+    ////////////////////////////////////////////////////////////////
+
+
+
+    //Normal WorkerViews
+    ////////////////////////////////////////////////////////////////
+
+    public void showWorkerWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Pracownik/Pracownik.fxml"));
+        PracownikController pracownikController = new PracownikController();
+        loader.setController(pracownikController);
+        createStage(loader);
+
+    }
+
+    ////////////////////////////////////////////////////////////////
 
     private static void createStage(FXMLLoader loader) {
         Scene scene = null;

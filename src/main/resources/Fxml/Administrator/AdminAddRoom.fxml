@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddRoomControler">
    <children>
       <Label layoutX="150.0" layoutY="36.0" text="Tworzenie pomieszczenia:" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="24.0">
          <font>

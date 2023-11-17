@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikDashboardController" >
+   <children>
+      <Label layoutX="14.0" layoutY="87.0" text="Lista przydzielonych zadań:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="87.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="task_list_listview" layoutX="15.0" layoutY="114.0" prefHeight="290.0" prefWidth="811.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="114.0" />
+      <Label layoutX="22.0" layoutY="414.0" text="Lista zakończonych zadań:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="ended_task_list_listview" layoutX="21.0" layoutY="425.0" prefHeight="290.0" prefWidth="811.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="24.0" />
+      <Label layoutX="18.0" layoutY="14.0" text="Witaj Łukasz Krolik!" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="45.0" text="Miłego Dnia" textFill="#a4a4a4" />
+      <Label layoutX="780.0" layoutY="23.0" text="2023-03-03" textFill="#aeaeae" />
+   </children>
+</AnchorPane>
