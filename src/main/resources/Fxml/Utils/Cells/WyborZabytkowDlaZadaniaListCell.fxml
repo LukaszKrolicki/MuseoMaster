@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="client_cell_container" stylesheets="@../../../Styles/UtilsStyles/WoborZabytkowDlaZadaniaListCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox prefHeight="60.0" prefWidth="800.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox layoutX="14.0" layoutY="-1.0" prefHeight="60.0" prefWidth="466.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="-1.0">
             <children>
                 <Label fx:id="id_zadania" text="ID:2215">
                     <HBox.margin>
@@ -17,19 +17,13 @@
                     </HBox.margin></Label>
                 <Label fx:id="user_name_lbl" text="MaskaTutenhamona" />
                 <Label fx:id="start_date_lbl" text="Starożytny Egipt" />
-            <CheckBox mnemonicParsing="false">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </CheckBox>
-            <Button mnemonicParsing="false" styleClass="report_btn" text="Szczególowy Opis Eksponatu">
-               <HBox.margin>
-                  <Insets left="150.0" />
-               </HBox.margin></Button>
             </children>
         </HBox>
+      <Button layoutX="630.0" layoutY="12.0" mnemonicParsing="false" styleClass="report_btn" text="Szczególowy Opis Eksponatu" AnchorPane.rightAnchor="20.0" />
+      <CheckBox layoutX="536.0" layoutY="21.0" mnemonicParsing="false" AnchorPane.rightAnchor="350.0">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </CheckBox>
     </children>
 </AnchorPane>

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="client_cell_container" stylesheets="@../../../Styles/ZwyklyKonserwatorStyles/ZadanieKonserwatorWykonane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox prefHeight="60.0" prefWidth="800.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox prefHeight="60.0" prefWidth="630.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="id_zadania" text="ID:2215">
                <HBox.margin>
@@ -18,15 +18,12 @@
                 <Label fx:id="user_name_lbl" text="\@lKrollllll" />
                 <Label fx:id="start_date_lbl" text="Start: 2023-03-03" />
                 <Label fx:id="end_date_lbl" text="Koniec: 2023-03-06" />
-                <Button fx:id="zrobione_btn" mnemonicParsing="false" styleClass="report_btn" text="Zrobione">
-                    <graphic>
-                        <FontAwesomeIconView glyphName="CHECK" />
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="250.0" />
-                    </HBox.margin>
-                </Button>
             </children>
         </HBox>
+          <Button fx:id="zrobione_btn" layoutX="681.0" layoutY="12.0" mnemonicParsing="false" styleClass="report_btn" text="Zrobione" AnchorPane.rightAnchor="20.0">
+              <graphic>
+                  <FontAwesomeIconView glyphName="CHECK" />
+              </graphic>
+          </Button>
     </children>
 </AnchorPane>

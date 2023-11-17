@@ -1,0 +1,22 @@
+.lista_przydz{
+    -fx-background-color: #e8fcff;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, #e8fcff, 5,0,0,7);
+}
+
+
+.lista_przydz HBox{
+    -fx-spacing : 20;
+    -fx-alignment: Center_left;
+    -fx-padding-left : 20;
+}
+
+.lista_przydz HBox Label{
+    -fx-text-fill: #444444;
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.3em;
+}
+}
+.lista_przydz .box {
+    -fx-background-color: #528f5b;
+}
