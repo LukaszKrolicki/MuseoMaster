@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Utils.PracownikUprawnionyDashboardController">
     <children>
         <Label layoutX="19.0" layoutY="70.0" text="Lista twoich zadań:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <ListView layoutX="20.0" layoutY="97.0" prefHeight="180.0" prefWidth="798.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="97.0" />
+        <ListView fx:id="taks_list_textView" layoutX="20.0" layoutY="97.0" prefHeight="180.0" prefWidth="798.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="97.0" />
         <Label layoutX="23.0" layoutY="290.0" text="Lista zakończonych zadań:" AnchorPane.leftAnchor="20.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <ListView layoutX="22.0" layoutY="317.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+        <ListView fx:id="task_ended_listview" layoutX="22.0" layoutY="317.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
         <Label layoutX="18.0" layoutY="14.0" text="Witaj Łukasz Krolik!" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
             <font>
                 <Font size="18.0" />
@@ -31,6 +31,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView layoutX="20.0" layoutY="524.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.leftAnchor="20.0" />
+      <ListView fx:id="task_assigned_listView" layoutX="20.0" layoutY="524.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.leftAnchor="20.0" />
     </children>
 </AnchorPane>

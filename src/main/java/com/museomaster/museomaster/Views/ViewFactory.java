@@ -2,6 +2,7 @@ package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
+import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -14,20 +15,25 @@ public class ViewFactory {
 
     private final StringProperty adminSelectedMenuItem;
 
+    private final StringProperty permissionWorkerSelectedMenuItem;
+
     public ViewFactory(){
         this.adminSelectedMenuItem=new SimpleStringProperty("");
+        this.permissionWorkerSelectedMenuItem=new SimpleStringProperty("");
     }
 
+    public StringProperty getAdminSelectedMenuItem(){
+        return adminSelectedMenuItem;
+    }
+
+    public StringProperty getPermissionWorkerSelectedMenuItem(){
+        return permissionWorkerSelectedMenuItem;
+    }
 
     public void showLoginWindow(){
         System.out.println(getClass().getResource("Fxml/Login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
         createStage(loader);
-    }
-
-
-    public StringProperty getAdminSelectedMenuItem(){
-        return adminSelectedMenuItem;
     }
 
 
@@ -83,6 +89,57 @@ public class ViewFactory {
         loader.setController(pracownikController);
         createStage(loader);
 
+    }
+
+    ////////////////////////////////////////////////////////////////
+
+
+
+
+
+    //Worker with permissions View
+    ////////////////////////////////////////////////////////////////
+
+    public void showPermissionWorkerWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/PracownikUprawniony/PracownikUprawniony.fxml"));
+        PracownikUprawnionyController pracownikController = new PracownikUprawnionyController();
+        loader.setController(pracownikController);
+        createStage(loader);
+
+    }
+
+    private AnchorPane WorkerDashboard;
+    private AnchorPane WorkerGiveTask;
+
+    private AnchorPane CreateTask;
+
+    private AnchorPane WyborZabytkow;
+
+    private AnchorPane report;
+
+    private AnchorPane searchEx;
+    public AnchorPane showPermissionWorkerView(String fxmlPath, String anchorPaneName){
+
+        System.out.println("jestem tu");
+        switch (anchorPaneName){
+            case "searchEx"-> view=searchEx;
+            case "report" -> view=report;
+            case "wyborZabytkow"->view = WyborZabytkow;
+            case "assign"->view=WorkerGiveTask;
+            case "giveTask" -> view=WorkerGiveTask;
+            case "createTask" -> view=CreateTask;
+            default -> view=WorkerDashboard;
+        }
+
+        if(view==null){
+            try{
+                view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view;
     }
 
     ////////////////////////////////////////////////////////////////

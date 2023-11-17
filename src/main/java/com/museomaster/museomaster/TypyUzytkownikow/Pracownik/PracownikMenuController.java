@@ -1,7 +1,9 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Pracownik;
 
+import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,6 +14,14 @@ public class PracownikMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        logout_lbl.setOnMouseClicked(e->onLogout());
+    }
+
+    private void onLogout(){
+        Stage stage = (Stage) task_list_lbl.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showLoginWindow();
 
     }
 }
