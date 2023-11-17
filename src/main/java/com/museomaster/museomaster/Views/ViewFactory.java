@@ -1,6 +1,8 @@
 package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,30 +11,24 @@ import javafx.stage.Stage;
 
 public class ViewFactory {
 
-    private AnchorPane dashboardView;
+
+    private final StringProperty adminSelectedMenuItem;
 
     public ViewFactory(){
-
+        this.adminSelectedMenuItem=new SimpleStringProperty("");
     }
 
-    @FXML
+
     public void showLoginWindow(){
         System.out.println(getClass().getResource("Fxml/Login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
         createStage(loader);
     }
 
-//    public AnchorPane getAdminAddUser(){
-//        if(dashboardView==null){
-//            try{
-//                dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Administrator/AdminAddUser.fxml")).load();
-//            }catch (Exception e){
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        return dashboardView;
-//    }
+
+    public StringProperty getAdminSelectedMenuItem(){
+        return adminSelectedMenuItem;
+    }
 
     public void showAdminWindow(){
         System.out.println(getClass().getResource("/Fxml/Administrator/AdminDashboard.fxml"));
@@ -41,6 +37,33 @@ public class ViewFactory {
         loader.setController(adminController);
         createStage(loader);
 
+    }
+    private AnchorPane dashboardView;
+    private AnchorPane addRoomView;
+
+    private AnchorPane userListView;
+    private AnchorPane ReportListView;
+
+    private AnchorPane view;
+    public AnchorPane getAdminView(String fxmlPath, String anchorPaneName){
+
+
+        switch (anchorPaneName){
+            case "addRoomView" -> view=dashboardView;
+            case "userListView" -> view=userListView;
+            case "reportListView" -> view=ReportListView;
+            default -> view=dashboardView;
+        }
+
+        if(view==null){
+            try{
+                view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view;
     }
 
     private static void createStage(FXMLLoader loader) {
@@ -58,4 +81,10 @@ public class ViewFactory {
         stage.setTitle("MuesoMaster");
         stage.show();
     }
+
+    public void closeStage(Stage stage){
+        stage.close();
+    }
+
+
 }
