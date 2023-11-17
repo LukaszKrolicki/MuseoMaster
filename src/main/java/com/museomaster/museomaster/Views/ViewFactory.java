@@ -20,11 +20,14 @@ public class ViewFactory {
 
     private final StringProperty technicalWorkerItem;
 
+    private final StringProperty WorkerItem;
+
 
     public ViewFactory(){
         this.adminSelectedMenuItem=new SimpleStringProperty("");
         this.permissionWorkerSelectedMenuItem=new SimpleStringProperty("");
         this.technicalWorkerItem=new SimpleStringProperty("");
+        this.WorkerItem=new SimpleStringProperty("");
     }
 
     public StringProperty getAdminSelectedMenuItem(){
@@ -35,6 +38,9 @@ public class ViewFactory {
     }
     public StringProperty getTechnicalWorkerSelectedMenuItem(){
         return technicalWorkerItem;
+    }
+    public StringProperty getWorkerSelectedMenuItem(){
+        return WorkerItem;
     }
 
     public void showLoginWindow(){
@@ -96,6 +102,34 @@ public class ViewFactory {
         loader.setController(pracownikController);
         createStage(loader);
 
+    }
+
+    AnchorPane view1;
+    public AnchorPane showReportView(){
+
+        if(view1==null){
+            try{
+                view1 = new FXMLLoader(getClass().getResource("/Fxml/Problem/ProblemDashboard.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view1;
+    }
+
+    AnchorPane view2;
+    public AnchorPane showWorkerDashboardView(){
+
+        if(view2==null){
+            try{
+                view2 = new FXMLLoader(getClass().getResource("/Fxml/Pracownik/PracownikDashboard.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view2;
     }
 
     ////////////////////////////////////////////////////////////////
