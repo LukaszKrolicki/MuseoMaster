@@ -3,6 +3,7 @@ package com.museomaster.museomaster.Views;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
+import com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -17,17 +18,23 @@ public class ViewFactory {
 
     private final StringProperty permissionWorkerSelectedMenuItem;
 
+    private final StringProperty technicalWorkerItem;
+
+
     public ViewFactory(){
         this.adminSelectedMenuItem=new SimpleStringProperty("");
         this.permissionWorkerSelectedMenuItem=new SimpleStringProperty("");
+        this.technicalWorkerItem=new SimpleStringProperty("");
     }
 
     public StringProperty getAdminSelectedMenuItem(){
         return adminSelectedMenuItem;
     }
-
     public StringProperty getPermissionWorkerSelectedMenuItem(){
         return permissionWorkerSelectedMenuItem;
+    }
+    public StringProperty getTechnicalWorkerSelectedMenuItem(){
+        return technicalWorkerItem;
     }
 
     public void showLoginWindow(){
@@ -129,6 +136,44 @@ public class ViewFactory {
             case "giveTask" -> view=WorkerGiveTask;
             case "createTask" -> view=CreateTask;
             default -> view=WorkerDashboard;
+        }
+
+        if(view==null){
+            try{
+                view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view;
+    }
+
+    ////////////////////////////////////////////////////////////////
+
+
+
+
+    //ZwyklyKonserwator
+    ////////////////////////////////////////////////////////////////
+
+    public void showTechnicalWorkerWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ZwyklyKonserwator/ZwyklyKonserwator.fxml"));
+        ZwyklyKonserwator pracownikController = new ZwyklyKonserwator();
+        loader.setController(pracownikController);
+        createStage(loader);
+
+    }
+
+    AnchorPane technicalDashBoard;
+
+    AnchorPane taskList;
+    public AnchorPane showTechnicalWorkerView(String fxmlPath, String anchorPaneName){
+
+        switch (anchorPaneName){
+            case "report"->view=report;
+            case "taskList"->view=taskList;
+            default -> view=technicalDashBoard;
         }
 
         if(view==null){

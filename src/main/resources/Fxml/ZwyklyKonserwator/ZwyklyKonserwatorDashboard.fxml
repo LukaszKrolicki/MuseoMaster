@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwatorDashboardController">
     <children>
         <Label layoutX="14.0" layoutY="87.0" text="Lista przydzielonych zadań:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="87.0">
             <font>

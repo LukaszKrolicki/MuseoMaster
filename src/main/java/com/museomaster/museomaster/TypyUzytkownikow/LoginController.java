@@ -28,7 +28,8 @@ public class LoginController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
         //Model.getInstance().getViewFactory().showAdminWindow();
        // Model.getInstance().getViewFactory().showWorkerWindow();
-        Model.getInstance().getViewFactory().showPermissionWorkerWindow();
+        //Model.getInstance().getViewFactory().showPermissionWorkerWindow();
+        Model.getInstance().getViewFactory().showTechnicalWorkerWindow();
 
     }
 }

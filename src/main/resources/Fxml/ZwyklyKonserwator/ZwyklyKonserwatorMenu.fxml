@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwatorMenu">
     <children>
         <VBox layoutY="14.0" prefHeight="130.0" prefWidth="180.0" styleClass="title_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
             <children>
@@ -16,13 +16,18 @@
                 <Label text="MuseoMaster" />
             </children>
         </VBox>
-        <VBox layoutX="14.0" layoutY="131.0" prefHeight="138.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+        <VBox layoutX="14.0" layoutY="131.0" prefHeight="188.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
             <children>
                 <Label fx:id="lista_zadan_lbl" text="Lista zadań">
                     <graphic>
                         <FontAwesomeIconView glyphName="ENVELOPE" />
                     </graphic>
                 </Label>
+            <Label fx:id="lista_eksponatow" text="Lista eksponatów">
+               <graphic>
+                  <FontAwesomeIconView glyphName="BOOKMARK" />
+               </graphic>
+            </Label>
                 <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
                     <graphic>
                         <FontAwesomeIconView glyphName="TIMES" size="20" text="" />
