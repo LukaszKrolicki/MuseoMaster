@@ -206,11 +206,13 @@ public class ViewFactory {
     AnchorPane technicalDashBoard;
 
     AnchorPane taskList;
+    AnchorPane lista_eksponatow;
     public AnchorPane showTechnicalWorkerView(String fxmlPath, String anchorPaneName){
 
         switch (anchorPaneName){
-            case "report"->view=report;
-            case "taskList"->view=taskList;
+            case "report"-> view = report;
+            case "taskList"-> view = taskList;
+            case "lista_eksponatow" -> view = lista_eksponatow;
             default -> view=technicalDashBoard;
         }
 

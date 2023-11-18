@@ -38,7 +38,7 @@
     -fx-padding:5;
     -fx-pref-height:40;
     -fx-background-color: linear-gradient(to right, #008022,#00f742);
-    -fx-font-style:"Calibri";
+    -fx-font-family: "Calibri";
     -fx-text-fill: #FFFFFF;
     -fx-font-size:1em;
     -fx-alignment: center_left;

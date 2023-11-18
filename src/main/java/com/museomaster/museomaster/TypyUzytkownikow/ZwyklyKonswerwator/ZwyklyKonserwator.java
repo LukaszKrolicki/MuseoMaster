@@ -15,7 +15,8 @@ public class ZwyklyKonserwator implements Initializable {
                 ((observableValue, oldVal, newVal) ->{
                     switch(newVal){
                         case "report"->PracownikTechnicznyPanel.setCenter(Model.getInstance().getViewFactory().showTechnicalWorkerView("/Fxml/Problem/ProblemDashboard.fxml", "report"));
-                        case "taskList" ->PracownikTechnicznyPanel.setCenter(Model.getInstance().getViewFactory().showTechnicalWorkerView("/Fxml/Problem/ProblemDashboard.fxml", "taskList"));
+                        case "taskList" ->PracownikTechnicznyPanel.setCenter(Model.getInstance().getViewFactory().showTechnicalWorkerView("/Fxml/Utils/PracownikUprawnionyDashboard.fxml", "taskList"));
+                        case "lista_eksponatow" -> PracownikTechnicznyPanel.setCenter(Model.getInstance().getViewFactory().showTechnicalWorkerView("/Fxml/ZwyklyKonserwator/ListaPrzydzielonychZabytkow.fxml", "lista_eksponatow"));
                         default -> PracownikTechnicznyPanel.setCenter(Model.getInstance().getViewFactory().showTechnicalWorkerView("/Fxml/ZwyklyKonserwator/ZwyklyKonserwatorDashboard.fxml", "x"));
                     }
                 } )

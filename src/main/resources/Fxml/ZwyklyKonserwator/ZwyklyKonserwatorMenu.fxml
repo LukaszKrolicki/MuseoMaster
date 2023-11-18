@@ -23,15 +23,14 @@
                         <FontAwesomeIconView glyphName="ENVELOPE" size="20" />
                     </graphic>
                 </Label>
-<<<<<<< HEAD:src/main/resources/Fxml/ZwyklyKonserwator/ZwyklyKonserwatorMenu.fxml
             <Label fx:id="lista_eksponatow" text="Lista eksponatów">
                <graphic>
                   <FontAwesomeIconView glyphName="BOOKMARK" />
-=======
+               </graphic>
+            </Label>
             <Label fx:id="lista_zabytkow_lbl" text="Lista Zabytków">
                <graphic>
                   <FontAwesomeIconView glyphName="LIST" size="20" />
->>>>>>> 26890f68ac1173410dda1f29b22e5815acdf1cda:src/main/resources/ZwyklyKonserwator/ZwyklyKonserwatorMenu.fxml
                </graphic>
             </Label>
                 <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
