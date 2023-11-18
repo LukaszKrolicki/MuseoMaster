@@ -1,6 +1,7 @@
 package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
+import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
 import com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwator;
@@ -21,6 +22,7 @@ public class ViewFactory {
     private final StringProperty technicalWorkerItem;
 
     private final StringProperty WorkerItem;
+    private final StringProperty KuratorSelectedMenuItem;
 
 
     public ViewFactory(){
@@ -28,6 +30,7 @@ public class ViewFactory {
         this.permissionWorkerSelectedMenuItem=new SimpleStringProperty("");
         this.technicalWorkerItem=new SimpleStringProperty("");
         this.WorkerItem=new SimpleStringProperty("");
+        this.KuratorSelectedMenuItem = new SimpleStringProperty("");
     }
 
     public StringProperty getAdminSelectedMenuItem(){
@@ -42,6 +45,7 @@ public class ViewFactory {
     public StringProperty getWorkerSelectedMenuItem(){
         return WorkerItem;
     }
+    public StringProperty getKuratorSelectedMenuItem(){return KuratorSelectedMenuItem;}
 
     public void showLoginWindow(){
         System.out.println(getClass().getResource("Fxml/Login.fxml"));
@@ -221,6 +225,47 @@ public class ViewFactory {
         return view;
     }
 
+    //Kurator
+    //////////////////////////////////////
+
+    public void showKuratorWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Kurator/KuratorDashboard.fxml"));
+        KuratorDashboardController kuratorController = new KuratorDashboardController();
+        loader.setController(kuratorController);
+        createStage(loader);
+    }
+    AnchorPane task_list;
+    AnchorPane task_add;
+    AnchorPane add_ex;
+    AnchorPane ex_list;
+    AnchorPane ad_ex;
+    AnchorPane search_ex;
+    AnchorPane kuratorDashboard;
+
+    public AnchorPane showKuratorView(String fxmlPath, String anchorPaneName){
+
+        switch (anchorPaneName){
+            case "task_list"-> view = task_list;
+            case "task_add" -> view = task_add;
+            case "add_ex"-> view = add_ex;
+            case "ex_list"-> view = ex_list;
+            case "ad_ex" -> view = ad_ex;
+            case "search_ex" -> view = search_ex;
+            default -> view=WorkerDashboard;
+        }
+
+        if(view==null){
+            try{
+                view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view;
+    }
+
+    //Utility Methods
     ////////////////////////////////////////////////////////////////
 
     private static void createStage(FXMLLoader loader) {

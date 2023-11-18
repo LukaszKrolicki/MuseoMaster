@@ -24,7 +24,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         login_button.setOnAction(e->onLogin());
         ObservableList<String> rolaList = FXCollections.observableArrayList(
-                "Admin", "Pracownik", "Pracownik+", "Pracownik Techniczny"
+                "Admin", "Pracownik", "Pracownik+", "Pracownik Techniczny", "Kurator"
         );
         rola_choiceBox.setItems(rolaList);
     }
@@ -44,6 +44,9 @@ public class LoginController implements Initializable {
         }
         else if(rola_choiceBox.getValue()=="Pracownik Techniczny"){
             Model.getInstance().getViewFactory().showTechnicalWorkerWindow();
+        }
+        else if(rola_choiceBox.getValue()=="Kurator"){
+            Model.getInstance().getViewFactory().showKuratorWindow();
         }
 
 
