@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
@@ -19,6 +20,12 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        give_task.setOnAction(e-> Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("giveTask"));
+        give_task.setOnAction(e-> {
+            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "assign")) {
+                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("giveTask");
+            } else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "task_add")){
+                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("przydzielZadanie");
+            }
+        });
     }
 }

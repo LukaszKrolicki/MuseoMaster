@@ -28,7 +28,7 @@ public class KuratorMenuController implements Initializable {
         logout_lbl.setOnMouseClicked(e->onLogout());
     }
     private void onMenuClick(String setName){
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(setName);
+        Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set(setName);
 
     }
 

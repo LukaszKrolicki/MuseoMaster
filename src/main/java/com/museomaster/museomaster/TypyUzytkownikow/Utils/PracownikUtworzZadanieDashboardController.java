@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PracownikUtworzZadanieDashboardController implements Initializable{
@@ -21,7 +22,22 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ego_to_ex_btn.setOnAction(e-> Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("searchEx"));
-        give_task_btn.setOnAction(e-> Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x"));
+        ego_to_ex_btn.setOnAction(e-> {
+            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "giveTask"))
+                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("searchEx");
+            else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "przydzielZadanie")){
+                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("searchEx");
+            }
+        }
+        );
+        give_task_btn.setOnAction(e-> {
+            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "giveTask"))
+                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x");
+            else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "przydzielZadanie")){
+                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("task_list");
+            }
+
+        }
+        );
     }
 }

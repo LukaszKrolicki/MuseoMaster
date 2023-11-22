@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class WyborZabytkowController implements Initializable {
@@ -17,6 +18,14 @@ public class WyborZabytkowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        add_button.setOnAction(e-> Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x"));
+        add_button.setOnAction(e-> {
+            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "wyborZabytkow")){
+                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x") ;
+            }
+            else if (Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "wyborZabytkow")){
+                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("task_list");
+            }
+        }
+        );
     }
 }
