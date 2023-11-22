@@ -16,6 +16,7 @@ public class KuratorMenuController implements Initializable {
     public Label ad_ex_lbl;
     public Label search_ex_lbl;
     public Label logout_lbl;
+    public Label lista_zabytkow;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -24,6 +25,7 @@ public class KuratorMenuController implements Initializable {
         add_ex_lbl.setOnMouseClicked(e -> onMenuClick("add_ex"));
         ex_list_lbl.setOnMouseClicked(e -> onMenuClick("ex_list"));
         ad_ex_lbl.setOnMouseClicked(e -> onMenuClick("ad_ex"));
+        lista_zabytkow.setOnMouseClicked(e -> onMenuClick("lista_zabytkow"));
         search_ex_lbl.setOnMouseClicked(e -> onMenuClick("search_ex"));
         logout_lbl.setOnMouseClicked(e->onLogout());
     }

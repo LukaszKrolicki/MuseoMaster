@@ -246,6 +246,7 @@ public class ViewFactory {
     AnchorPane przydzielZadanie;
     AnchorPane wyborZabytkow;
     AnchorPane searchExp;
+    AnchorPane lista_zabytkow;
 
     public AnchorPane showKuratorView(String fxmlPath, String anchorPaneName){
 
@@ -257,6 +258,7 @@ public class ViewFactory {
             case "ad_ex" -> view = ad_ex;
             case "search_ex" -> view = search_ex;
             case "searchEx" -> view = searchExp;
+            case "lista_zabytkow" -> view = lista_zabytkow;
             case "przydzielZadanie" -> view = przydzielZadanie;
             case "wyborZabytkow"-> view = wyborZabytkow;
             default -> view = kuratorDashboard;
