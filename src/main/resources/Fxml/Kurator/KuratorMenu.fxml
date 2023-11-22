@@ -6,55 +6,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container"
-            stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorMenuController">
-    <VBox layoutX="40.0" layoutY="7.0" prefHeight="130.0" prefWidth="180.0" styleClass="title_container"
-          stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" AnchorPane.leftAnchor="0.0"
-          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-        <FontAwesomeIconView glyphName="UNIVERSITY" size="30"/>
-        <Label text="MuseoMaster"/>
+<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorMenuController">
+    <VBox layoutX="40.0" layoutY="7.0" prefHeight="130.0" prefWidth="180.0" styleClass="title_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+        <FontAwesomeIconView glyphName="UNIVERSITY" size="30" />
+        <Label text="MuseoMaster" />
     </VBox>
-    <VBox layoutX="14.0" layoutY="131.0" prefHeight="370.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0"
-          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
+    <VBox layoutX="14.0" layoutY="131.0" prefHeight="370.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="140.0">
         <styleClass>
-            <String fx:value="menu_container"/>
-            <String fx:value="left_container"/>
+            <String fx:value="menu_container" />
+            <String fx:value="left_container" />
         </styleClass>
         <Label fx:id="task_list_lbl" text="Lista zadań">
             <graphic>
-                <FontAwesomeIconView glyphName="ENVELOPE" size="20"/>
+                <FontAwesomeIconView glyphName="ENVELOPE" size="20" />
             </graphic>
         </Label>
         <Label fx:id="task_add_lbl" text="Przydziel zadanie">
             <graphic>
-                <FontAwesomeIconView glyphName="GROUP" size="20"/>
+                <FontAwesomeIconView glyphName="GROUP" size="20" />
             </graphic>
         </Label>
         <Label fx:id="add_ex_lbl" text="Utwórz wystawę">
             <graphic>
-                <FontAwesomeIconView glyphName="CUBE" size="20" text=""/>
+                <FontAwesomeIconView glyphName="CUBE" size="20" text="" />
             </graphic>
         </Label>
         <Label fx:id="ex_list_lbl" text="Lista wystaw">
             <graphic>
-                <FontAwesomeIconView glyphName="LIST" size="20"/>
+                <FontAwesomeIconView glyphName="LIST" size="20" />
             </graphic>
         </Label>
         <Label fx:id="ad_ex_lbl" text="Dodaj zabytek">
             <graphic>
-                <FontAwesomeIconView glyphName="LIST_ALT" size="20"/>
+                <FontAwesomeIconView glyphName="LIST_ALT" size="20" />
             </graphic>
         </Label>
         <Label fx:id="search_ex_lbl" text="Wyszukaj zabytek">
             <graphic>
-                <FontAwesomeIconView glyphName="SEARCH" size="20"/>
+                <FontAwesomeIconView glyphName="SEARCH" size="20" />
             </graphic>
         </Label>
+      <Label fx:id="lista_zabytkow" text="Lista Zabytków">
+         <graphic>
+            <FontAwesomeIconView glyphName="LIST" size="20" />
+         </graphic>
+      </Label>
         <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
             <graphic>
-                <FontAwesomeIconView glyphName="TIMES" size="20" text=""/>
+                <FontAwesomeIconView glyphName="TIMES" size="20" text="" />
             </graphic>
         </Label>
     </VBox>
