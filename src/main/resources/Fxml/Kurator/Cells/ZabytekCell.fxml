@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="lista_przydz" stylesheets="@../../../Styles/KuratorStyles/ZabytekCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox layoutX="14.0" layoutY="-1.0" prefHeight="60.0" prefWidth="530.0" AnchorPane.rightAnchor="308.0" AnchorPane.topAnchor="-1.0">
+            <children>
+                <Label fx:id="id_zab" text="ID:2215">
+                    <HBox.margin>
+                        <Insets left="5.0" />
+                    </HBox.margin></Label>
+                <Label fx:id="nazwa_zab" text="MaskaTutenhamona" />
+                <Label fx:id="tematyka_zab" text="Starożytny Egipt" />
+            </children>
+        </HBox>
+      <Button fx:id="usun_btn" layoutX="723.0" layoutY="16.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń Zabytek" />
+    </children>
+</AnchorPane>
