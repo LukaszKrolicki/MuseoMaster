@@ -1,6 +1,7 @@
 module com.museomaster.museomaster {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.museomaster.museomaster to javafx.fxml;
