@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class WyszukiwanieZabytkowController implements Initializable {
@@ -24,6 +25,14 @@ public class WyszukiwanieZabytkowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        search_btn.setOnAction(e-> Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("wyborZabytkow"));
+        search_btn.setOnAction(e-> {
+            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "searchEx")) {
+                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("wyborZabytkow");
+            }
+            else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "searchEx")){
+                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("wyborZabytkow");
+            }
+                }
+        );
     }
 }

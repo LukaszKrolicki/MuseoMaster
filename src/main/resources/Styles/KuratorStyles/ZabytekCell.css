@@ -17,6 +17,19 @@
     -fx-font-size: 1.3em;
 }
 
-.lista_przydz .box {
-    -fx-background-color: #528f5b;
+.delete_btn{
+    -fx-background-color: #FF0000;
+    -fx-text-fill: #FFFFFF;
+}
+.delete_btn:hover{
+    -fx-cursor: hand;
+}
+.edit_btn{
+    -fx-background-color: linear-gradient(to right, #f5d442,#ffd000);
+
+    -fx-text-fill: #FFFFFF;
+}
+
+.edit_btn:hover{
+    -fx-cursor: hand;
 }
