@@ -3,12 +3,22 @@ package com.museomaster.museomaster.TypyUzytkownikow.Kurator;
 import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa obsługuje widok kuratora, reaguje na odpowiednie zdarzenia przekazane do Listenera,
+ * który nasłuchuje na zmianę t.j. kliknięcie odpowiedniego przycisku itp.
+ */
 public class KuratorDashboardController implements Initializable {
     public BorderPane kurator_parent;
+
+    /**
+     * Metoda Initialize jest wymagana gdy implementujemy interfejs Initializable
+     * @param url -> Lokalizacja używana do rozwiązywania ścieżek względnych dla obiektu root lub null, jeśli lokalizacja nie jest znana.
+     * @param resourceBundle -> Zasoby użyte do zlokalizowania obiektu głównego lub null, jeśli obiekt główny nie został zlokalizowany.
+     * Dodajemy Listener do getKuratorSelectedMenuItem, gdy zmieni wartość odnotujemy to i ospowiednio zareagujemy w switchu
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().addListener(
