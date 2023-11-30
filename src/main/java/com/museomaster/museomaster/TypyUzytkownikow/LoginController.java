@@ -30,19 +30,13 @@ public class LoginController implements Initializable {
     }
 
     private void onLogin(){
-        Stage stage = (Stage)error_lbl.getScene().getWindow();
+
 
 
         if(rola_choiceBox.getValue()=="Admin"){
-            Model.getInstance().evaluateClient(login_input.getText(),password_input.getText(),rola_choiceBox.getValue().toString());
-            if(Model.getInstance().getClientLoginFlag()){
+            if(checkCred("Admin")){
                 Model.getInstance().getViewFactory().showAdminWindow();
-                Model.getInstance().getViewFactory().closeStage(stage);
             }
-            else{
-                error_lbl.setText("Złe dane");
-            }
-
         }
         else if(rola_choiceBox.getValue()=="Pracownik"){
             Model.getInstance().getViewFactory().showWorkerWindow();
@@ -57,6 +51,20 @@ public class LoginController implements Initializable {
             Model.getInstance().getViewFactory().showKuratorWindow();
         }
 
+
+    }
+
+    private boolean checkCred(String rola){
+
+        Model.getInstance().evaluateClient(login_input.getText(),password_input.getText(),rola_choiceBox.getValue().toString());
+        if(Model.getInstance().getClientLoginFlag()){
+            Model.getInstance().getViewFactory().closeStage((Stage)error_lbl.getScene().getWindow());
+            return true;
+        }
+        else{
+            error_lbl.setText("Złe dane");
+            return false;
+        }
 
     }
 }

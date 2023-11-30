@@ -34,6 +34,10 @@ public class Model {
 
     }
 
+    public DataBaseDriver getDataBaseDriver() {
+        return dataBaseDriver;
+    }
+
     public static synchronized Model getInstance(){
         if(model==null){
             model = new Model();

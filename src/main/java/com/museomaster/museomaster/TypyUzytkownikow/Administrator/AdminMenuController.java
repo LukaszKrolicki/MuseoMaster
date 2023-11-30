@@ -33,6 +33,6 @@ public class AdminMenuController implements Initializable {
         Stage stage = (Stage) create_user_lbl.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
-
+        Model.getInstance().setClientLoginFlag(false);
     }
 }

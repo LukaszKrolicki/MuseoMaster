@@ -32,6 +32,8 @@
             <TextField fx:id="age_input" />
             <Label text="Rola:" />
             <ComboBox fx:id="role_comboBox" prefWidth="150.0" />
+            <Label text="Hasło" />
+            <TextField fx:id="haslo_input" />
             <Label text="Unikalna nazwa użytkownika:" />
             <TextField fx:id="unique_name_input" disable="true" />
             <Label text="Czy posiada uprawnienia do zażądzania zasobami ludzkimi?" />
