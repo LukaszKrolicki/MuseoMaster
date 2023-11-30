@@ -2,6 +2,8 @@ package com.museomaster.museomaster.Models;
 
 import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.Views.ViewFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +17,8 @@ public class Model {
     private AccountType loginAccountType = AccountType.ADMIN;
 
     private Client client;
+
+    private final ObservableList<Client> clients;
 
     //Client vars
     ////////////////////////////////////////////////////////////////
@@ -30,6 +34,10 @@ public class Model {
 
         //Client settings
         this.ClientLoginSuccessFlag = false;
+        ////////////////////////////////
+
+        //Admin settings
+        this.clients= FXCollections.observableArrayList();
         ////////////////////////////////
 
     }
@@ -71,22 +79,54 @@ public class Model {
         ResultSet resultSet = dataBaseDriver.getClientData(username,password,rola);
         try{
             if(resultSet.next()){
-                //
+
                 System.out.println("rep1");
-//                this.client.idPracownikaProperty().set(resultSet.getInt("idPracownika"));
-//                this.client.imiePracownikaProperty().set(resultSet.getString("imie"));
-//                this.client.nazwiskoPracownikaProperty().set(resultSet.getString("nazwisko"));
-//                this.client.nazwaUzytkownikaProperty().set(resultSet.getString("nazwaUżykownika"));
-//                this.client.emailPracownikaProperty().set(resultSet.getString("e-mail"));
-//                this.client.nrTelefonuProperty().set(resultSet.getInt("nrTelefonu"));
-//                this.client.wiekPracownikaProperty().set(resultSet.getInt("wiek"));
-//                this.client.czyUprawnionyProperty().set(resultSet.getInt("czyUprawniony"));
-//                this.client.rolaProperty().set(resultSet.getString("rola"));
+                this.client.idPracownikaProperty().set(resultSet.getInt("idPracownika"));
+                this.client.imiePracownikaProperty().set(resultSet.getString("imie"));
+                this.client.nazwiskoPracownikaProperty().set(resultSet.getString("nazwisko"));
+                this.client.nazwaUzytkownikaProperty().set(resultSet.getString("nazwaUżytkownika"));
+                this.client.emailPracownikaProperty().set(resultSet.getString("e-mail"));
+                this.client.nrTelefonuProperty().set(resultSet.getInt("nrTelefonu"));
+                this.client.wiekPracownikaProperty().set(resultSet.getInt("wiek"));
+                this.client.czyUprawnionyProperty().set(resultSet.getInt("czyUprawniony"));
+                this.client.rolaProperty().set(resultSet.getString("rola"));
                 this.setClientLoginFlag(true);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+
+
+
+
+    //Admin sekcja
+    ////////////////////////////////////////////////////////////////
+    public ObservableList<Client> getClients(){
+        return clients;
+    }
+
+    public void setClient(){
+        ResultSet resultSet = dataBaseDriver.getAllClientsData();
+
+        try{
+            while(resultSet.next()){
+                Integer id=resultSet.getInt("idPracownika");
+                String imie=resultSet.getString("imie");
+                String nazwisko=resultSet.getString("nazwisko");
+                String nazwaUzytkownika=resultSet.getString("nazwaUżytkownika");
+                String email=resultSet.getString("e-mail");
+                Integer nrTelefonu=resultSet.getInt("nrTelefonu");
+                Integer wiek=resultSet.getInt("wiek");
+                Integer uprawniony=resultSet.getInt("czyUprawniony");
+                String rola=resultSet.getString("rola");
+                clients.add(new Client(id, imie, nazwisko, email, wiek, uprawniony, rola, nrTelefonu, nazwaUzytkownika));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

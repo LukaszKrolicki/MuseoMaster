@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -58,23 +59,44 @@ public class AdminAddUser implements Initializable {
     }
 
     private void createUser(){
-        String fname = name_input.getText();
-        String fsecondName=second_name_input.getText();
-        String femail = email_input.getText();
-        Integer fphone = Integer.parseInt(phone_input.getText());
-        Integer fage = Integer.parseInt(age_input.getText());
-        String rola = role_comboBox.getValue().toString();
-        String fusername=unique_name_input.getText();
-        Integer permission = 0;
-        String fpassword = haslo_input.getText();
-        if(permissionFlag){
-            permission = 1;
-            if(rola.equals("Pracownik") ||rola.equals("Pracownik Techniczny")){
-                rola=rola.concat("+");
+        try {
+            String fname = name_input.getText();
+            String fsecondName = second_name_input.getText();
+            String femail = email_input.getText();
+            Integer fphone = Integer.parseInt(phone_input.getText());
+            Integer fage = Integer.parseInt(age_input.getText());
+            String rola = role_comboBox.getValue().toString();
+            String fusername = unique_name_input.getText();
+            Integer permission = 0;
+            String fpassword = haslo_input.getText();
+
+            if(permissionFlag){
+                permission = 1;
+                if(rola.equals("Pracownik") ||rola.equals("Pracownik Techniczny")){
+                    rola=rola.concat("+");
+                }
+
             }
 
+            Model.getInstance().getDataBaseDriver().createClient(fname,fsecondName,femail,fage,permission,rola,fphone,fusername,fpassword);
+            emptyFields();
+            error_lbl.setText("Użytkownik stworzony!");
+            error_lbl.setFill(Color.GREEN);
+        }catch (Exception e){
+            error_lbl.setText("Źle wypełniony formularz..");
+            error_lbl.setFill(Color.RED);
         }
-       Model.getInstance().getDataBaseDriver().createClient(fname,fsecondName,femail,fage,permission,rola,fphone,fusername,fpassword);
+
 
     }
+    private void emptyFields(){
+        name_input.setText("");
+        second_name_input.setText("");
+        email_input.setText("");
+        phone_input.setText("");
+        age_input.setText("");
+        unique_name_input.setText("");
+        haslo_input.setText("");
+    }
+
 }

@@ -43,7 +43,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="KEY" size="20" />
                </graphic>
             </Button>
-            <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR" />
+            <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
          </children>
       </VBox>
    </children>

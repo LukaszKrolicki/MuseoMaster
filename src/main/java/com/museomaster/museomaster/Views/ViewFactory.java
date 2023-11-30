@@ -64,6 +64,7 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Administrator/AdminDashboard.fxml"));
         AdministratorDashboardController adminController = new AdministratorDashboardController();
         loader.setController(adminController);
+
         createStage(loader);
 
     }
@@ -291,6 +292,7 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("MuesoMaster");
+        stage.setResizable(false);
         stage.show();
     }
 

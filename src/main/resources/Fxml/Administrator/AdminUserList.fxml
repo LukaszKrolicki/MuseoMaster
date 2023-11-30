@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="850.0" prefWidth="755.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminUserListController" >
+<AnchorPane prefHeight="850.0" prefWidth="755.0" styleClass="clients_container" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminUserListController">
    <children>
       <Label layoutX="14.0" layoutY="23.0" text="Lista użytkowników:" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="user_list" layoutX="14.0" layoutY="64.0" prefHeight="786.0" prefWidth="720.0" styleClass="clients_container" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="64.0" />
+      <ListView fx:id="user_list" layoutX="14.0" layoutY="64.0" prefHeight="764.0" prefWidth="722.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="64.0" />
    </children>
 </AnchorPane>

@@ -4,38 +4,36 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="50.0" prefWidth="710.0" styleClass="client_cell_container" stylesheets="@../../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="53.0" prefWidth="772.0" styleClass="client_cell_container" stylesheets="@../../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="7.0" prefHeight="50.0" prefWidth="643.0">
-         <children>
-            <Label fx:id="id_lbl" text="ID:1123" />
-            <Label fx:id="name_lbl" text="Łukson Krolicki" />
+      <Button fx:id="delete_btn" layoutX="719.0" layoutY="11.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" />
+      <Label fx:id="id_lbl" layoutX="14.0" layoutY="17.0" minWidth="-Infinity" prefHeight="17.0" prefWidth="57.0" text="ID:1123" />
+      <Label fx:id="name_lbl" layoutX="77.0" layoutY="17.0" prefHeight="17.0" prefWidth="99.0" text="Łukson Krolicki" />
+      <Label fx:id="user_name_lbl" layoutX="179.0" layoutY="17.0" prefHeight="17.0" prefWidth="114.0" text="\@lKrolicki123">
+         <graphic>
             <FontAwesomeIconView glyphName="USER" />
-            <Label fx:id="user_name_lbl" text="\@lKrolicki123" />
-            <Label fx:id="phone_number_lbl" text="122333444">
-               <graphic>
-                  <FontAwesomeIconView glyphName="BELL" />
-               </graphic>
-            </Label>
-            <Label fx:id="email_lbl" text="lukasmatrix12345@gmail.com">
-               <graphic>
-                  <FontAwesomeIconView glyphName="ENVELOPE" />
-               </graphic>
-            </Label>
-            <Label fx:id="job_lbl" text="Kurator">
-               <graphic>
-                  <FontAwesomeIconView glyphName="BRIEFCASE" />
-               </graphic>
-            </Label>
-            <Label fx:id="permission_lbl" text="YES">
-               <graphic>
-                  <FontAwesomeIconView  glyphName="KEY" />
-               </graphic>
-            </Label>
-         </children>
-      </HBox>
-      <Button fx:id="delete_btn" layoutX="650.0" layoutY="13.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" />
+         </graphic>
+      </Label>
+      <Label fx:id="phone_number_lbl" layoutX="279.0" layoutY="15.0" text="122333444">
+         <graphic>
+            <FontAwesomeIconView glyphName="BELL" />
+         </graphic>
+      </Label>
+      <Label fx:id="email_lbl" layoutX="364.0" layoutY="15.0" prefHeight="17.0" prefWidth="188.0" text="lukasmatrix12345@gmail.com">
+         <graphic>
+            <FontAwesomeIconView glyphName="ENVELOPE" />
+         </graphic>
+      </Label>
+      <Label fx:id="job_lbl" layoutX="544.0" layoutY="15.0" prefHeight="17.0" prefWidth="130.0" text="Pracownik Tecniczny">
+         <graphic>
+            <FontAwesomeIconView glyphName="BRIEFCASE" />
+         </graphic>
+      </Label>
+      <Label fx:id="permission_lbl" layoutX="674.0" layoutY="15.0" text="YES">
+         <graphic>
+            <FontAwesomeIconView glyphName="KEY" />
+         </graphic>
+      </Label>
    </children>
 </AnchorPane>
