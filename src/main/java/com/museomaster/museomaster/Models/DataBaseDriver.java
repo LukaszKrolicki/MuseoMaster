@@ -4,15 +4,13 @@ package com.museomaster.museomaster.Models;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class DataBaseDriver {
     private Connection conn;
 
-    public DataBaseDriver(Connection conn){
+    public DataBaseDriver(){
         try{
 
             Properties properties = new Properties();
@@ -31,5 +29,23 @@ public class DataBaseDriver {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    //Sekcja Clienta
+    ////////////////////////////////////////////////////////////////////////
+    public ResultSet getClientData(String username, String password, String rola){
+        Statement statement;
+        ResultSet resultSet =null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM pracownik WHERE nazwaUżytkownika='"+username+"' AND haslo ='"+password+"' AND rola ='"+rola+"';");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
     }
 }

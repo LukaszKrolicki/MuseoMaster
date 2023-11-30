@@ -31,10 +31,18 @@ public class LoginController implements Initializable {
 
     private void onLogin(){
         Stage stage = (Stage)error_lbl.getScene().getWindow();
-        Model.getInstance().getViewFactory().closeStage(stage);
+
 
         if(rola_choiceBox.getValue()=="Admin"){
-            Model.getInstance().getViewFactory().showAdminWindow();
+            Model.getInstance().evaluateClient(login_input.getText(),password_input.getText(),rola_choiceBox.getValue().toString());
+            if(Model.getInstance().getClientLoginFlag()){
+                Model.getInstance().getViewFactory().showAdminWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+            }
+            else{
+                error_lbl.setText("Złe dane");
+            }
+
         }
         else if(rola_choiceBox.getValue()=="Pracownik"){
             Model.getInstance().getViewFactory().showWorkerWindow();
