@@ -14,13 +14,5 @@ public class ZwyklyKonserwatorDashboardController implements Initializable {
     public Label date_lb;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().addListener(
-                ((observableValue, oldVal, newVal) ->{
-                    switch(newVal){
-
-                    }
-                } )
-        );
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 }
