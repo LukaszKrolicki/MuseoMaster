@@ -59,6 +59,7 @@ public class KuratorMenuController implements Initializable {
         Model.getInstance().getViewFactory().closeStage(stage);
         //Podazujemy ekran logowania
         Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().setClientLoginFlag(false);
 
     }
 }

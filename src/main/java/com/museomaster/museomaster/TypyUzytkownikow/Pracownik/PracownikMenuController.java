@@ -25,6 +25,7 @@ public class PracownikMenuController implements Initializable {
         Stage stage = (Stage) task_list_lbl.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().setClientLoginFlag(false);
 
     }
 }

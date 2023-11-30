@@ -1,5 +1,6 @@
 package com.museomaster.museomaster.Views;
 
+import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
@@ -13,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
+    //Typ konta
+    private AccountType loginAccountType;
     //Zmienne, w których przechowywane są aktualnie wybrane opcji przez poszczególnych pracowników
     private final StringProperty adminSelectedMenuItem;
     private final StringProperty permissionWorkerSelectedMenuItem;
@@ -24,6 +27,7 @@ public class ViewFactory {
      * Konstruktor bezargumentowy, inicjalizuje nam zmienne stworzone wyżej.
      */
     public ViewFactory(){
+        this.loginAccountType = AccountType.PRACOWNIK; // Domyślny wybór to zwykły pracownik (zakł, że jest ich najwięcej)
         this.adminSelectedMenuItem = new SimpleStringProperty("");
         this.permissionWorkerSelectedMenuItem = new SimpleStringProperty("");
         this.technicalWorkerItem = new SimpleStringProperty("");
@@ -313,5 +317,11 @@ public class ViewFactory {
         stage.close();
     }
 
+    public AccountType getLoginAccountType() {
+        return loginAccountType;
+    }
 
+    public void setLoginAccountType(AccountType loginAccountType) {
+        this.loginAccountType = loginAccountType;
+    }
 }

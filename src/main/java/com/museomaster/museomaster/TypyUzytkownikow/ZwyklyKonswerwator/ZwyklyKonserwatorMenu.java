@@ -34,7 +34,7 @@ public class ZwyklyKonserwatorMenu implements Initializable {
         Stage stage = (Stage) lista_zadan_lbl.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
-
+        Model.getInstance().setClientLoginFlag(false);
     }
 }
 

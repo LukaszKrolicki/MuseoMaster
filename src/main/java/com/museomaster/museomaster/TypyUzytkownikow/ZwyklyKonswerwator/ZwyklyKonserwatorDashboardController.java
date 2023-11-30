@@ -1,5 +1,6 @@
 package com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator;
 
+import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -14,6 +15,12 @@ public class ZwyklyKonserwatorDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().addListener(
+                ((observableValue, oldVal, newVal) ->{
+                    switch(newVal){
 
+                    }
+                } )
+        );
     }
 }

@@ -72,16 +72,16 @@ public class Model {
         try{
             if(resultSet.next()){
                 //
-                System.out.println("rep1");
-//                this.client.idPracownikaProperty().set(resultSet.getInt("idPracownika"));
-//                this.client.imiePracownikaProperty().set(resultSet.getString("imie"));
-//                this.client.nazwiskoPracownikaProperty().set(resultSet.getString("nazwisko"));
-//                this.client.nazwaUzytkownikaProperty().set(resultSet.getString("nazwaUżykownika"));
-//                this.client.emailPracownikaProperty().set(resultSet.getString("e-mail"));
-//                this.client.nrTelefonuProperty().set(resultSet.getInt("nrTelefonu"));
-//                this.client.wiekPracownikaProperty().set(resultSet.getInt("wiek"));
-//                this.client.czyUprawnionyProperty().set(resultSet.getInt("czyUprawniony"));
-//                this.client.rolaProperty().set(resultSet.getString("rola"));
+                // System.out.println("rep1");
+                this.client.idPracownikaProperty().set(resultSet.getInt("idPracownika"));
+                this.client.imiePracownikaProperty().set(resultSet.getString("imie"));
+                this.client.nazwiskoPracownikaProperty().set(resultSet.getString("nazwisko"));
+                this.client.nazwaUzytkownikaProperty().set(resultSet.getString("nazwaUżytkownika"));
+                this.client.emailPracownikaProperty().set(resultSet.getString("e-mail"));
+                this.client.nrTelefonuProperty().set(resultSet.getInt("nrTelefonu"));
+                this.client.wiekPracownikaProperty().set(resultSet.getInt("wiek"));
+                this.client.czyUprawnionyProperty().set(resultSet.getInt("czyUprawniony"));
+                this.client.rolaProperty().set(resultSet.getString("rola"));
                 this.setClientLoginFlag(true);
             }
         } catch (SQLException e) {
