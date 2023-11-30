@@ -1,5 +1,6 @@
 package com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator;
 
+import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -13,7 +14,5 @@ public class ZwyklyKonserwatorDashboardController implements Initializable {
     public Label date_lb;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 }

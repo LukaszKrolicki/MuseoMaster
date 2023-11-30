@@ -1,5 +1,6 @@
 package com.museomaster.museomaster.Views;
 
+import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
@@ -13,26 +14,27 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
-
-
+    //Typ konta
+    private AccountType loginAccountType;
+    //Zmienne, w których przechowywane są aktualnie wybrane opcji przez poszczególnych pracowników
     private final StringProperty adminSelectedMenuItem;
-
     private final StringProperty permissionWorkerSelectedMenuItem;
-
     private final StringProperty technicalWorkerItem;
-
     private final StringProperty WorkerItem;
     private final StringProperty KuratorSelectedMenuItem;
 
-
+    /**
+     * Konstruktor bezargumentowy, inicjalizuje nam zmienne stworzone wyżej.
+     */
     public ViewFactory(){
-        this.adminSelectedMenuItem=new SimpleStringProperty("");
-        this.permissionWorkerSelectedMenuItem=new SimpleStringProperty("");
-        this.technicalWorkerItem=new SimpleStringProperty("");
-        this.WorkerItem=new SimpleStringProperty("");
+        this.loginAccountType = AccountType.PRACOWNIK; // Domyślny wybór to zwykły pracownik (zakł, że jest ich najwięcej)
+        this.adminSelectedMenuItem = new SimpleStringProperty("");
+        this.permissionWorkerSelectedMenuItem = new SimpleStringProperty("");
+        this.technicalWorkerItem = new SimpleStringProperty("");
+        this.WorkerItem = new SimpleStringProperty("");
         this.KuratorSelectedMenuItem = new SimpleStringProperty("");
     }
-
+    // Gettery stworzone dla Zaznaczonych elementów menu
     public StringProperty getAdminSelectedMenuItem(){
         return adminSelectedMenuItem;
     }
@@ -47,12 +49,14 @@ public class ViewFactory {
     }
     public StringProperty getKuratorSelectedMenuItem(){return KuratorSelectedMenuItem;}
 
+    /**
+     * Funckja jest odpowiedzialna na wyśiwtlanie okna Loginu w aplikacji
+     */
     public void showLoginWindow(){
         System.out.println(getClass().getResource("Fxml/Login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
         createStage(loader);
     }
-
 
     private AnchorPane view;
 
@@ -76,12 +80,11 @@ public class ViewFactory {
 
     public AnchorPane getAdminView(String fxmlPath, String anchorPaneName){
 
-
         switch (anchorPaneName){
-            case "addRoomView" -> view=dashboardView;
-            case "userListView" -> view=userListView;
-            case "reportListView" -> view=ReportListView;
-            default -> view=dashboardView;
+            case "addRoomView" -> view = dashboardView;
+            case "userListView" -> view = userListView;
+            case "reportListView" -> view = ReportListView;
+            default -> view = dashboardView;
         }
 
         if(view==null){
@@ -231,24 +234,28 @@ public class ViewFactory {
     //Kurator
     //////////////////////////////////////
 
+    /**
+     * Ta metoda jest używana do załadowania odpowiedniego okna dla kuratora
+     * Kurator Dashboard składa się z lewej części -> Menu oraz z części centralnej -> odpowiednia zakładka
+     */
     public void showKuratorWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Kurator/KuratorDashboard.fxml"));
         KuratorDashboardController kuratorController = new KuratorDashboardController();
         loader.setController(kuratorController);
         createStage(loader);
     }
-    AnchorPane task_list;
-    AnchorPane task_add;
-    AnchorPane add_ex;
-    AnchorPane ex_list;
-    AnchorPane ad_ex;
-    AnchorPane search_ex;
-    AnchorPane kuratorDashboard;
-    AnchorPane przydzielZadanie;
-    AnchorPane wyborZabytkow;
-    AnchorPane searchExp;
-    AnchorPane lista_zabytkow;
 
+    /**
+     * Tworzymy odpowiednie widoki dla każdego możliwego przypadku
+     */
+    AnchorPane task_list, task_add, add_ex, ex_list, ad_ex, search_ex, kuratorDashboard, przydzielZadanie, wyborZabytkow, searchExp, lista_zabytkow;
+
+    /**
+     * Metoda używanan do odpowiednie zmiany widoku dla kuratora, w zależności od aktywności Kuratora zmienia się centralna część jego ekranu
+     * @param fxmlPath -> ścieżka do pliku fxml jaki mamy załadować
+     * @param anchorPaneName -> nazwa AnchorPane'a którą przekazujemy
+     * @return -> zwracamy wybrany przez nas widok
+     */
     public AnchorPane showKuratorView(String fxmlPath, String anchorPaneName){
 
         switch (anchorPaneName){
@@ -264,7 +271,10 @@ public class ViewFactory {
             case "wyborZabytkow"-> view = wyborZabytkow;
             default -> view = kuratorDashboard;
         }
-
+        /**
+         * Próba zmiany widoku kuratora
+         * Gdy wystąpi błąd wypisywany jest błąc
+         */
         if(view==null){
             try{
                 view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
@@ -275,10 +285,15 @@ public class ViewFactory {
 
         return view;
     }
+    ////////////////////////////////////////////////////////////////
 
     //Utility Methods
     ////////////////////////////////////////////////////////////////
 
+    /**
+     * Funkcja używana do tworzenia stage'a
+     * @param loader -> przekazujemy loader którego będziemy używać do załadowania sceny
+     */
     private static void createStage(FXMLLoader loader) {
         Scene scene = null;
 
@@ -296,9 +311,19 @@ public class ViewFactory {
         stage.show();
     }
 
+    /**
+     * Metoda odpowiedzialna za zamknięcie stage'a
+     * @param stage -> przesyłamy stage'a, którego chcemu zamknąć
+     */
     public void closeStage(Stage stage){
         stage.close();
     }
 
+    public AccountType getLoginAccountType() {
+        return loginAccountType;
+    }
 
+    public void setLoginAccountType(AccountType loginAccountType) {
+        this.loginAccountType = loginAccountType;
+    }
 }

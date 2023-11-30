@@ -80,7 +80,12 @@ public class Model {
         try{
             if(resultSet.next()){
 
+
                 System.out.println("rep1");
+
+                //
+                // System.out.println("rep1");
+
                 this.client.idPracownikaProperty().set(resultSet.getInt("idPracownika"));
                 this.client.imiePracownikaProperty().set(resultSet.getString("imie"));
                 this.client.nazwiskoPracownikaProperty().set(resultSet.getString("nazwisko"));

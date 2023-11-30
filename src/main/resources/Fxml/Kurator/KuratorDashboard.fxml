@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-
+<!--
+Odpowiada za wyświetlanie okna kuratora, po lewej stronie znajduje się Menu.
+Natomiast w części centalnej mamy odpowieni widok zależny od wybranej opcji
+-->
 <BorderPane fx:id= "kurator_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml">
     <left>
