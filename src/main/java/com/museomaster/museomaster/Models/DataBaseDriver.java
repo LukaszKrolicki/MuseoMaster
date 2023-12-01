@@ -92,7 +92,16 @@ public class DataBaseDriver {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void createRoom(Integer wielkosc ,String nazwaSali, String typ){
+        String none = "wolna";
+        Statement statement ;
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("INSERT INTO sala (wielkość,nazwa,status,typ) VALUES ('"+wielkosc+"','"+nazwaSali+"','"+none+"','"+typ+"');");
+        } catch (SQLException e) {
 
+        }
     }
 }
