@@ -2,6 +2,8 @@ package com.museomaster.museomaster.Models;
 
 import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.Views.ViewFactory;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,8 +19,10 @@ public class Model {
     private AccountType loginAccountType = AccountType.ADMIN;
 
     private Client client;
+    private Exhibit exhibit;
 
     private final ObservableList<Client> clients;
+    private final ObservableList<Exhibit> exhibits;
 
     //Client vars
     ////////////////////////////////////////////////////////////////
@@ -31,6 +35,7 @@ public class Model {
         this.viewFactory = new ViewFactory();
         this.dataBaseDriver = new DataBaseDriver();
         this.client = new Client(0,"","","",0,0,"x", 0, "x");
+        this.exhibit = new Exhibit(0,"","","","","","",0,0,0,0);
 
         //Client settings
         this.ClientLoginSuccessFlag = false;
@@ -39,6 +44,10 @@ public class Model {
         //Admin settings
         this.clients= FXCollections.observableArrayList();
         ////////////////////////////////
+
+        //Kurator Settings
+        this.exhibits = FXCollections.observableArrayList();
+        ///////////////////////////////
 
     }
 
@@ -133,5 +142,32 @@ public class Model {
         }
     }
 
+    // Kurator Sekcja
+    public ObservableList<Exhibit> getExhibits(){
+        return exhibits;
+    }
+    public void setExhibits(){
+        ResultSet resultSet = dataBaseDriver.getAllExhibitsData();
 
+        try{
+            while(resultSet.next()){
+                Integer idZabytku = resultSet.getInt("idEksponatu");
+                String nazwaEksponatu = resultSet.getString("nazwaEksponatu");
+                String okresPowstania = resultSet.getString("okresPowstania");
+                String tematyka = resultSet.getString("tematyka");
+                String tworca = resultSet.getString("twórca");
+                String aktualMiejscePrzech = resultSet.getString("aktualMiejscePrzech");
+                String opis = resultSet.getString("opis");
+                Integer WystawaidWystawy = resultSet.getInt("WystawaidWystawy");
+                Integer ZadanieidZadania = resultSet.getInt("ZadanieidZadania");
+                Integer SalaidSali = resultSet.getInt("SalaidSali");
+                Integer ZadaniePracownikidPracownika = resultSet.getInt("ZadaniePracownikidPracownika");
+                System.out.println(idZabytku + " " + nazwaEksponatu);
+                exhibits.add(new Exhibit(idZabytku, nazwaEksponatu, okresPowstania, tematyka, tworca, aktualMiejscePrzech,opis,
+                        WystawaidWystawy,ZadanieidZadania,SalaidSali,ZadaniePracownikidPracownika));
+            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

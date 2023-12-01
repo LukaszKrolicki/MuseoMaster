@@ -104,7 +104,7 @@ public class DataBaseDriver {
 
         try{
             statement = this.conn.createStatement();
-            resultSet=statement.executeQuery("SELECT * FROM eksponat");
+            resultSet = statement.executeQuery("SELECT * FROM eksponat;");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
