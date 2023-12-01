@@ -51,12 +51,12 @@ public class DataBaseDriver {
         return resultSet;
     }
 
-    public void createReport(String opis){
+    public void createReport(String opis, Integer id, String username){
 
         Statement statement ;
         try{
             statement=this.conn.createStatement();
-            statement.executeUpdate("INSERT INTO raport (opis) VALUES ('"+opis+"');");
+            statement.executeUpdate("INSERT INTO raport (opis, idPracownika,username) VALUES ('"+opis+"', '"+id+"', '"+username+"');");
         } catch (SQLException e) {
 
         }
@@ -114,4 +114,19 @@ public class DataBaseDriver {
 
         }
     }
+
+    public ResultSet getAllReporstData(){
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement=this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM raport");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
 }

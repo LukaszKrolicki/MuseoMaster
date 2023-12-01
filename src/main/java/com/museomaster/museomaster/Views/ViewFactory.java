@@ -78,6 +78,8 @@ public class ViewFactory {
     private AnchorPane userListView;
     private AnchorPane ReportListView;
 
+
+
     public AnchorPane getAdminView(String fxmlPath, String anchorPaneName){
 
         switch (anchorPaneName){

@@ -33,6 +33,13 @@ public class Client {
         this.rola = new SimpleStringProperty(this,"rola",rola);
     }
 
+    public int getIdPracownika() {
+        return idPracownika.get();
+    }
+
+    public String getNazwaUzytkownika() {
+        return nazwaUzytkownika.get();
+    }
 
     public IntegerProperty getNrTelefonu() {
         return nrTelefonu;

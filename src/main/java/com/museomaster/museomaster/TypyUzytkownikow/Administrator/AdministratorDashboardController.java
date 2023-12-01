@@ -17,7 +17,7 @@ public class AdministratorDashboardController implements Initializable {
                     switch(newVal){
                         case "add_place"->adminParent.setCenter(Model.getInstance().getViewFactory().getAdminView("/Fxml/Administrator/AdminAddRoom.fxml", "addRoomView"));
                         case "user_list" ->adminParent.setCenter(Model.getInstance().getViewFactory().getAdminView("/Fxml/Administrator/AdminUserList.fxml", "userListView"));
-                        case "error_reports"->adminParent.setCenter(Model.getInstance().getViewFactory().getAdminView("/Fxml/Administrator/AdminReportList.fxml", "reportListView"));
+                        case "reportListView"->adminParent.setCenter(Model.getInstance().getViewFactory().getAdminView("/Fxml/Administrator/AdminReportList.fxml", "reportListView"));
                         default -> adminParent.setCenter(Model.getInstance().getViewFactory().getAdminView("/Fxml/Administrator/AdminAddUser.fxml", "x"));
                     }
                 } )

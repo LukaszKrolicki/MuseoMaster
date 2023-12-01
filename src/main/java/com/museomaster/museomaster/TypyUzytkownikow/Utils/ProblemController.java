@@ -24,7 +24,7 @@ public class ProblemController implements Initializable {
         try {
             String opis = report_text.getText();
             if(!opis.isBlank()){
-                Model.getInstance().getDataBaseDriver().createReport(opis);
+                Model.getInstance().getDataBaseDriver().createReport(opis,Model.getInstance().getClient().getIdPracownika(), Model.getInstance().getClient().getNazwaUzytkownika());
                 report_text.setText("");
                 rr_lbl.setText("Dziękujemy za powiadomienie o problemie!");
                 rr_lbl.setTextFill(Color.GREEN);

@@ -20,7 +20,7 @@ public class AdminMenuController implements Initializable {
         create_user_lbl.setOnMouseClicked(e->onMenuClick("create_user"));
         add_place_lbl.setOnMouseClicked(e->onMenuClick("add_place"));
         user_list_lbl.setOnMouseClicked(e->onMenuClick("user_list"));
-        error_raports_lbl.setOnMouseClicked(e->onMenuClick("error_raports"));
+        error_raports_lbl.setOnMouseClicked(e->onMenuClick("reportListView"));
         logout_lbl.setOnMouseClicked(e->onLogout());
     }
 

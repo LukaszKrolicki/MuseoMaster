@@ -18,7 +18,12 @@ public class Model {
 
     private Client client;
 
+    //Admin
+    ////////////////////////////////
     private final ObservableList<Client> clients;
+    private final ObservableList<Report> reports;
+
+    ////////////////////////////////
 
     //Client vars
     ////////////////////////////////////////////////////////////////
@@ -38,6 +43,7 @@ public class Model {
 
         //Admin settings
         this.clients= FXCollections.observableArrayList();
+        this.reports= FXCollections.observableArrayList();
         ////////////////////////////////
 
     }
@@ -127,6 +133,24 @@ public class Model {
                 Integer uprawniony=resultSet.getInt("czyUprawniony");
                 String rola=resultSet.getString("rola");
                 clients.add(new Client(id, imie, nazwisko, email, wiek, uprawniony, rola, nrTelefonu, nazwaUzytkownika));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ObservableList<Report> getReports(){
+        return reports;
+    }
+
+    public void setReports(){
+        ResultSet resultSet = dataBaseDriver.getAllReporstData();
+
+        try{
+            while(resultSet.next()){
+                Integer id=resultSet.getInt("idPracownika");
+                String nazwaUzytkownika=resultSet.getString("username");
+                String opis=resultSet.getString("opis");
+                reports.add(new Report(id, nazwaUzytkownika,opis));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
