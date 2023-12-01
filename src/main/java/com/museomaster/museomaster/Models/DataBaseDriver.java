@@ -93,6 +93,7 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+
     public void deleteClient(Integer id){
         Statement statement;
 
@@ -139,5 +140,41 @@ public class DataBaseDriver {
             throw new RuntimeException(e);
         }
     }
+
+    // Sekcja Kuratora
+    private boolean createExhibitSuccessFlag;
+    public boolean getCreateExhibitSuccessFlag(){
+        return createExhibitSuccessFlag;
+    }
+    public void createExhibit(String nazwaZabytku, Integer okresPowstania, String tematyka, String tworca, String aktMiejscePrzechowywania, String opis){
+        Statement statement;
+        try{
+            statement = this.conn.createStatement();
+            createExhibitSuccessFlag = true;
+            statement.executeUpdate("INSERT INTO eksponat (nazwaEksponatu, okresPowstania, tematyka, twórca, aktualMiejscePrzech, opis) VALUES ('"+nazwaZabytku+"','"+okresPowstania+"','"+tematyka+"','"+tworca+"','"+aktMiejscePrzechowywania+"', '"+opis+"');");
+        } catch (SQLException e) {
+            createExhibitSuccessFlag = false;
+        }
+    }
+    public ResultSet getAllExhibitsData(){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+
+            statement=this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM raport");
+
+            statement = this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM eksponat");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
 
 }
