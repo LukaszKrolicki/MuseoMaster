@@ -150,7 +150,8 @@ public class Model {
                 Integer id=resultSet.getInt("idPracownika");
                 String nazwaUzytkownika=resultSet.getString("username");
                 String opis=resultSet.getString("opis");
-                reports.add(new Report(id, nazwaUzytkownika,opis));
+                Integer idR=resultSet.getInt("idRaportu");
+                reports.add(new Report(id, idR, nazwaUzytkownika,opis));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

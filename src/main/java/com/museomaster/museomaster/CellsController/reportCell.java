@@ -31,14 +31,17 @@ public class reportCell implements Initializable {
         id_lbl.textProperty().bind(report.idPracownikaProperty().asString());
         username_lbl.textProperty().bind(report.nazwaUzytkownikaProperty());
         delete_btn.setOnAction(e->onDelete());
+        report_details_btn.setOnAction(e->onShowDetails());
     }
 
     private void onDelete(){
-        //Model.getInstance().getDataBaseDriver().deleteClient(Integer.parseInt(id_lbl.getText()));
-        //listView.getItems().remove(client);
+        Model.getInstance().getDataBaseDriver().deleteReport(report.getIdReportu());
+        listView.getItems().remove(report);
         listView.refresh();
+    }
 
-
+    private void onShowDetails(){
+        Model.getInstance().getViewFactory().showMessageWindow(report.getNazwaUzytkownika(), report.getOpis());
     }
 }
 

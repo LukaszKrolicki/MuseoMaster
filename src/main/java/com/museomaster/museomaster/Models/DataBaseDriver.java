@@ -129,4 +129,15 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public void deleteReport(Integer id){
+        Statement statement;
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM raport WHERE idRaportu ='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
