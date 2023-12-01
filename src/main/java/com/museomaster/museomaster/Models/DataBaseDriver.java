@@ -163,9 +163,6 @@ public class DataBaseDriver {
 
         try{
 
-            statement=this.conn.createStatement();
-            resultSet=statement.executeQuery("SELECT * FROM raport");
-
             statement = this.conn.createStatement();
             resultSet=statement.executeQuery("SELECT * FROM eksponat");
 
