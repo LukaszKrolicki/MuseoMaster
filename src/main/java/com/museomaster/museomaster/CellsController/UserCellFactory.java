@@ -14,7 +14,7 @@ public class UserCellFactory extends ListCell<Client> {
         }
         else{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Administrator/AdminCells/UserCell.fxml"));
-            UserCell controler = new UserCell(client);
+            UserCell controler = new UserCell(client,getListView());
             loader.setController(controler);
             setText(null);
             try{

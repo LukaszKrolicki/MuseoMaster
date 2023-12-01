@@ -82,4 +82,17 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+
+    public void deleteClient(Integer id){
+        Statement statement;
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM pracownik WHERE idPracownika ='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }
