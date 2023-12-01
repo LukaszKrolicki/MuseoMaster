@@ -15,7 +15,7 @@ public class ExhibitCellFactory extends ListCell<Exhibit> {
         }
         else{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Kurator/ZabytekCell.fxml"));
-            ExhibitCell controller = new ExhibitCell(exhibit);
+            ExhibitCell controller = new ExhibitCell(exhibit, getListView());
             loader.setController(controller);
             setText(null);
             try{

@@ -156,6 +156,16 @@ public class DataBaseDriver {
             createExhibitSuccessFlag = false;
         }
     }
+    public void deleteExhibit(Integer id){
+        Statement statement;
+
+        try{
+            statement = this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM eksponat WHERE idEksponatu ='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public ResultSet getAllExhibitsData(){
 
         Statement statement;
