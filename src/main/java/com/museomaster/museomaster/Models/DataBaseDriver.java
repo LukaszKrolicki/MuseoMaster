@@ -51,6 +51,16 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public void createReport(String opis){
+
+        Statement statement ;
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("INSERT INTO raport (opis) VALUES ('"+opis+"');");
+        } catch (SQLException e) {
+
+        }
+    }
     //Sekcja Admina
 
     private boolean createSuccessFlag;

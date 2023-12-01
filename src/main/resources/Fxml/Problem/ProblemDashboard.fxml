@@ -14,11 +14,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="18.0" layoutY="52.0" prefHeight="418.0" prefWidth="548.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="52.0" />
+      <TextArea fx:id="report_text" layoutX="18.0" layoutY="52.0" prefHeight="418.0" prefWidth="548.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="52.0" />
       <Button fx:id="report_btn" layoutX="366.0" layoutY="488.0" mnemonicParsing="false" text="Wyślij raport">
          <graphic>
             <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" size="20" />
          </graphic>
       </Button>
+      <Label fx:id="rr_lbl" layoutX="391.0" layoutY="534.0" />
    </children>
 </AnchorPane>
