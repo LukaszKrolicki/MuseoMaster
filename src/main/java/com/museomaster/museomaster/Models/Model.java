@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Model {
     private static Model model;
@@ -21,6 +22,7 @@ public class Model {
     private Client client;
     private Exhibit exhibit;
 
+
     //Admin
     ////////////////////////////////
     private final ObservableList<Client> clients;
@@ -28,6 +30,7 @@ public class Model {
 
     ////////////////////////////////
     private final ObservableList<Exhibit> exhibits;
+    private final ObservableList<Exhibition> exhibitions;
 
     //Client vars
     ////////////////////////////////////////////////////////////////
@@ -53,6 +56,7 @@ public class Model {
 
         //Kurator Settings
         this.exhibits = FXCollections.observableArrayList();
+        this.exhibitions = FXCollections.observableArrayList();
         ///////////////////////////////
 
     }
@@ -187,9 +191,30 @@ public class Model {
                 Integer ZadanieidZadania = resultSet.getInt("ZadanieidZadania");
                 Integer SalaidSali = resultSet.getInt("SalaidSali");
                 Integer ZadaniePracownikidPracownika = resultSet.getInt("ZadaniePracownikidPracownika");
-                System.out.println(idZabytku + " " + nazwaEksponatu);
                 exhibits.add(new Exhibit(idZabytku, nazwaEksponatu, okresPowstania, tematyka, tworca, aktualMiejscePrzech,opis,
                         WystawaidWystawy,ZadanieidZadania,SalaidSali,ZadaniePracownikidPracownika));
+            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    public ObservableList<Exhibition> getExhibitions(){
+        return exhibitions;
+    }
+    public void setExhibitions(){
+        ResultSet resultSet = dataBaseDriver.getAllExhibitionsData();
+
+        try{
+            while(resultSet.next()){
+                Integer idWystawy = resultSet.getInt("idWystawy");
+                String nazwaWystawy = resultSet.getString("nazwaWystawy");
+                String sala = resultSet.getString("sala");
+                String miejsceWykonania = resultSet.getString("miejsceWykonania");
+                String tematyka = resultSet.getString("tematyka");
+                String tworca = resultSet.getString("tworca");
+                LocalDate dataRozpoczecia = resultSet.getDate("dataRozpoczecia").toLocalDate();
+                LocalDate dataZakonczenia = resultSet.getDate("dataZakonczenia").toLocalDate();
+                exhibitions.add(new Exhibition(idWystawy,nazwaWystawy,sala,miejsceWykonania,tematyka,tworca,dataRozpoczecia,dataZakonczenia));
             }
         } catch(SQLException e){
             throw new RuntimeException(e);

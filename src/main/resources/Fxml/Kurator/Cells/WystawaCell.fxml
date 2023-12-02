@@ -24,6 +24,6 @@
                 <Label fx:id="end_date_lbl" text="2023-03-03" />
             </children>
         </HBox>
-          <Button fx:id="delete_btn" layoutX="652.0" layoutY="12.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" />
+          <Button fx:id="delete_btn" layoutX="652.0" layoutY="12.0" mnemonicParsing="false" styleClass="delete_btn" text="Usuń" AnchorPane.rightAnchor="20.0" />
     </children>
 </AnchorPane>
