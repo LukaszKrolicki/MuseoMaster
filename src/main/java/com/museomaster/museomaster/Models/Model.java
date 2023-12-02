@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Model {
     private static Model model;
@@ -30,6 +31,7 @@ public class Model {
 
     ////////////////////////////////
     private final ObservableList<Exhibit> exhibits;
+    private final ObservableList<Exhibit> exhibitsSearched;
     private final ObservableList<Exhibition> exhibitions;
 
     //Client vars
@@ -57,6 +59,7 @@ public class Model {
         //Kurator Settings
         this.exhibits = FXCollections.observableArrayList();
         this.exhibitions = FXCollections.observableArrayList();
+        this.exhibitsSearched = FXCollections.observableArrayList();
         ///////////////////////////////
 
     }
@@ -172,6 +175,7 @@ public class Model {
     }
 
     // Kurator Sekcja
+    // Dla Listy wszytskich zabytkow
     public ObservableList<Exhibit> getExhibits(){
         return exhibits;
     }
@@ -198,6 +202,7 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
+    // Dla listy wystaw
     public ObservableList<Exhibition> getExhibitions(){
         return exhibitions;
     }
@@ -215,6 +220,55 @@ public class Model {
                 LocalDate dataRozpoczecia = resultSet.getDate("dataRozpoczecia").toLocalDate();
                 LocalDate dataZakonczenia = resultSet.getDate("dataZakonczenia").toLocalDate();
                 exhibitions.add(new Exhibition(idWystawy,nazwaWystawy,sala,miejsceWykonania,tematyka,tworca,dataRozpoczecia,dataZakonczenia));
+            }
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+    // Dla wyszukiwania zabytkow
+    public ObservableList<Exhibit> getSearchedExhibits(){
+        return exhibitsSearched;
+    }
+    public void setExhibitsSearched(String nazwa, String autor, Integer rok1, Integer rok2, String miejsce){
+        ResultSet resultSet;
+        if(!Objects.equals(nazwa, "")){
+            resultSet = dataBaseDriver.getExhibitByName(nazwa);
+        }
+        else{
+            if(!Objects.equals(autor, "")){
+                resultSet = dataBaseDriver.getExhibitByAuthor(autor);
+            } else {
+                if(rok1 == 10000 && rok2 != 10000){
+                    resultSet = dataBaseDriver.getExhibitBySecYear(rok2);
+                } else if(rok2 == 10000 && rok1 != 10000){
+                    resultSet = dataBaseDriver.getExhibitByFirstYear(rok1);
+                } else if(rok1 != 10000 && rok2 != 10000){
+                    resultSet = dataBaseDriver.getExhibitByYears(rok1, rok2);
+                } else {
+                    if(!Objects.equals(miejsce, null)){
+                        resultSet = dataBaseDriver.getExhibitByPlace(miejsce);
+                    } else {
+                        resultSet = dataBaseDriver.getExhibitByYears(-1000000, 2024);
+                    }
+                }
+            }
+        }
+
+        try{
+            while(resultSet.next()){
+                Integer idZabytku = resultSet.getInt("idEksponatu");
+                String nazwaEksponatu = resultSet.getString("nazwaEksponatu");
+                String okresPowstania = resultSet.getString("okresPowstania");
+                String tematyka = resultSet.getString("tematyka");
+                String tworca = resultSet.getString("twórca");
+                String aktualMiejscePrzech = resultSet.getString("aktualMiejscePrzech");
+                String opis = resultSet.getString("opis");
+                Integer WystawaidWystawy = resultSet.getInt("WystawaidWystawy");
+                Integer ZadanieidZadania = resultSet.getInt("ZadanieidZadania");
+                Integer SalaidSali = resultSet.getInt("SalaidSali");
+                Integer ZadaniePracownikidPracownika = resultSet.getInt("ZadaniePracownikidPracownika");
+                exhibitsSearched.add(new Exhibit(idZabytku, nazwaEksponatu, okresPowstania, tematyka, tworca, aktualMiejscePrzech,opis,
+                        WystawaidWystawy,ZadanieidZadania,SalaidSali,ZadaniePracownikidPracownika));
             }
         } catch(SQLException e){
             throw new RuntimeException(e);

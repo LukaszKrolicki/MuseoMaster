@@ -42,6 +42,7 @@ public class DodajZabytekController implements Initializable {
             emptyFields();
             error_lbl.setText("Zabytek stworzony!");
             error_lbl.setTextFill(Color.GREEN);
+            Model.getInstance().getExhibits().clear();
         } catch (Exception e){
             error_lbl.setText("Źle wypełniony formularz..");
             error_lbl.setTextFill(Color.RED);

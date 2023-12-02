@@ -272,7 +272,7 @@ public class ViewFactory {
     /**
      * Tworzymy odpowiednie widoki dla każdego możliwego przypadku
      */
-    AnchorPane task_list, task_add, add_ex, ex_list, ad_ex, search_ex, kuratorDashboard, przydzielZadanie, wyborZabytkow, searchExp, lista_zabytkow;
+    AnchorPane task_list, task_add, add_ex, ex_list, ad_ex, search_ex, kuratorDashboard, przydzielZadanie, wyborZabytkow, searchExp, lista_zabytkow, lista_wyszukanych_zab;
 
     /**
      * Metoda używanan do odpowiednie zmiany widoku dla kuratora, w zależności od aktywności Kuratora zmienia się centralna część jego ekranu
@@ -293,6 +293,7 @@ public class ViewFactory {
             case "lista_zabytkow" -> view = lista_zabytkow;
             case "przydzielZadanie" -> view = przydzielZadanie;
             case "wyborZabytkow"-> view = wyborZabytkow;
+            case "listaWyszukanychZab" -> view = lista_wyszukanych_zab;
             default -> view = kuratorDashboard;
         }
         /**

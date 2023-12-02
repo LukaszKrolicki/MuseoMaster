@@ -34,6 +34,7 @@ public class KuratorDashboardController implements Initializable {
                         case "searchEx" -> kurator_parent.setCenter(Model.getInstance().getViewFactory().showKuratorView("/Fxml/Utils/WyszukiwanieEksponatu.fxml", "searchEx"));
                         case "lista_zabytkow" -> kurator_parent.setCenter(Model.getInstance().getViewFactory().showKuratorView("/Fxml/Kurator/ListaZabytków.fxml", "lista_zabytkow"));
                         case "przydzielZadanie"-> kurator_parent.setCenter(Model.getInstance().getViewFactory().showKuratorView("/Fxml/Utils/PracownikUtworzZadanieDashboard.fxml", "przydzielZadanie"));
+                        case "listaWyszukanychZab" -> kurator_parent.setCenter(Model.getInstance().getViewFactory().showKuratorView("/Fxml/Utils/ListaWyszukanychEksponatow.fxml", "listaWyszukanychZab"));
                         default -> kurator_parent.setCenter(Model.getInstance().getViewFactory().showKuratorView("/Fxml/Kurator/KuratorDodajWystawe.fxml", "x"));
                     }
                 } )

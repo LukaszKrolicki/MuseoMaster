@@ -227,5 +227,118 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+    public ResultSet getSearchedExhibitsData(String nazwa, String tworca, Integer rok1, Integer rok2, String sala){
 
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE nazwaEksponatu = '"+nazwa+"' OR " +
+                    "twórca = '"+tworca+"' OR aktualMiejscePrzech = '"+sala+"' OR " +
+                    "okresPowstania BETWEEN '"+rok1+"' AND '"+rok2+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByName(String nazwa){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE nazwaEksponatu LIKE '"+nazwa+"%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByAuthor(String autor){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE twórca LIKE '"+autor+"%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitBySecYear(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania <= '"+year+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByFirstYear(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania >= '"+year+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByYears(Integer year1, Integer year2){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania BETWEEN '"+year1+"' AND '"+year2+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByPlace(String miejsce){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE aktualMiejscePrzech = '"+miejsce+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
 }

@@ -50,6 +50,7 @@ public class KuratorDodajWystaweController implements Initializable {
             if(Model.getInstance().getDataBaseDriver().getCreateExhibitionSuccessFlag()) {
                 error_lbl.setText("Wystawa stworzona!");
                 error_lbl.setFill(Color.GREEN);
+                Model.getInstance().getExhibitions().clear();
             } else {
                 error_lbl.setText("Źle wypełniony formularz..");
                 error_lbl.setFill(Color.RED);
