@@ -4,6 +4,7 @@ import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,6 +35,11 @@ public class Model {
     private final ObservableList<Client> workersAssigned;
     ////////////////////////////////////////////////////////////////
 
+    //Pracownik zwykly
+    ////////////////////////////////////////////////////////////////
+    private final ObservableList<Zadanie> tasks;
+    ////////////////////////////////////////////////////////////////
+
 
     private Model(){
 
@@ -54,6 +60,10 @@ public class Model {
         ///////////////////////////////
         this.workersAssigned= FXCollections.observableArrayList();
         //////////////////////////////
+
+        //Pracownik settings
+        this.tasks=FXCollections.observableArrayList();
+        ////////////////////////////////
 
     }
 
@@ -205,4 +215,40 @@ public class Model {
         workersAssigned.remove(client);
         System.out.println(workersAssigned);
     }
+
+    //Zwykly pracownik
+    ////////////////////////////////////////////////////////////////
+    public ObservableList<Zadanie> getTasks(){
+        return tasks;
+    }
+    public void setTasks(){
+        ResultSet resultSet = dataBaseDriver.getAssignedTask(client.getIdPracownika());
+
+        try{
+            while(resultSet.next()){
+                Integer id=resultSet.getInt("idZadania");
+                String temat=resultSet.getString("temat");
+                String opis=resultSet.getString("opis");
+                String dataRozpoczecia=resultSet.getDate("dataRozpoczęcia").toString();
+                String dataZakonczenia=resultSet.getDate("dataZakończenia").toString();
+                String status=resultSet.getString("status");
+                Integer idPracownika=resultSet.getInt("idPracownika");
+                String nazwaUzytkownikaNadajacego=resultSet.getString("nazwaNadajacego");
+                tasks.add(new Zadanie(id,temat,opis,dataRozpoczecia,dataZakonczenia,status,idPracownika,nazwaUzytkownikaNadajacego));
+                System.out.println(clients);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clearTasks(){
+        tasks.clear();
+    }
+
+    public void removeTask(Zadanie task){
+        tasks.remove(task);
+    }
+
+    ////////////////////////////////////////////////////////////////
 }

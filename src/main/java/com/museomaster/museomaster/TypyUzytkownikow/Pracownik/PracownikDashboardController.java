@@ -1,5 +1,9 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Pracownik;
 
+import com.museomaster.museomaster.CellsController.UserCellFactory;
+import com.museomaster.museomaster.CellsController.assignedTask;
+import com.museomaster.museomaster.CellsController.assignedTaskFactory;
+import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
@@ -12,6 +16,13 @@ public class PracownikDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initData();
+        task_list_listview.setItems(Model.getInstance().getTasks());
+        task_list_listview.setCellFactory(e->new assignedTaskFactory());
+    }
 
+    public void initData(){
+        Model.getInstance().clearTasks();
+        Model.getInstance().setTasks();
     }
 }

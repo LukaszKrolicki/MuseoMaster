@@ -182,12 +182,12 @@ public class DataBaseDriver {
         return resultSet;
     }
 
-    public void createTask(Integer idPracownika, String opis, String temat, java.sql.Date dataRozpoczecia, java.sql.Date dataZakonczenia){
+    public void createTask(Integer idPracownika, String opis, String temat, java.sql.Date dataRozpoczecia, java.sql.Date dataZakonczenia, String nazwaNadajacego){
         String status = "wTrackcie";
         Statement statement ;
         try{
             statement=this.conn.createStatement();
-            statement.executeUpdate("INSERT INTO zadanie2 (temat,opis,dataRozpoczęcia,dataZakończenia,status,idPracownika) VALUES ('"+temat+"','"+opis+"','"+dataRozpoczecia+"','"+dataZakonczenia+"','"+status+"','"+idPracownika+"');");
+            statement.executeUpdate("INSERT INTO zadanie2 (temat,opis,dataRozpoczęcia,dataZakończenia,status,idPracownika,nazwaNadajacego) VALUES ('"+temat+"','"+opis+"','"+dataRozpoczecia+"','"+dataZakonczenia+"','"+status+"','"+idPracownika+"', '"+nazwaNadajacego+"');");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -197,7 +197,38 @@ public class DataBaseDriver {
     /////////////////////////////////////////////////////////////////////////
 
 
+    //Sekcja pracownika
+    ////////////////////////////////////////////////////////////////////////
+    public ResultSet getAssignedTask(Integer id){
+        Statement statement;
+        String status = "wTrackcie";
+        ResultSet resultSet = null;
 
+        try{
+            statement=this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM zadanie2 WHERE status='"+status+"' AND idPracownika='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
+    public void setAssignedTask(String status1, Integer id){
+        Statement statement;
+        String status2 = "wTrackcie";
+
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("Update zadanie2 SET status='"+status1+"' Where status='"+status2+"' AND idZadania='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////
 
 
 

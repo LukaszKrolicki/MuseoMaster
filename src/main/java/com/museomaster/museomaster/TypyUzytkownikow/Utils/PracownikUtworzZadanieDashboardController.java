@@ -39,12 +39,13 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
                     java.sql.Date starDate = java.sql.Date.valueOf(start);
                     LocalDate end = end_date_datePicker.getValue();
                     java.sql.Date endDate= java.sql.Date.valueOf(end);
+                    String nazwa=Model.getInstance().getClient().getNazwaUzytkownika();
 
                     System.out.println(endDate);
 
 
                     for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate);
+                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa);
                     }
                     Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x");
                 }
