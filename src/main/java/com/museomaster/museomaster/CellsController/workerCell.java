@@ -1,6 +1,7 @@
 package com.museomaster.museomaster.CellsController;
 
 import com.museomaster.museomaster.Models.Client;
+import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -20,10 +21,14 @@ public class workerCell implements Initializable {
     private ListView<Client> listView;
     private final Client client;
 
+    boolean permissionFlag=false;
+
     public workerCell(Client client, ListView<Client> listView) {
 
         this.client = client;
         this.listView=listView;
+
+
 
     }
 
@@ -34,5 +39,16 @@ public class workerCell implements Initializable {
         user_name_lbl.textProperty().bind(client.nazwaUzytkownikaProperty());
         phone_number_lbl.textProperty().bind(client.getNrTelefonu().asString());
         job_lbl.textProperty().bind(client.rolaProperty());
+
+        add_task_checkbox.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
+                    permissionFlag=newVal;
+                    if(permissionFlag){
+                        Model.getInstance().assignWorker(client);
+                    }
+                    else{
+                        Model.getInstance().removeWorker(client);
+                    }
+                }
+        );
     }
 }

@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Properties;
 
 public class DataBaseDriver {
@@ -181,7 +182,30 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public void createTask(Integer idPracownika, String opis, String temat, java.sql.Date dataRozpoczecia, java.sql.Date dataZakonczenia){
+        String status = "wTrackcie";
+        Statement statement ;
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("INSERT INTO zadanie2 (temat,opis,dataRozpoczęcia,dataZakończenia,status,idPracownika) VALUES ('"+temat+"','"+opis+"','"+dataRozpoczecia+"','"+dataZakonczenia+"','"+status+"','"+idPracownika+"');");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     /////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
     // Sekcja Kuratora
     private boolean createExhibitSuccessFlag;

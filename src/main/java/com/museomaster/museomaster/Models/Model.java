@@ -30,6 +30,10 @@ public class Model {
     private boolean ClientLoginSuccessFlag;
     ////////////////////////////////
 
+    //Pracownik+
+    private final ObservableList<Client> workersAssigned;
+    ////////////////////////////////////////////////////////////////
+
 
     private Model(){
 
@@ -45,6 +49,11 @@ public class Model {
         this.clients= FXCollections.observableArrayList();
         this.reports= FXCollections.observableArrayList();
         ////////////////////////////////
+
+        //Pracownik+ settings
+        ///////////////////////////////
+        this.workersAssigned= FXCollections.observableArrayList();
+        //////////////////////////////
 
     }
 
@@ -186,5 +195,14 @@ public class Model {
 
     public void clearWorkers(){
         clients.clear();
+    }
+
+    public void assignWorker(Client client){
+        workersAssigned.add(client);
+        System.out.println(workersAssigned);
+    }
+    public void removeWorker(Client client){
+        workersAssigned.remove(client);
+        System.out.println(workersAssigned);
     }
 }
