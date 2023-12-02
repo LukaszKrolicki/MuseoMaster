@@ -24,6 +24,7 @@ public class WyszukiwanieZabytkowController implements Initializable {
     public ChoiceBox<String> current_place_combobox;
     public Button search_btn;
     public Text error_lbl;
+    public TextField tematyka_tf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,7 +47,7 @@ public class WyszukiwanieZabytkowController implements Initializable {
                 if(Objects.equals(second_year_input.getText(), "")){
                     second_year_input.setText("10000");
                 }
-                Model.getInstance().setExhibitsSearched(ex_name_lbl.getText(), author_lbl.getText(), Integer.parseInt(firs_year_input.getText()), Integer.parseInt(second_year_input.getText()), current_place_combobox.getValue());
+                Model.getInstance().setExhibitsSearched(ex_name_lbl.getText(), author_lbl.getText(), tematyka_tf.getText(), Integer.parseInt(firs_year_input.getText()), Integer.parseInt(second_year_input.getText()), current_place_combobox.getValue());
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("listaWyszukanychZab");
             }
         }

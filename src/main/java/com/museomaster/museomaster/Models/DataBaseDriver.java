@@ -261,6 +261,22 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+    public ResultSet getExhibitByTopic(String topic){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE tematyka LIKE '"+topic+"%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
     public ResultSet getExhibitByAuthor(String autor){
 
         Statement statement;

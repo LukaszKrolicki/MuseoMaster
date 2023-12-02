@@ -229,26 +229,30 @@ public class Model {
     public ObservableList<Exhibit> getSearchedExhibits(){
         return exhibitsSearched;
     }
-    public void setExhibitsSearched(String nazwa, String autor, Integer rok1, Integer rok2, String miejsce){
+    public void setExhibitsSearched(String nazwa, String autor, String topic, Integer rok1, Integer rok2, String miejsce){
         ResultSet resultSet;
         if(!Objects.equals(nazwa, "")){
             resultSet = dataBaseDriver.getExhibitByName(nazwa);
         }
         else{
-            if(!Objects.equals(autor, "")){
-                resultSet = dataBaseDriver.getExhibitByAuthor(autor);
+            if(!Objects.equals(topic, "")){
+                resultSet = dataBaseDriver.getExhibitByTopic(topic);
             } else {
-                if(rok1 == 10000 && rok2 != 10000){
-                    resultSet = dataBaseDriver.getExhibitBySecYear(rok2);
-                } else if(rok2 == 10000 && rok1 != 10000){
-                    resultSet = dataBaseDriver.getExhibitByFirstYear(rok1);
-                } else if(rok1 != 10000 && rok2 != 10000){
-                    resultSet = dataBaseDriver.getExhibitByYears(rok1, rok2);
+                if (!Objects.equals(autor, "")) {
+                    resultSet = dataBaseDriver.getExhibitByAuthor(autor);
                 } else {
-                    if(!Objects.equals(miejsce, null)){
-                        resultSet = dataBaseDriver.getExhibitByPlace(miejsce);
+                    if (rok1 == 10000 && rok2 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitBySecYear(rok2);
+                    } else if (rok2 == 10000 && rok1 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitByFirstYear(rok1);
+                    } else if (rok1 != 10000 && rok2 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitByYears(rok1, rok2);
                     } else {
-                        resultSet = dataBaseDriver.getExhibitByYears(-1000000, 2024);
+                        if (!Objects.equals(miejsce, null)) {
+                            resultSet = dataBaseDriver.getExhibitByPlace(miejsce);
+                        } else {
+                            resultSet = dataBaseDriver.getExhibitByYears(-1000000, 2024);
+                        }
                     }
                 }
             }
