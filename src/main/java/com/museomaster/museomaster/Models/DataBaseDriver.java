@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Properties;
 
 public class DataBaseDriver {
@@ -146,12 +147,12 @@ public class DataBaseDriver {
     public boolean getCreateExhibitSuccessFlag(){
         return createExhibitSuccessFlag;
     }
-    public void createExhibit(String nazwaZabytku, Integer okresPowstania, String tematyka, String tworca, String aktMiejscePrzechowywania, String opis){
+    public void createExhibit(String nazwaZabytku, Integer okresPowstania, String tematyka, String tworca, String aktMiejscePrzechowywania, String docMiejcePrzech, String opis){
         Statement statement;
         try{
             statement = this.conn.createStatement();
             createExhibitSuccessFlag = true;
-            statement.executeUpdate("INSERT INTO eksponat (nazwaEksponatu, okresPowstania, tematyka, twórca, aktualMiejscePrzech, opis) VALUES ('"+nazwaZabytku+"','"+okresPowstania+"','"+tematyka+"','"+tworca+"','"+aktMiejscePrzechowywania+"', '"+opis+"');");
+            statement.executeUpdate("INSERT INTO eksponat (nazwaEksponatu, okresPowstania, tematyka, twórca, aktualMiejscePrzech, docMiejscePrzech , opis) VALUES ('"+nazwaZabytku+"','"+okresPowstania+"','"+tematyka+"','"+tworca+"','"+aktMiejscePrzechowywania+"', '"+docMiejcePrzech+"', '"+opis+"');");
         } catch (SQLException e) {
             createExhibitSuccessFlag = false;
         }
@@ -183,5 +184,48 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+
+    //Create exhibition
+    private boolean createExhibitionSuccessFlag;
+    public boolean getCreateExhibitionSuccessFlag(){
+        return createExhibitionSuccessFlag;
+    }
+    public void createExhibition(String nazwaWystawy, String sala, String miejsceWykonania,
+                                 String tematyka, String tworca, LocalDate dataRozpoczecia, LocalDate dataZakonczenia){
+        Statement statement;
+        try{
+            statement = this.conn.createStatement();
+            createExhibitionSuccessFlag = true;
+            statement.executeUpdate("INSERT INTO wystawa (nazwaWystawy, sala, miejsceWykonania, tematyka, tworca, dataRozpoczecia , dataZakonczenia) VALUES ('"+nazwaWystawy+"','"+sala+"','"+miejsceWykonania+"','"+tematyka+"','"+tworca+"', '"+dataRozpoczecia+"', '"+dataZakonczenia+"');");
+        } catch (SQLException e) {
+            createExhibitionSuccessFlag = false;
+        }
+    }
+    public void deleteExhibition(Integer id){
+        Statement statement;
+
+        try{
+            statement = this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM wystawa WHERE idWystawy ='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ResultSet getAllExhibitionsData(){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+
+            statement = this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM wystawa");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
 
 }

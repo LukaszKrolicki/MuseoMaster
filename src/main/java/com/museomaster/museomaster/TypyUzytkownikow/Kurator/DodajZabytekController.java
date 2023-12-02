@@ -21,6 +21,7 @@ public class DodajZabytekController implements Initializable {
     public TextArea opis_ta;
     public Button dodaj_zabytek_btn;
     public Label error_lbl;
+    public TextField doc_miejcs_przech_tf;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,9 +35,10 @@ public class DodajZabytekController implements Initializable {
             String tematyka = tematyka_tf.getText();
             String tworca = tworca_tf.getText();
             String akt_miejsce = akt_miej_przech_tf.getText();
+            String doc_miejsc_przech = doc_miejcs_przech_tf.getText();
             String opis = opis_ta.getText();
 
-            Model.getInstance().getDataBaseDriver().createExhibit(nazwa, okres_pow, tematyka,  tworca, akt_miejsce, opis);
+            Model.getInstance().getDataBaseDriver().createExhibit(nazwa, okres_pow, tematyka,  tworca, akt_miejsce, doc_miejsc_przech, opis);
             emptyFields();
             error_lbl.setText("Zabytek stworzony!");
             error_lbl.setTextFill(Color.GREEN);
@@ -52,6 +54,7 @@ public class DodajZabytekController implements Initializable {
         tematyka_tf.setText("");
         tworca_tf.setText("");
         akt_miej_przech_tf.setText("");
+        doc_miejcs_przech_tf.setText("");
         opis_ta.setText("");
     }
 }

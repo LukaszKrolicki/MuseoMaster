@@ -22,6 +22,8 @@
       <TextField fx:id="tworca_tf" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aktualne Miejsce Przechowywania:" />
       <TextField fx:id="akt_miej_przech_tf" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Docelowe Miejsce Przechowywania:" />
+      <TextField fx:id="doc_miejcs_przech_tf" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opis:" />
       <TextArea fx:id="opis_ta" prefHeight="126.0" prefWidth="527.0" styleClass="textAreaAlt" />
       <Button fx:id="dodaj_zabytek_btn" mnemonicParsing="false" text="Dodaj Zabytek">
