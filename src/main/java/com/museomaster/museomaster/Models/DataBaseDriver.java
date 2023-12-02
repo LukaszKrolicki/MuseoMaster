@@ -141,6 +141,48 @@ public class DataBaseDriver {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////
+
+    //Pracownik +
+    ////////////////////////////////////////////////////////////////////////
+    public ResultSet getWorkerData(String Input, String rola){
+        Statement statement;
+        ResultSet resultSet = null;
+        String imie = null;
+        String nazwisko = null;
+
+        try{
+            if (Input.contains(" ")) {
+                String[] words = Input.split(" ");
+                imie=words[0];
+                nazwisko=words[1];
+            }
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        try{
+            statement=this.conn.createStatement();
+            if(Input.isBlank() && rola!=null && !rola.isBlank()){
+                resultSet=statement.executeQuery("SELECT * FROM pracownik WHERE rola='"+rola+"';");
+            }
+            else if (Input.contains(" ")){
+                resultSet=statement.executeQuery("SELECT * FROM pracownik WHERE imie='"+imie+"' AND nazwisko='"+nazwisko+"';");
+            }
+            else{
+                resultSet=statement.executeQuery("SELECT * FROM pracownik WHERE nazwaUżytkownika ='"+Input+"'");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+
     // Sekcja Kuratora
     private boolean createExhibitSuccessFlag;
     public boolean getCreateExhibitSuccessFlag(){

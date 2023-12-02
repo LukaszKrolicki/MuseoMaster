@@ -159,4 +159,32 @@ public class Model {
     }
 
 
+    //Pracownik +
+    ////////////////////////////////////////////////////////////////////////
+
+    public void setWorkers(String Input, String rolaa){
+        ResultSet resultSet = dataBaseDriver.getWorkerData(Input,rolaa);
+
+        try{
+            while(resultSet.next()){
+                Integer id=resultSet.getInt("idPracownika");
+                String imie=resultSet.getString("imie");
+                String nazwisko=resultSet.getString("nazwisko");
+                String nazwaUzytkownika=resultSet.getString("nazwaUżytkownika");
+                String email=resultSet.getString("e-mail");
+                Integer nrTelefonu=resultSet.getInt("nrTelefonu");
+                Integer wiek=resultSet.getInt("wiek");
+                Integer uprawniony=resultSet.getInt("czyUprawniony");
+                String rola=resultSet.getString("rola");
+                clients.add(new Client(id, imie, nazwisko, email, wiek, uprawniony, rola, nrTelefonu, nazwaUzytkownika));
+                System.out.println(clients);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clearWorkers(){
+        clients.clear();
+    }
 }

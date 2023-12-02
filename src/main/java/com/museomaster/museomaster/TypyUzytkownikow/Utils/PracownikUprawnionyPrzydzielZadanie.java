@@ -1,6 +1,9 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Utils;
 
+import com.museomaster.museomaster.CellsController.workerCellFactory;
 import com.museomaster.museomaster.Models.Model;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -27,5 +30,30 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("przydzielZadanie");
             }
         });
+
+        search_button.setOnAction(e->{
+            Model.getInstance().clearWorkers();
+            if(role_combobox.getValue()==null){
+                Model.getInstance().setWorkers(input_name_lbl.getText(),"");
+            }
+            else{
+                Model.getInstance().setWorkers(input_name_lbl.getText(),role_combobox.getValue().toString());
+            }
+
+            try{
+                ser_found_list.setItems(Model.getInstance().getClients());
+                ser_found_list.setCellFactory(x->new workerCellFactory());
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
+        });
+
+        ObservableList<String> rolaList = FXCollections.observableArrayList(
+                "Admin", "Pracownik", "Pracownik+", "Pracownik Techniczny","Pracownik Techniczny+", "Kurator"
+        );
+
+        role_combobox.setItems(rolaList);
     }
+
 }
