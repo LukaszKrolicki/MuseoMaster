@@ -214,6 +214,23 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public ResultSet getFinishedTask(Integer id){
+        Statement statement;
+        String status1 = "Zakonczone";
+        String status2 = "Problem";
+        String status3 = "Fail";
+        ResultSet resultSet = null;
+
+        try{
+            statement=this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT * FROM zadanie2 WHERE (status='"+status1+"' OR status='"+status2+"' OR status='"+status3+"') AND idPracownika='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
     public void setAssignedTask(String status1, Integer id){
         Statement statement;
         String status2 = "wTrackcie";
@@ -227,6 +244,21 @@ public class DataBaseDriver {
         }
 
     }
+
+//    public ResultSet getSizeAssignedTask(Integer id){
+//        Statement statement;
+//        String status2 = "wTrackcie";
+//        ResultSet resultSet=null;
+//
+//        try{
+//            statement=this.conn.createStatement();
+//            resultSet=statement.executeQuery("SELECT COUNT(*)  zadanie2 Where status='"+status2+"' AND idZadania='"+id+"';");
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        return resultSet;
+//    }
 
     /////////////////////////////////////////////////////////////////////////
 

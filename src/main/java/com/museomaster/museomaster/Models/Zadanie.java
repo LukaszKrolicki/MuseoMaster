@@ -28,6 +28,10 @@ public class Zadanie {
         this.nazwaUzytkownikaNadajacego=new SimpleStringProperty(this, "nazwaUzytkownikaNadajacego",nazwaUzytkownikaNadajacego);
     }
 
+    public void setStatus(String status) {
+        this.status.set(status);
+    }
+
     public String getNazwaUzytkownikaNadajacego() {
         return nazwaUzytkownikaNadajacego.get();
     }

@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.scene.control.ListView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,6 +48,11 @@ public class Model {
     //Pracownik zwykly
     ////////////////////////////////////////////////////////////////
     private final ObservableList<Zadanie> tasks;
+    private final ObservableList<Zadanie> tasks_finished;
+
+    ListView task_list_listview;
+    ListView ended_task_list_listview;
+
     ////////////////////////////////////////////////////////////////
 
 
@@ -74,6 +80,7 @@ public class Model {
 
         //Pracownik settings
         this.tasks = FXCollections.observableArrayList();
+        this.tasks_finished=FXCollections.observableArrayList();
         ////////////////////////////////
 
         //Kurator Settings
@@ -241,8 +248,16 @@ public class Model {
         public ObservableList<Zadanie> getTasks () {
             return tasks;
         }
-        public void setTasks () {
-            ResultSet resultSet = dataBaseDriver.getAssignedTask(client.getIdPracownika());
+        public ObservableList<Zadanie> getFishedTasks () {
+        return tasks_finished;
+    }
+        public void setTasks (String type) {
+            ResultSet resultSet;
+            if(Objects.equals(type, "assigned")){
+                 resultSet= dataBaseDriver.getAssignedTask(client.getIdPracownika());
+            } else{
+                resultSet = dataBaseDriver.getFinishedTask(client.getIdPracownika());
+            }
 
             try {
                 while (resultSet.next()) {
@@ -254,8 +269,12 @@ public class Model {
                     String status = resultSet.getString("status");
                     Integer idPracownika = resultSet.getInt("idPracownika");
                     String nazwaUzytkownikaNadajacego = resultSet.getString("nazwaNadajacego");
-                    tasks.add(new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego));
-                    System.out.println(clients);
+                    if(Objects.equals(type, "assigned"))
+                    {
+                        tasks.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego));
+                    }else{
+                        tasks_finished.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego));
+                    }
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -266,9 +285,35 @@ public class Model {
             tasks.clear();
         }
 
+        public void clearFinishedTasks () {
+        tasks.clear();
+    }
+
         public void removeTask (Zadanie task){
             tasks.remove(task);
+            tasks_finished.add(0, task);
         }
+
+        public void setAssignedTaskLV(ListView x){
+            task_list_listview = x;
+        }
+
+        public void setfinishedTaskLV(ListView x){
+            ended_task_list_listview = x;
+        }
+
+        public void refreshfinishedTaskLV(){
+            ended_task_list_listview.refresh();
+        }
+
+        public void refreshAssignedTaskLV(){
+            ended_task_list_listview.refresh();
+        }
+
+        public Integer getSizeAssignedTask(){
+            return task_list_listview.getItems().size();
+        }
+
 
         ////////////////////////////////////////////////////////////////
 
