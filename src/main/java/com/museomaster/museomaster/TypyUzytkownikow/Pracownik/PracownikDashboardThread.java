@@ -22,7 +22,7 @@ public class PracownikDashboardThread {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                wielkosc_tabeli_task_nowa=Model.getInstance().getSizeAssignedTask();
+                wielkosc_tabeli_task_nowa=Model.getInstance().getDataBaseDriver().getSizeAssignedTask(Model.getInstance().getClient().getIdPracownika());
                 System.out.println(wielkosc_tabeli_task_nowa);
                 if(!Objects.equals(wielkosc_tabeli_task, wielkosc_tabeli_task_nowa)){
                     wielkosc_tabeli_task=wielkosc_tabeli_task_nowa;

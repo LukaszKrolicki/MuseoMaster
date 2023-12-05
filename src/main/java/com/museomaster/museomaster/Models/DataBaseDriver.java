@@ -245,20 +245,23 @@ public class DataBaseDriver {
 
     }
 
-//    public ResultSet getSizeAssignedTask(Integer id){
-//        Statement statement;
-//        String status2 = "wTrackcie";
-//        ResultSet resultSet=null;
-//
-//        try{
-//            statement=this.conn.createStatement();
-//            resultSet=statement.executeQuery("SELECT COUNT(*)  zadanie2 Where status='"+status2+"' AND idZadania='"+id+"';");
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        return resultSet;
-//    }
+    public Integer getSizeAssignedTask(Integer id){
+        Statement statement;
+        ResultSet resultSet=null;
+        int count = 0;
+
+        try{
+            statement=this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT COUNT(*) FROM zadanie2");
+            if (resultSet.next()) {
+                count = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return count;
+    }
 
     /////////////////////////////////////////////////////////////////////////
 
