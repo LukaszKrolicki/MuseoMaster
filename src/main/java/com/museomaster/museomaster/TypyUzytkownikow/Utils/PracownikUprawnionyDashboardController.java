@@ -1,5 +1,9 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Utils;
 
+import com.museomaster.museomaster.CellsController.assignedTaskFactory;
+import com.museomaster.museomaster.CellsController.finishedTaskFactory;
+import com.museomaster.museomaster.Models.Model;
+import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikDashboardThread;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
@@ -13,6 +17,21 @@ public class PracownikUprawnionyDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initData();
+        taks_list_textView.setItems(Model.getInstance().getTasks());
+        taks_list_textView.setCellFactory(e->new assignedTaskFactory());
+        task_ended_listview.setItems(Model.getInstance().getFishedTasks());
+        task_ended_listview.setCellFactory(e->new finishedTaskFactory());
+        Model.getInstance().setfinishedTaskLV(task_ended_listview);
+        Model.getInstance().setAssignedTaskLV(taks_list_textView);
+        PracownikDashboardThread x = new PracownikDashboardThread(taks_list_textView.getItems().size());
+        x.startThread();
+    }
 
+    public void initData(){
+        Model.getInstance().clearTasks();
+        Model.getInstance().clearFinishedTasks();
+        Model.getInstance().setTasks("assigned");
+        Model.getInstance().setTasks("finished");
     }
 }

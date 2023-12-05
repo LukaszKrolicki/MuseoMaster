@@ -286,7 +286,7 @@ public class Model {
         }
 
         public void clearFinishedTasks () {
-        tasks.clear();
+        tasks_finished.clear();
     }
 
         public void removeTask (Zadanie task){
