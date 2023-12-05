@@ -2,6 +2,7 @@ package com.museomaster.museomaster.TypyUzytkownikow.Utils;
 
 import com.museomaster.museomaster.Models.Client;
 import com.museomaster.museomaster.Models.Model;
+import com.museomaster.museomaster.Models.Zadanie;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -45,7 +46,7 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
 
                     for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa);
+                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa, client.getNazwaUzytkownika());
                     }
                     Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x");
                 }
@@ -67,7 +68,7 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
 
                     for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa);
+                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa,client.getNazwaUzytkownika());
                     }
                     Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x");
                 }

@@ -182,15 +182,30 @@ public class DataBaseDriver {
         return resultSet;
     }
 
-    public void createTask(Integer idPracownika, String opis, String temat, java.sql.Date dataRozpoczecia, java.sql.Date dataZakonczenia, String nazwaNadajacego){
+    public void createTask(Integer idPracownika, String opis, String temat, java.sql.Date dataRozpoczecia, java.sql.Date dataZakonczenia, String nazwaNadajacego, String nazwaUzytkownika){
         String status = "wTrackcie";
         Statement statement ;
         try{
             statement=this.conn.createStatement();
-            statement.executeUpdate("INSERT INTO zadanie2 (temat,opis,dataRozpoczęcia,dataZakończenia,status,idPracownika,nazwaNadajacego) VALUES ('"+temat+"','"+opis+"','"+dataRozpoczecia+"','"+dataZakonczenia+"','"+status+"','"+idPracownika+"', '"+nazwaNadajacego+"');");
+            statement.executeUpdate("INSERT INTO zadanie2 (temat,opis,dataRozpoczęcia,dataZakończenia,status,idPracownika,nazwaNadajacego,nazwaUzytkownika) VALUES ('"+temat+"','"+opis+"','"+dataRozpoczecia+"','"+dataZakonczenia+"','"+status+"','"+idPracownika+"', '"+nazwaNadajacego+"', '"+nazwaUzytkownika+"');");
+            //Zadanie x = new Zadanie(temat,opis,dataRozpoczecia,dataZakonczenia,status,idPracownika,nazwaNadajacego,nazwaUzytkownika);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ResultSet getAssignedTaskToLv(String nazwaNadajacego){
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement=this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM zadanie2 WHERE nazwaNadajacego='"+nazwaNadajacego+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
     }
 
 

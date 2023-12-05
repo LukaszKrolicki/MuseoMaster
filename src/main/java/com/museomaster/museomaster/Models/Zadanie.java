@@ -17,7 +17,9 @@ public class Zadanie {
 
     private final StringProperty nazwaUzytkownikaNadajacego;
 
-    public Zadanie(Integer idZadania, String temat, String opis, String startData, String endData, String status, Integer idPracownika,String nazwaUzytkownikaNadajacego) {
+    private final StringProperty nazwaUzytkownika;
+
+    public Zadanie(Integer idZadania, String temat, String opis, String startData, String endData, String status, Integer idPracownika,String nazwaUzytkownikaNadajacego, String nazwaUzytkownika) {
         this.idPracownika = new SimpleIntegerProperty(this, "idPracownika",idPracownika);
         this.idZadania= new SimpleIntegerProperty(this, "idZadania",idZadania);
         this.temat = new SimpleStringProperty(this, "temat",temat);
@@ -26,6 +28,15 @@ public class Zadanie {
         this.endData=new SimpleStringProperty(this, "endData",endData);
         this.status= new SimpleStringProperty(this, "status",status);
         this.nazwaUzytkownikaNadajacego=new SimpleStringProperty(this, "nazwaUzytkownikaNadajacego",nazwaUzytkownikaNadajacego);
+        this.nazwaUzytkownika=new SimpleStringProperty(this, "nazwaUzytkownikA",nazwaUzytkownika);
+    }
+
+    public String getNazwaUzytkownika() {
+        return nazwaUzytkownika.get();
+    }
+
+    public StringProperty nazwaUzytkownikaProperty() {
+        return nazwaUzytkownika;
     }
 
     public void setStatus(String status) {

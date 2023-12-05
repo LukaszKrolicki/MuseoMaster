@@ -43,6 +43,7 @@ public class Model {
 
     //Pracownik+
     private final ObservableList<Client> workersAssigned;
+    private final ObservableList<Zadanie> tasksAssignedTo;
     ////////////////////////////////////////////////////////////////
 
     //Pracownik zwykly
@@ -52,6 +53,8 @@ public class Model {
 
     ListView task_list_listview;
     ListView ended_task_list_listview;
+
+    ListView assigned_task_to_listview;
 
     ////////////////////////////////////////////////////////////////
 
@@ -76,6 +79,7 @@ public class Model {
         //Pracownik+ settings
         ///////////////////////////////
         this.workersAssigned = FXCollections.observableArrayList();
+        this.tasksAssignedTo = FXCollections.observableArrayList();
         //////////////////////////////
 
         //Pracownik settings
@@ -243,6 +247,26 @@ public class Model {
             System.out.println(workersAssigned);
         }
 
+        public void clearAssignedTasks () {
+        tasksAssignedTo.clear();
+    }
+        public void addTaskAssignedTo (Zadanie task){
+            tasksAssignedTo.add(0, task);
+        }
+
+        public ObservableList<Zadanie>  getAssignedToTasks(){
+            return tasksAssignedTo;
+        }
+
+        public void setAssignedToTaskLV(ListView x){
+        assigned_task_to_listview = x;
+    }
+
+        public void refreshAssignedToTaskLV(){
+        assigned_task_to_listview.refresh();
+    }
+
+
         //Zwykly pracownik
         ////////////////////////////////////////////////////////////////
         public ObservableList<Zadanie> getTasks () {
@@ -255,7 +279,11 @@ public class Model {
             ResultSet resultSet;
             if(Objects.equals(type, "assigned")){
                  resultSet= dataBaseDriver.getAssignedTask(client.getIdPracownika());
-            } else{
+            }
+            else if(Objects.equals(type, "assignedTo")){
+                resultSet=dataBaseDriver.getAssignedTaskToLv(client.getNazwaUzytkownika());
+            }
+            else{
                 resultSet = dataBaseDriver.getFinishedTask(client.getIdPracownika());
             }
 
@@ -269,11 +297,16 @@ public class Model {
                     String status = resultSet.getString("status");
                     Integer idPracownika = resultSet.getInt("idPracownika");
                     String nazwaUzytkownikaNadajacego = resultSet.getString("nazwaNadajacego");
+                    String nazwaUzytkownika = resultSet.getString("nazwaUzytkownika");
                     if(Objects.equals(type, "assigned"))
                     {
-                        tasks.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego));
-                    }else{
-                        tasks_finished.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego));
+                        tasks.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
+                    }
+                    else if(Objects.equals(type, "assignedTo")){
+                        tasksAssignedTo.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
+                    }
+                    else{
+                        tasks_finished.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
                     }
                 }
             } catch (SQLException e) {

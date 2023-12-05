@@ -23,6 +23,11 @@ public class finishedTaskFactory extends ListCell<Zadanie> {
                 ProblemTask controler = new ProblemTask(getListView(),zadanie);
                 loader.setController(controler);
             }
+            else if(zadanie.getStatus().equals("wTrackcie")){
+                loader = new FXMLLoader(getClass().getResource("/Fxml/PracownikUprawniony/Cells/ZadanieWtrakcie.fxml"));
+                inProgressTask controler = new inProgressTask(getListView(),zadanie);
+                loader.setController(controler);
+            }
             else{
                 loader = new FXMLLoader(getClass().getResource("/Fxml/Pracownik/Cells/ZadanieNieZakończone.fxml"));
                 failedTask controler = new failedTask(getListView(),zadanie);
