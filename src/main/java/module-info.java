@@ -16,5 +16,6 @@ module com.museomaster.museomaster {
     exports com.museomaster.museomaster.Views;
     exports com.museomaster.museomaster.Models;
     exports com.museomaster.museomaster.CellsController;
+    exports com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony;
 
 }
