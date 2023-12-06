@@ -204,8 +204,7 @@ public class Model {
         }
     }
 
-    // Kurator Sekcja
-    // Dla Listy wszytskich zabytkow
+
 
 
 
@@ -265,6 +264,45 @@ public class Model {
         public void refreshAssignedToTaskLV(){
         assigned_task_to_listview.refresh();
     }
+
+        public void updateAssignedTasks (String type) {
+            ResultSet resultSet;
+            if(Objects.equals(type, "assigned")){
+                resultSet= dataBaseDriver.getAssignedTask(client.getIdPracownika());
+            }
+            else if(Objects.equals(type, "assignedTo")){
+                resultSet=dataBaseDriver.getAssignedTaskToLv(client.getNazwaUzytkownika());
+            }
+            else{
+                resultSet = dataBaseDriver.getFinishedTask(client.getIdPracownika());
+            }
+
+            try {
+                while (resultSet.next()) {
+                    Integer id = resultSet.getInt("idZadania");
+                    String temat = resultSet.getString("temat");
+                    String opis = resultSet.getString("opis");
+                    String dataRozpoczecia = resultSet.getDate("dataRozpoczęcia").toString();
+                    String dataZakonczenia = resultSet.getDate("dataZakończenia").toString();
+                    String status = resultSet.getString("status");
+                    Integer idPracownika = resultSet.getInt("idPracownika");
+                    String nazwaUzytkownikaNadajacego = resultSet.getString("nazwaNadajacego");
+                    String nazwaUzytkownika = resultSet.getString("nazwaUzytkownika");
+                    if(Objects.equals(type, "assigned"))
+                    {
+                        tasks.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
+                    }
+                    else if(Objects.equals(type, "assignedTo")){
+                        tasksAssignedTo.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
+                    }
+                    else{
+                        tasks_finished.add(0,new Zadanie(id, temat, opis, dataRozpoczecia, dataZakonczenia, status, idPracownika, nazwaUzytkownikaNadajacego,nazwaUzytkownika));
+                    }
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
         //Zwykly pracownik
