@@ -28,6 +28,8 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("giveTask");
             } else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "task_add")){
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("przydzielZadanie");
+            }else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "assign")){
+                Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("giveTask");
             }
         });
 

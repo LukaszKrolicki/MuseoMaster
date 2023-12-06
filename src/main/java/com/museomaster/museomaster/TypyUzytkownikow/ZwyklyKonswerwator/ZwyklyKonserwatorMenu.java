@@ -14,13 +14,11 @@ public class ZwyklyKonserwatorMenu implements Initializable {
     public Label logout_lbl;
     public Button report_btn;
     public Label lista_eksponatow;
-    public Label lista_zabytkow_lbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lista_zadan_lbl.setOnMouseClicked(e -> onMenuClick("x"));
         lista_eksponatow.setOnMouseClicked(e->onMenuClick("lista_eksponatow"));
-        lista_zabytkow_lbl.setOnMouseClicked(e -> onMenuClick("taskList"));
         report_btn.setOnMouseClicked(e->onMenuClick("report"));
         logout_lbl.setOnMouseClicked(e->onLogout());
     }

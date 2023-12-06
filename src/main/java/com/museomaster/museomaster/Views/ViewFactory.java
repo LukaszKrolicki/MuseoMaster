@@ -2,6 +2,7 @@ package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
+import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
@@ -25,6 +26,7 @@ public class ViewFactory {
     private final StringProperty adminSelectedMenuItem;
     private final StringProperty permissionWorkerSelectedMenuItem;
     private final StringProperty technicalWorkerItem;
+    private final StringProperty permTechnicalWorkerItem;
     private final StringProperty WorkerItem;
     private final StringProperty KuratorSelectedMenuItem;
 
@@ -36,6 +38,7 @@ public class ViewFactory {
         this.adminSelectedMenuItem = new SimpleStringProperty("");
         this.permissionWorkerSelectedMenuItem = new SimpleStringProperty("");
         this.technicalWorkerItem = new SimpleStringProperty("");
+        this.permTechnicalWorkerItem = new SimpleStringProperty("");
         this.WorkerItem = new SimpleStringProperty("");
         this.KuratorSelectedMenuItem = new SimpleStringProperty("");
     }
@@ -48,6 +51,9 @@ public class ViewFactory {
     }
     public StringProperty getTechnicalWorkerSelectedMenuItem(){
         return technicalWorkerItem;
+    }
+    public StringProperty getPermTechnicalWorkerItem(){
+        return  permTechnicalWorkerItem;
     }
     public StringProperty getWorkerSelectedMenuItem(){
         return WorkerItem;
@@ -233,15 +239,52 @@ public class ViewFactory {
 
     AnchorPane technicalDashBoard;
 
-    AnchorPane taskList;
     AnchorPane lista_eksponatow;
     public AnchorPane showTechnicalWorkerView(String fxmlPath, String anchorPaneName){
 
         switch (anchorPaneName){
             case "report"-> view = report;
-            case "taskList"-> view = taskList;
             case "lista_eksponatow" -> view = lista_eksponatow;
-            default -> view=technicalDashBoard;
+            default -> view = technicalDashBoard;
+        }
+
+        if(view==null){
+            try{
+                view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return view;
+    }
+
+    //Konserwator Uprawniony
+    //////////////////////////////////////
+    public void showPermissionTechnicalWorkerWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/KonserwatorUprawniony/KonserwatorUprawniony.fxml"));
+        KonserwatorUprawniony pracownikController = new KonserwatorUprawniony();
+        loader.setController(pracownikController);
+        createStage(loader);
+
+    }
+
+    AnchorPane permtechnicalDashBoard;
+
+    AnchorPane perm_lista_eksponatow;
+    AnchorPane add_task, searchExpo, wyborzabytkow, giveTask, createTask;
+    public AnchorPane showPermissionTechnicalWorkerView(String fxmlPath, String anchorPaneName){
+
+        switch (anchorPaneName){
+            case "report"-> view = report;
+            case "lista_eksponatow" -> view = perm_lista_eksponatow;
+            case "add_task" -> view = add_task;
+            case "searchEx"-> view=searchExpo;
+            case "wyborZabytkow"->view = wyborzabytkow;
+            case "assign"->view=giveTask;
+            case "giveTask" -> view=giveTask;
+            case "createTask" -> view=createTask;
+            default -> view = permtechnicalDashBoard;
         }
 
         if(view==null){
@@ -298,7 +341,7 @@ public class ViewFactory {
         }
         /**
          * Próba zmiany widoku kuratora
-         * Gdy wystąpi błąd wypisywany jest błąc
+         * Gdy wystąpi błąd wypisywany jest błąd
          */
         if(view==null){
             try{
