@@ -2,6 +2,7 @@ package com.museomaster.museomaster.TypyUzytkownikow.Kurator;
 
 import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -21,6 +22,7 @@ public class KuratorMenuController implements Initializable {
     public Label search_ex_lbl;
     public Label logout_lbl;
     public Label lista_zabytkow;
+    public Button report_btn;
 
     /**
      * Podobnie jak w KuratorDashboard, metoda definiuje co ma się stać po naciśnięciu odpowiedniego Label'a
@@ -37,6 +39,7 @@ public class KuratorMenuController implements Initializable {
         ad_ex_lbl.setOnMouseClicked(e -> onMenuClick("ad_ex"));
         lista_zabytkow.setOnMouseClicked(e -> onMenuClick("lista_zabytkow"));
         search_ex_lbl.setOnMouseClicked(e -> onMenuClick("search_ex"));
+        report_btn.setOnAction(e -> onMenuClick("report"));
         //Wylogowanie
         logout_lbl.setOnMouseClicked(e->onLogout());
     }
