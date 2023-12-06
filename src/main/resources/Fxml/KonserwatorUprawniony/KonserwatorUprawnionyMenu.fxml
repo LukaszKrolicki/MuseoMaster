@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="755.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawnionyMenuController">
     <children>
         <VBox layoutY="14.0" prefHeight="130.0" prefWidth="180.0" styleClass="title_container" stylesheets="@../../Styles/AdministratorStyles/AdminMenu.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
             <children>
@@ -28,11 +29,11 @@
                         <FontAwesomeIconView glyphName="GROUP" size="20" />
                     </graphic>
                 </Label>
-            <Label fx:id="lista_zabytkow_lbl" text="Lista Zabytków">
-               <graphic>
-                  <FontAwesomeIconView glyphName="LIST" size="20" text="" />
-               </graphic>
-            </Label>
+                <Label fx:id="lista_eksponatow" text="Lista eksponatów">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="BOOKMARK" size="20" />
+                    </graphic>
+                </Label>
                 <Label fx:id="logout_lbl" prefWidth="151.0" styleClass="alt_menu_btn" text="Logout">
                     <graphic>
                         <FontAwesomeIconView glyphName="TIMES" size="20" />

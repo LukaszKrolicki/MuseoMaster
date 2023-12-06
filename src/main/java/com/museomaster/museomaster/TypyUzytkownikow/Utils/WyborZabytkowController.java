@@ -25,6 +25,9 @@ public class WyborZabytkowController implements Initializable {
             else if (Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "wyborZabytkow")){
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("task_list");
             }
+            else if (Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "wyborZabytkow")){
+                Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("x");
+            }
         }
         );
     }

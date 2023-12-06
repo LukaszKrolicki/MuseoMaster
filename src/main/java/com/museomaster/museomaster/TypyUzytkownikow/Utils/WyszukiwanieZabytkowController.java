@@ -36,6 +36,9 @@ public class WyszukiwanieZabytkowController implements Initializable {
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "searchEx")) {
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("wyborZabytkow");
             }
+            else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "searchEx")) {
+                Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("wyborZabytkow");
+            }
             else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "searchEx")){
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("wyborZabytkow");
             }
