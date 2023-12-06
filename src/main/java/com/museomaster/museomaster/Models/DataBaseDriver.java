@@ -519,4 +519,33 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+    public ResultSet getAllRoomsNames(){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM sala");
+        } catch(SQLException e) {
+           e.printStackTrace();
+        }
+
+        return resultSet;
+    }
+    public ResultSet getRoomsNames(){
+
+        String type = "P.wystawowe";
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM sala WHERE typ='"+type+"';");
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
+    }
 }
