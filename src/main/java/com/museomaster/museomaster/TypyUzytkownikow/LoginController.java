@@ -69,7 +69,7 @@ public class LoginController implements Initializable {
         }
         else{
             if(normalUser()){
-                Model.getInstance().getViewFactory().showKuratorWindow();
+                Model.getInstance().getViewFactory().showNormalUserWindow();
             }
         }
 

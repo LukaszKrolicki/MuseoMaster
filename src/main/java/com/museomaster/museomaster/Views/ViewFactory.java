@@ -5,6 +5,7 @@ import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorD
 import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
+import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.MuseumClientDashboard;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
 import com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwator;
@@ -103,6 +104,19 @@ public class ViewFactory {
 
     //////////////////////////////////////
 
+
+    //Normal user
+    ////////////////////////////////////////////////////////////////
+
+    public void showNormalUserWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/MuseumClient/MuseumClientDashboard.fxml"));
+        MuseumClientDashboard userController = new MuseumClientDashboard();
+        loader.setController(userController);
+        createStage(loader);
+
+    }
+
+    ////////////////////////////////////////////////////////////////
 
     //Admin Views
     ////////////////////////////////////////////////////////////////////////
