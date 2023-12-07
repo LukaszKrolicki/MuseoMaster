@@ -2,10 +2,7 @@ package com.museomaster.museomaster.TypyUzytkownikow.Kurator;
 
 import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -17,15 +14,18 @@ public class DodajZabytekController implements Initializable {
     public TextField okres_powstawnia_tf;
     public TextField tematyka_tf;
     public TextField tworca_tf;
-    public TextField akt_miej_przech_tf;
     public TextArea opis_ta;
     public Button dodaj_zabytek_btn;
     public Label error_lbl;
-    public TextField doc_miejcs_przech_tf;
+    public ChoiceBox<String> aktMiejscPrzech_cb;
+    public ChoiceBox<String> docMiejscePrzech_cb;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dodaj_zabytek_btn.setOnAction(e -> createExhibit());
+        initData();
+        aktMiejscPrzech_cb.setItems(Model.getInstance().getAllRooms());
+        docMiejscePrzech_cb.setItems(Model.getInstance().getAllRooms());
     }
 
     private void createExhibit(){
@@ -34,8 +34,8 @@ public class DodajZabytekController implements Initializable {
             Integer okres_pow = Integer.parseInt(okres_powstawnia_tf.getText());
             String tematyka = tematyka_tf.getText();
             String tworca = tworca_tf.getText();
-            String akt_miejsce = akt_miej_przech_tf.getText();
-            String doc_miejsc_przech = doc_miejcs_przech_tf.getText();
+            String akt_miejsce = aktMiejscPrzech_cb.getValue();
+            String doc_miejsc_przech = docMiejscePrzech_cb.getValue();
             String opis = opis_ta.getText();
 
             Model.getInstance().getDataBaseDriver().createExhibit(nazwa, okres_pow, tematyka,  tworca, akt_miejsce, doc_miejsc_przech, opis);
@@ -54,8 +54,12 @@ public class DodajZabytekController implements Initializable {
         okres_powstawnia_tf.setText("");
         tematyka_tf.setText("");
         tworca_tf.setText("");
-        akt_miej_przech_tf.setText("");
-        doc_miejcs_przech_tf.setText("");
+        aktMiejscPrzech_cb.setValue(null);
+        docMiejscePrzech_cb.setValue(null);
         opis_ta.setText("");
+    }
+    private void initData(){
+        Model.getInstance().clearAllRooms();
+        Model.getInstance().setAllRooms();
     }
 }
