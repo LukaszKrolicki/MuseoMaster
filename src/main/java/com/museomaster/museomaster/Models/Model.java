@@ -36,7 +36,7 @@ public class Model {
     private final ObservableList<Exhibit> exhibitsSearched;
     private final ObservableList<Exhibition> exhibitions;
     private final ObservableList<String> rooms;
-
+    private final ObservableList<String> allRooms;
     //Client vars
     ////////////////////////////////////////////////////////////////
     private boolean ClientLoginSuccessFlag;
@@ -93,6 +93,7 @@ public class Model {
         this.exhibitions = FXCollections.observableArrayList();
         this.exhibitsSearched = FXCollections.observableArrayList();
         this.rooms = FXCollections.observableArrayList();
+        this.allRooms = FXCollections.observableArrayList();
         ///////////////////////////////
 
 
@@ -510,7 +511,27 @@ public class Model {
                 String nazwa = resultSet.getString("nazwa");
                 String typ = resultSet.getString("typ");
                 rooms.add(nazwa);
-                System.out.println(nazwa);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public ObservableList<String> getAllRooms() {
+        return allRooms;
+    }
+    public void clearAllRooms(){
+        allRooms.clear();
+    }
+    public void setAllRooms() {
+        ResultSet resultSet = dataBaseDriver.getAllRoomsNames();
+
+        try {
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("idSali");
+                Integer wielksc = resultSet.getInt("wielkość");
+                String nazwa = resultSet.getString("nazwa");
+                String typ = resultSet.getString("typ");
+                allRooms.add(nazwa);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
