@@ -17,8 +17,6 @@ import java.util.ResourceBundle;
 public class WyszukiwanieZabytkowController implements Initializable {
     public TextField ex_name_lbl;
     public TextField author_lbl;
-    public ComboBox subject_combobox;
-    public ComboBox time_made_combobox;
     public TextField firs_year_input;
     public TextField second_year_input;
     public ChoiceBox<String> current_place_combobox;
@@ -28,10 +26,8 @@ public class WyszukiwanieZabytkowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> salaList = FXCollections.observableArrayList(
-                "Sala1", "Sala2", "Sala3", "Sala4"
-        );
-        current_place_combobox.setItems(salaList);
+        initData();
+        current_place_combobox.setItems(Model.getInstance().getAllRooms());
         search_btn.setOnAction(e-> {
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "searchEx")) {
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("wyborZabytkow");
@@ -55,5 +51,9 @@ public class WyszukiwanieZabytkowController implements Initializable {
             }
         }
         );
+    }
+    private void initData(){
+        Model.getInstance().clearAllRooms();
+        Model.getInstance().setAllRooms();
     }
 }
