@@ -38,6 +38,7 @@ public class PracownikUprawnionyDashboardController implements Initializable {
     public void initData(){
         Model.getInstance().clearTasks();
         Model.getInstance().clearFinishedTasks();
+        Model.getInstance().clearAssignedTasks();
         Model.getInstance().setTasks("assigned");
         Model.getInstance().setTasks("finished");
         Model.getInstance().setTasks("assignedTo");

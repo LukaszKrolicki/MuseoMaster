@@ -1,13 +1,18 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Kurator;
 
 import com.museomaster.museomaster.Models.Model;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -22,11 +27,18 @@ public class DodajZabytekController implements Initializable {
     public Button dodaj_zabytek_btn;
     public Label error_lbl;
     public TextField doc_miejcs_przech_tf;
+    public Label filePath;
+    public Button mp3Button;
+
+    File selectedFile=null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dodaj_zabytek_btn.setOnAction(e -> createExhibit());
+        dodaj_zabytek_btn.setOnAction(e -> {createExhibit(); saveMusicFile();});
+        mp3Button.setOnAction(e -> openMusicFile());
+
     }
+
 
     private void createExhibit(){
         try{
@@ -57,5 +69,26 @@ public class DodajZabytekController implements Initializable {
         akt_miej_przech_tf.setText("");
         doc_miejcs_przech_tf.setText("");
         opis_ta.setText("");
+    }
+
+    private void openMusicFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Music Files", "*.mp3", "*.wav", "*.flac"));
+
+        // Set initial directory (optional)
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        Stage stage = new Stage();
+        selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            filePath.setText("Selected Music File: " + selectedFile.getAbsolutePath());
+        }
+    }
+
+    private void saveMusicFile(){
+        if(selectedFile!=null){
+            Model.getInstance().getDataBaseDriver().createMusicFile(selectedFile);
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.museomaster.museomaster.Models;
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddUser;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -345,7 +346,32 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+    //createMusicFile
+    public void createMusicFile(File mp3File){
+        PreparedStatement pstmt = null;
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
 
+            String sql = "INSERT INTO plikmuzyczny (idZabytku,Muzyka,nazwaPliku) VALUES (?, ?, ?)";
+            FileInputStream fis = new FileInputStream(mp3File);
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(3, mp3File.getName());
+            pstmt.setBinaryStream(2, fis, (int) mp3File.length());
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT MAX(idEksponatu) FROM eksponat;");
+            int highestId = 0;
+            if (resultSet.next()) {
+                highestId = resultSet.getInt(1);
+            }
+            pstmt.setInt(1, highestId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            createExhibitSuccessFlag = false;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //Create exhibition
     private boolean createExhibitionSuccessFlag;
