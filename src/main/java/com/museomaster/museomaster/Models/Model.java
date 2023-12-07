@@ -35,6 +35,7 @@ public class Model {
     private final ObservableList<Exhibit> exhibits;
     private final ObservableList<Exhibit> exhibitsSearched;
     private final ObservableList<Exhibition> exhibitions;
+    private final ObservableList<String> rooms;
 
     //Client vars
     ////////////////////////////////////////////////////////////////
@@ -91,6 +92,7 @@ public class Model {
         this.exhibits = FXCollections.observableArrayList();
         this.exhibitions = FXCollections.observableArrayList();
         this.exhibitsSearched = FXCollections.observableArrayList();
+        this.rooms = FXCollections.observableArrayList();
         ///////////////////////////////
 
 
@@ -491,6 +493,29 @@ public class Model {
                 throw new RuntimeException(e);
             }
         }
+
+    public ObservableList<String> getRooms() {
+        return rooms;
+    }
+    public void clearRooms(){
+        rooms.clear();
+    }
+    public void setRoom() {
+        ResultSet resultSet = dataBaseDriver.getRoomsNames();
+
+        try {
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt("idSali");
+                Integer wielksc = resultSet.getInt("wielkość");
+                String nazwa = resultSet.getString("nazwa");
+                String typ = resultSet.getString("typ");
+                rooms.add(nazwa);
+                System.out.println(nazwa);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     }
 

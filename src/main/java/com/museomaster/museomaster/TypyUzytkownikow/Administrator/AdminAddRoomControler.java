@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class AdminAddRoomControler implements Initializable {
     public TextField room_name_input;
     public TextField room_size_input;
-    public ChoiceBox room_type_checkbox;
+    public ChoiceBox<String> room_type_checkbox;
     public Button create_room_button;
     public Label error_lbl;
 
@@ -34,7 +34,7 @@ public class AdminAddRoomControler implements Initializable {
         try {
             Integer fsize = Integer.parseInt(room_size_input.getText());
             String fname = room_name_input.getText();
-            String type = room_type_checkbox.getValue().toString();
+            String type = room_type_checkbox.getValue();
             Model.getInstance().getDataBaseDriver().createRoom(fsize, fname, type);
             empty();
             error_lbl.setText("Stworzono pomieszczenie!");
@@ -49,5 +49,6 @@ public class AdminAddRoomControler implements Initializable {
     private void empty(){
         room_name_input.setText("");
         room_size_input.setText("");
+        room_type_checkbox.setValue(null);
     }
 }

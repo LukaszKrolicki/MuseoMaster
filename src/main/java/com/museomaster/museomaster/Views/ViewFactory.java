@@ -331,6 +331,7 @@ public class ViewFactory {
             case "add_ex"-> view = add_ex;
             case "ex_list"-> view = ex_list;
             case "ad_ex" -> view = ad_ex;
+            case "report"-> view = report;
             case "search_ex" -> view = search_ex;
             case "searchEx" -> view = searchExp;
             case "lista_zabytkow" -> view = lista_zabytkow;

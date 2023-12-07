@@ -1,8 +1,6 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Kurator;
 
 import com.museomaster.museomaster.Models.Model;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -10,7 +8,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -28,12 +25,9 @@ public class KuratorDodajWystaweController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> salaList = FXCollections.observableArrayList(
-                "Sala1", "Sala2", "Sala3", "Sala4"
-        );
-        room_combobox.setItems(salaList);
+        initData();
+        room_combobox.setItems(Model.getInstance().getRooms());
         create_ex_button.setOnAction(e -> createExhibition());
-        //TODO get sala from database instead of raw text
     }
     private void createExhibition(){
         try{
@@ -70,6 +64,10 @@ public class KuratorDodajWystaweController implements Initializable {
         start_date_datapicker.setValue(null);
         end_date_datapicker.setValue(null);
 
+    }
+    private void initData(){
+        Model.getInstance().clearRooms();
+        Model.getInstance().setRoom();
     }
 
 }
