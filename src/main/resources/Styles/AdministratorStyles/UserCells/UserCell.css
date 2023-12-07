@@ -27,6 +27,16 @@
     -fx-text-fill: #FFFFFF;
 }
 
+.desc_btn{
+    -fx-background-color: #58beff;
+    -fx-text-fill: #FFFFFF;
+}
+
+.listen_btn{
+    -fx-background-color: #ff9000;
+    -fx-text-fill: #FFFFFF;
+}
+
 .delete_btn FontAwesomeIconView{
     -fx-fill: #FFFFFF;
 }
