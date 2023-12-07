@@ -67,6 +67,11 @@ public class LoginController implements Initializable {
                 Model.getInstance().getViewFactory().showKuratorWindow();
             }
         }
+        else{
+            if(normalUser()){
+                Model.getInstance().getViewFactory().showKuratorWindow();
+            }
+        }
 
     }
 
@@ -85,5 +90,20 @@ public class LoginController implements Initializable {
             return false;
         }
 
+    }
+
+    private boolean normalUser(){
+        Model.getInstance().evaluateNormalUser(login_input.getText(),password_input.getText());
+        if(Model.getInstance().getNornalClientLoginSuccess()){
+            Model.getInstance().getViewFactory().closeStage((Stage)error_lbl.getScene().getWindow());
+            return true;
+        }
+        else{
+            login_input.setText("");
+            password_input.setText("");
+            error_lbl.setTextFill(Color.RED);
+            error_lbl.setText("Złe dane");
+            return false;
+        }
     }
 }

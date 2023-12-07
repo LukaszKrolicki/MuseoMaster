@@ -40,7 +40,12 @@ public class Model {
     //Client vars
     ////////////////////////////////////////////////////////////////
     private boolean ClientLoginSuccessFlag;
+
     ////////////////////////////////
+
+    //Normal client vars
+    private boolean NormalClientLoginSuccessFlag;
+    ////////////////////////////////////////////////////////////////
 
     //Pracownik+
     private final ObservableList<Client> workersAssigned;
@@ -69,6 +74,10 @@ public class Model {
 
         //Client settings
         this.ClientLoginSuccessFlag = false;
+        ////////////////////////////////
+
+        //NormalClient Settings
+        this.NormalClientLoginSuccessFlag = false;
         ////////////////////////////////
 
         //Admin settings
@@ -127,6 +136,13 @@ public class Model {
         this.ClientLoginSuccessFlag = flag;
     }
 
+    public void setNormalClientLoginSuccess(boolean flag) {
+        this.NormalClientLoginSuccessFlag = flag;
+    }
+
+    public boolean getNornalClientLoginSuccess(){
+        return this.NormalClientLoginSuccessFlag;
+    }
     public Client getClient() {
         return client;
     }
@@ -158,6 +174,21 @@ public class Model {
         }
     }
 
+    //Normal User
+    ////////////////////////////////////////////////////////////////
+    public void evaluateNormalUser(String username, String password) {
+        ResultSet resultSet = dataBaseDriver.getNormalClientData(username, password);
+        try {
+            if (resultSet.next()) {
+
+                this.setNormalClientLoginSuccess(true);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////
 
     //Admin sekcja
     ////////////////////////////////////////////////////////////////
