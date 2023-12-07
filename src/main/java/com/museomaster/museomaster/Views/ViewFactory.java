@@ -1,10 +1,12 @@
 package com.museomaster.museomaster.Views;
 
 import com.museomaster.museomaster.Enums.AccountType;
+import com.museomaster.museomaster.Models.Exhibit;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
+import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.ExDescController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.MuseumClientDashboard;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
@@ -20,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class ViewFactory {
     //Typ konta
@@ -111,6 +114,13 @@ public class ViewFactory {
     public void showNormalUserWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/MuseumClient/MuseumClientDashboard.fxml"));
         MuseumClientDashboard userController = new MuseumClientDashboard();
+        loader.setController(userController);
+        createStage(loader);
+
+    }
+    public void showExDescWindow(Exhibit exhibit){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/MuseumClient/ExDetails.fxml"));
+        ExDescController userController = new ExDescController(exhibit);
         loader.setController(userController);
         createStage(loader);
 
