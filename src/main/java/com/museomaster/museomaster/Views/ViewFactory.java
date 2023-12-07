@@ -4,6 +4,7 @@ import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
+import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
 import com.museomaster.museomaster.TypyUzytkownikow.PracownikUprawniony.PracownikUprawnionyController;
 import com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ZwyklyKonserwator;
@@ -60,6 +61,10 @@ public class ViewFactory {
     }
     public StringProperty getKuratorSelectedMenuItem(){return KuratorSelectedMenuItem;}
 
+
+    //Login
+    //////////////////////////
+
     /**
      * Funckja jest odpowiedzialna na wyśiwtlanie okna Loginu w aplikacji
      */
@@ -70,6 +75,34 @@ public class ViewFactory {
     }
 
     private AnchorPane view;
+
+    public void showCreateNormalUserWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/MuseumClient/AddNormalUser.fxml"));
+        AddNormalUser userController = new AddNormalUser();
+        loader.setController(userController);
+        createStage(loader);
+
+    }
+
+    public Label normalUserErr;
+    public void set_normal_user_err_label(Label err){
+        this.normalUserErr=err;
+    }
+    public Label get_normal_user_err_label(){
+        return normalUserErr;
+    }
+
+    public Label loginErr;
+    public void set_login_err_label(Label err){
+        loginErr=err;
+    }
+
+    public Label get_login_err_label(){
+        return loginErr;
+    }
+
+    //////////////////////////////////////
+
 
     //Admin Views
     ////////////////////////////////////////////////////////////////////////
@@ -88,7 +121,6 @@ public class ViewFactory {
 
     private AnchorPane userListView;
     private AnchorPane ReportListView;
-
 
 
     public AnchorPane getAdminView(String fxmlPath, String anchorPaneName){

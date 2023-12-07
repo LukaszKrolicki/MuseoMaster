@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -21,14 +22,17 @@ public class LoginController implements Initializable {
     public TextField password_input;
     public Button login_button;
     public Label error_lbl;
+    public Label addNormalUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         login_button.setOnAction(e->onLogin());
+        Model.getInstance().getViewFactory().set_login_err_label(error_lbl);
         ObservableList<String> rolaList = FXCollections.observableArrayList(
                 "Admin", "Pracownik", "Pracownik+", "Pracownik Techniczny", "Pracownik Techniczny+", "Kurator"
         );
         rola_choiceBox.setItems(rolaList);
+        addNormalUser.setOnMouseClicked(e->Model.getInstance().getViewFactory().showCreateNormalUserWindow());
     }
 
     private void onLogin(){
@@ -76,6 +80,7 @@ public class LoginController implements Initializable {
         else{
             login_input.setText("");
             password_input.setText("");
+            error_lbl.setTextFill(Color.RED);
             error_lbl.setText("Złe dane");
             return false;
         }

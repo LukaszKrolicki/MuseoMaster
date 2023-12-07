@@ -59,6 +59,9 @@
     -fx-font-size:1.2em;
 }
 
+.login_logo_container Label:hover{
+    -fx-cursor: hand;
+}
 .login_form_container Button:hover{
     -fx-cursor: hand;
 }
