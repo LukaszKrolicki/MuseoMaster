@@ -7,26 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="50.0" prefWidth="710.0" styleClass="client_cell_container" stylesheets="@../../../Styles/AdministratorStyles/UserCells/UserCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-        <children>
-            <Button fx:id="play_btn" layoutX="652.0" layoutY="12.0" mnemonicParsing="false" styleClass="listen_btn" AnchorPane.rightAnchor="20.0">
-         <graphic>
-            <FontAwesomeIconView fill="WHITE" glyphName="PLAY_CIRCLE" />
-         </graphic></Button>
-              <Label fx:id="id_lbl" layoutX="31.2" layoutY="16.0" prefHeight="18.0" prefWidth="167.0" text="Zaginiona księga czarów" AnchorPane.leftAnchor="31.0">
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </Label>
-              <Label fx:id="author_lbl" layoutX="179.0" layoutY="16.0" prefHeight="17.0" prefWidth="145.0" text="Jacek niedzielski" AnchorPane.leftAnchor="200.0">
-         <graphic>
-                    <FontAwesomeIconView glyphName="USER" />
-         </graphic>
-      </Label>
-      <Button fx:id="desc_btn" layoutX="534.0" layoutY="12.0" mnemonicParsing="false" styleClass="desc_btn" text="Opis i szczegóły" AnchorPane.rightAnchor="60.8">
-         <graphic>
-            <FontAwesomeIconView fill="WHITE" glyphName="DATABASE" />
-         </graphic>
-      </Button>
-      <FontAwesomeIconView fill="#adb9ff" glyphName="SQUARE" layoutX="9.0" layoutY="28.0" selectionFill="#f40d0d" />
-        </children>
+    <Button fx:id="play_btn" layoutX="652.0" layoutY="12.0" mnemonicParsing="false" styleClass="listen_btn" AnchorPane.rightAnchor="20.0">
+        <graphic>
+    <FontAwesomeIconView fx:id="playFont2" fill="WHITE" glyphName="STOP" />
+        </graphic>
+    </Button>
+    <Label fx:id="id_lbl" layoutX="31.2" layoutY="16.0" prefHeight="18.0" prefWidth="167.0" text="Zaginiona księga czarów" AnchorPane.leftAnchor="31.0">
+        <padding>
+  <Insets right="10.0" />
+        </padding>
+    </Label>
+    <Label fx:id="author_lbl" layoutX="179.0" layoutY="16.0" prefHeight="17.0" prefWidth="145.0" text="Jacek niedzielski" AnchorPane.leftAnchor="200.0">
+        <graphic>
+            <FontAwesomeIconView glyphName="USER" />
+        </graphic>
+    </Label>
+    <Button fx:id="desc_btn" layoutX="534.0" layoutY="12.0" mnemonicParsing="false" styleClass="desc_btn" text="Opis i szczegóły" AnchorPane.rightAnchor="60.8">
+        <graphic>
+          <FontAwesomeIconView fill="WHITE" glyphName="DATABASE" />
+        </graphic>
+    </Button>
+    <FontAwesomeIconView fill="#adb9ff" glyphName="SQUARE" layoutX="9.0" layoutY="28.0" selectionFill="#f40d0d" />
 </AnchorPane>

@@ -2,6 +2,8 @@ module com.museomaster.museomaster {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires de.jensd.fx.glyphs.fontawesome;
+    requires javafx.media;
 
 
     opens com.museomaster.museomaster to javafx.fxml;

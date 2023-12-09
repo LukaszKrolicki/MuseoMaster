@@ -16,6 +16,7 @@ public class ExList implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initData();
+
         ex_list.setItems(Model.getInstance().getExhibits());
         ex_list.setCellFactory(e -> new NormalUserExhibitCellFactory());
     }

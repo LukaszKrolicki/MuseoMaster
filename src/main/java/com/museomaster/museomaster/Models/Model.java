@@ -64,7 +64,12 @@ public class Model {
 
     ////////////////////////////////////////////////////////////////
 
+    //AudioVars
+    ////////////////////////////////////////////////////////////////
+    public Integer playAudioFlag=1;
+    public Thread audioThread;
 
+    ////////////////////////////////////////////////////////////////
     private Model() {
 
         this.viewFactory = new ViewFactory();
@@ -106,6 +111,27 @@ public class Model {
 
 
     }
+
+    //AudioFlags/Func
+    ////////////////////////////////
+
+    public Integer getPlayAudioFlag() {
+        return playAudioFlag;
+    }
+
+    public void setPlayAudioFlag(Integer playAudioFlag) {
+        this.playAudioFlag = playAudioFlag;
+    }
+
+    public Thread getAudioThread() {
+        return audioThread;
+    }
+
+    public void setAudioThread(Thread audioThread) {
+        this.audioThread = audioThread;
+    }
+
+    ////////////////////////////////
 
     public DataBaseDriver getDataBaseDriver() {
         return dataBaseDriver;
@@ -547,6 +573,7 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
+
 
     }
 

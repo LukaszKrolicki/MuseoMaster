@@ -4,10 +4,7 @@ package com.museomaster.museomaster.Models;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddUser;
 import javafx.scene.paint.Color;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Properties;
@@ -623,5 +620,33 @@ public class DataBaseDriver {
         }
     }
 
+    public boolean getMusicFile(Integer idZabytku) throws SQLException, IOException {
+        PreparedStatement pstmt = null;
+        String sql2 = "SELECT * FROM plikMuzyczny WHERE idZabytku=?";
+        pstmt= conn.prepareStatement(sql2);
+        pstmt.setInt(1, idZabytku);
+        ResultSet rs = null;
+        rs = pstmt.executeQuery();
+        if (rs.next()) {
+            // Retrieve the MP3 file data from the result set
+            InputStream inputStream = rs.getBinaryStream("Muzyka");
+
+            // Save the MP3 file to a local file
+            File outputFile = new File("src/main/resources/pobrane/pobrane.mp3");
+            FileOutputStream fos = new FileOutputStream(outputFile);
+
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                fos.write(buffer, 0, bytesRead);
+            }
+
+            System.out.println(outputFile.getAbsolutePath());
+            return true;
+        } else {
+            System.out.println("nie znaleziono");
+            return false;
+        }
+    }
     ////////////////////////////////////////////////////////////////
 }

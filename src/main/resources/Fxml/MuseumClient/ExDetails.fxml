@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="400.0" prefWidth="71.0" styleClass="login_logo_container" stylesheets="@../../Styles/LoginStyles/Login.css" />
       <Label fx:id="ExId_lbl" layoutX="83.0" layoutY="14.0" text="Id eksponatu:" AnchorPane.topAnchor="18.0" />

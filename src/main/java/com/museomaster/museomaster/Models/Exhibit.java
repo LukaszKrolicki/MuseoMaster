@@ -5,6 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.media.MediaPlayer;
 
 public class Exhibit {
     private final IntegerProperty idZabytku;
@@ -18,6 +19,12 @@ public class Exhibit {
     private final IntegerProperty ZadanieidZadania;
     private final IntegerProperty SalaidSali;
     private final IntegerProperty ZadaniePracownikidPracownika;
+
+    private String NormalExListIcon="STOP";
+    private String NormalExListColor="#ff0062";
+
+    private MediaPlayer NormalExListMedia=null;
+    private Thread NormalExListThread=null;
     public Exhibit(Integer idZabytku, String nazwa_zabytku_tf, String okres_powstawnia_tf, String tematyka_tf, String tworca_tf, String akt_miej_przech_tf, String opis_ta, Integer WystawaidWystawy, Integer ZadanieidZadania, Integer SalaidSali, Integer ZadaniePracownikidPracownika) {
         this.idZabytku = new SimpleIntegerProperty(this, "idEksponatu", idZabytku);
         this.nazwa_zabytku_tf =  new SimpleStringProperty(this, "nazwaEksponatu", nazwa_zabytku_tf);
@@ -30,6 +37,38 @@ public class Exhibit {
         this.ZadanieidZadania = new SimpleIntegerProperty(this, "ZadanieidZadania", ZadanieidZadania);
         this.SalaidSali = new SimpleIntegerProperty(this, "SalaidSali", SalaidSali);
         this.ZadaniePracownikidPracownika = new SimpleIntegerProperty(this, "ZadaniePracownikidPracownika", ZadaniePracownikidPracownika);
+    }
+
+    public MediaPlayer getNormalExListMedia() {
+        return NormalExListMedia;
+    }
+
+    public void setNormalExListMedia(MediaPlayer normalExListMedia) {
+        NormalExListMedia = normalExListMedia;
+    }
+
+    public Thread getNormalExListThread() {
+        return NormalExListThread;
+    }
+
+    public void setNormalExListThread(Thread normalExListThread) {
+        NormalExListThread = normalExListThread;
+    }
+
+    public String getNormalExListColor() {
+        return NormalExListColor;
+    }
+
+    public void setNormalExListColor(String normalExListColor) {
+        NormalExListColor = normalExListColor;
+    }
+
+    public String getNormalExListIcon() {
+        return NormalExListIcon;
+    }
+
+    public void setNormalExListIcon(String normalExListIcon) {
+        NormalExListIcon = normalExListIcon;
     }
 
     public StringProperty nazwa_zabytku_tfProperty() {
