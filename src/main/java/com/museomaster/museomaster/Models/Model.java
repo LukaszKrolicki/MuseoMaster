@@ -67,7 +67,7 @@ public class Model {
     //AudioVars
     ////////////////////////////////////////////////////////////////
     public Integer playAudioFlag=1;
-    public Thread audioThread;
+
 
     ////////////////////////////////////////////////////////////////
     private Model() {
@@ -123,13 +123,7 @@ public class Model {
         this.playAudioFlag = playAudioFlag;
     }
 
-    public Thread getAudioThread() {
-        return audioThread;
-    }
 
-    public void setAudioThread(Thread audioThread) {
-        this.audioThread = audioThread;
-    }
 
     ////////////////////////////////
 

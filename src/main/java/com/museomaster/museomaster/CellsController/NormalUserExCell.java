@@ -71,7 +71,6 @@ public class NormalUserExCell implements Initializable {
                         thread = new Thread(() -> {
 
                                 try {
-                                    Model.getInstance().setAudioThread(thread);
                                     exhibit.setNormalExListThread(thread);
                                     DownloadState();
                                 } catch (SQLException ex) {
@@ -85,7 +84,7 @@ public class NormalUserExCell implements Initializable {
                                     try {
                                         NormalState();
                                     }
-                                    catch (Exception x){
+                                    catch (Exception ignored){
 
                                     }
                                 }
