@@ -36,6 +36,6 @@
         <Label text="Data zakończenia(*):"/>
         <DatePicker fx:id="end_date_datapicker"/>
         <Button fx:id="create_ex_button" mnemonicParsing="false" text="Utwórz wystawę"/>
-        <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="ERROR"/>
+        <Text fx:id="error_lbl" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0"/>
     </VBox>
 </AnchorPane>
