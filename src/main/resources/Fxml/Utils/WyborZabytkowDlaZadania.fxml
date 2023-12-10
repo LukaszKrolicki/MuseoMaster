@@ -11,13 +11,13 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="755.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Utils.WyborZabytkowController">
    <children>
-      <VBox layoutX="328.0" layoutY="10.0" prefHeight="760.0" prefWidth="656.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="18.0">
+      <VBox layoutX="15.0" layoutY="10.0" prefHeight="760.0" prefWidth="723.0" stylesheets="@../../Styles/AdministratorStyles/AdminUserList.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lista wybranych zabytków:">
                <font>
                   <Font name="Calibri" size="18.0" />
                </font></Text>
-            <ListView fx:id="lista_wybranych_zab" prefHeight="400.0" prefWidth="200.0" />
+            <ListView fx:id="lista_wybranych_zab" prefHeight="387.0" prefWidth="713.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Typ zadania" />
             <ChoiceBox fx:id="typ_zadania" prefWidth="150.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sala (opcjonalne)" />

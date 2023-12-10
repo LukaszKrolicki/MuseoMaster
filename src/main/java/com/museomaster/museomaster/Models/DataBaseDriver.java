@@ -224,6 +224,18 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public void UpdateEx(String status,Integer idPracownika, String doceloweMiejsce, Integer idEksponatu){
+        Statement statement;
+
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("Update eksponat SET status='"+status+"', ZadaniePracownikidPracownika='" + idPracownika + "', docMiejscePrzech='" + doceloweMiejsce + "', ZadanieIdZadania='" + doceloweMiejsce + "' Where idEksponatu='"+idEksponatu+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     /////////////////////////////////////////////////////////////////////////

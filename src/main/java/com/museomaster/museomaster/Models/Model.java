@@ -50,6 +50,8 @@ public class Model {
     //Pracownik+
     private final ObservableList<Client> workersAssigned;
     private final ObservableList<Zadanie> tasksAssignedTo;
+
+    private final ObservableList<Exhibit> exAssigned;
     ////////////////////////////////////////////////////////////////
 
     //Pracownik zwykly
@@ -95,6 +97,7 @@ public class Model {
         ///////////////////////////////
         this.workersAssigned = FXCollections.observableArrayList();
         this.tasksAssignedTo = FXCollections.observableArrayList();
+        this.exAssigned=FXCollections.observableArrayList();
         //////////////////////////////
 
         //Pracownik settings
@@ -299,12 +302,31 @@ public class Model {
             workersAssigned.remove(client);
             System.out.println(workersAssigned);
         }
+        public ObservableList<Client>  getWorkersAssigned(){
+            return workersAssigned;
+        }
 
+        public void clearWorkersAssigned(){
+            workersAssigned.clear();
+        }
         public void clearAssignedTasks () {
         tasksAssignedTo.clear();
     }
         public void addTaskAssignedTo (Zadanie task){
             tasksAssignedTo.add(0, task);
+        }
+
+        public void assignEx (Exhibit ex){
+            exAssigned.add(ex);
+            System.out.println(exAssigned);
+        }
+        public void removeEx (Exhibit ex){
+            exAssigned.remove(ex);
+            System.out.println(exAssigned);
+        }
+
+        public ObservableList<Exhibit>  getExAssigned(){
+            return exAssigned;
         }
 
         public ObservableList<Zadanie>  getAssignedToTasks(){
@@ -356,6 +378,22 @@ public class Model {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+
+        String desc;
+        String subject;
+        java.sql.Date starDate;
+        java.sql.Date endDate;
+
+        public void setTaskVars(String desc, String subject, java.sql.Date starDate,java.sql.Date endDate){
+            this.desc=desc;
+            this.subject=subject;
+            this.starDate=starDate;
+            this.endDate=endDate;
+        }
+        public void createTask(Integer idPracownika,String nazwaUzytkownia, String nazwaNadajacego){
+            Model.getInstance().getDataBaseDriver().createTask(idPracownika,desc,subject,starDate,endDate,nazwaNadajacego, nazwaUzytkownia);
         }
 
 

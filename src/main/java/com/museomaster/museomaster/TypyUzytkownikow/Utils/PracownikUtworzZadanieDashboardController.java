@@ -26,6 +26,11 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ego_to_ex_btn.setOnAction(e-> {
+            LocalDate start = stard_date_datePicker.getValue();
+            java.sql.Date starDate = java.sql.Date.valueOf(start);
+            LocalDate end = end_date_datePicker.getValue();
+            java.sql.Date endDate= java.sql.Date.valueOf(end);
+            Model.getInstance().setTaskVars(desc_textfield.getText(),subject_lbl.getText(),starDate,endDate);
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "giveTask"))
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("searchEx");
             else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "przydzielZadanie")){
@@ -47,10 +52,11 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
                     System.out.println(endDate);
 
-
-                    for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa, client.getNazwaUzytkownika());
+                    Model.getInstance().setTaskVars(desc_textfield.getText(),subject_lbl.getText(),starDate,endDate);
+                    for(Client client : Model.getInstance().getWorkersAssigned()){
+                        Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
                     }
+                    Model.getInstance().clearWorkersAssigned();
                     Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x");
                 }
                 catch (Exception x){
@@ -68,10 +74,12 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
                     System.out.println(endDate);
 
+                    Model.getInstance().setTaskVars(desc_textfield.getText(),subject_lbl.getText(),starDate,endDate);
+                    for(Client client : Model.getInstance().getWorkersAssigned()){
 
-                    for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa,client.getNazwaUzytkownika());
+                        Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
                     }
+                    Model.getInstance().clearWorkersAssigned();
                     Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("task_list");
                 }
                 catch (Exception x){
@@ -88,10 +96,11 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
                     System.out.println(endDate);
 
-
-                    for(Client client : Model.getInstance().getClients()){
-                        Model.getInstance().getDataBaseDriver().createTask(client.getIdPracownika(),desc_textfield.getText(),subject_lbl.getText(),starDate,endDate,nazwa, client.getNazwaUzytkownika());
+                    Model.getInstance().setTaskVars(desc_textfield.getText(),subject_lbl.getText(),starDate,endDate);
+                    for(Client client : Model.getInstance().getWorkersAssigned()){
+                        Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
                     }
+                    Model.getInstance().clearWorkersAssigned();
                     Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("x");
                 }
                 catch (Exception x){

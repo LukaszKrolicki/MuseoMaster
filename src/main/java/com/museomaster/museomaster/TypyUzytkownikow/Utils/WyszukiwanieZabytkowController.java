@@ -30,27 +30,40 @@ public class WyszukiwanieZabytkowController implements Initializable {
         current_place_combobox.setItems(Model.getInstance().getAllRooms());
         search_btn.setOnAction(e-> {
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "searchEx")) {
+                Model.getInstance().getSearchedExhibits().clear();
+                search();
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("wyborZabytkow");
+
             }
             else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "searchEx")) {
+                Model.getInstance().getSearchedExhibits().clear();
+                search();
                 Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("wyborZabytkow");
+
             }
             else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "searchEx")){
+                Model.getInstance().getSearchedExhibits().clear();
+                search();
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("wyborZabytkow");
             }
             else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "search_ex")){
                 Model.getInstance().getSearchedExhibits().clear();
-                if(Objects.equals(firs_year_input.getText(), "")){
-                    firs_year_input.setText("10000");
-                }
-                if(Objects.equals(second_year_input.getText(), "")){
-                    second_year_input.setText("10000");
-                }
-                Model.getInstance().setExhibitsSearched(ex_name_lbl.getText(), author_lbl.getText(), tematyka_tf.getText(), Integer.parseInt(firs_year_input.getText()), Integer.parseInt(second_year_input.getText()), current_place_combobox.getValue());
+                search();
                 Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("listaWyszukanychZab");
             }
         }
         );
+    }
+
+    private void search(){
+        if(Objects.equals(firs_year_input.getText(), "")){
+            firs_year_input.setText("10000");
+        }
+        if(Objects.equals(second_year_input.getText(), "")){
+            second_year_input.setText("10000");
+        }
+        Model.getInstance().setExhibitsSearched(ex_name_lbl.getText(), author_lbl.getText(), tematyka_tf.getText(), Integer.parseInt(firs_year_input.getText()), Integer.parseInt(second_year_input.getText()), current_place_combobox.getValue());
+
     }
     private void initData(){
         Model.getInstance().clearAllRooms();

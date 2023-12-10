@@ -1,6 +1,12 @@
 package com.museomaster.museomaster.TypyUzytkownikow.Utils;
 
+import com.museomaster.museomaster.CellsController.WyborZabytkuCellFactory;
+import com.museomaster.museomaster.CellsController.reportCellFactory;
+import com.museomaster.museomaster.Models.Client;
+import com.museomaster.museomaster.Models.Exhibit;
 import com.museomaster.museomaster.Models.Model;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -11,14 +17,22 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class WyborZabytkowController implements Initializable {
-    public ListView lista_wybranych_zab;
+    public ListView<Exhibit> lista_wybranych_zab;
     public ChoiceBox typ_zadania;
     public ChoiceBox sala_choice;
     public Button add_button;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initData();
         add_button.setOnAction(e-> {
+                    String nazwa;
+                    for(Client client : Model.getInstance().getWorkersAssigned()){
+                        nazwa=Model.getInstance().getClient().getNazwaUzytkownika();
+                        Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
+                    }
+
+
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "wyborZabytkow")){
                 Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("x") ;
             }
@@ -29,6 +43,21 @@ public class WyborZabytkowController implements Initializable {
                 Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("x");
             }
         }
+
         );
+        System.out.println(Model.getInstance().getExhibits());
+        lista_wybranych_zab.setItems(Model.getInstance().getSearchedExhibits());
+        lista_wybranych_zab.setCellFactory(e->new WyborZabytkuCellFactory());
+
+        ObservableList<String> rolaList = FXCollections.observableArrayList(
+                "Przenieś", "Konserwacja", "Sprawdzanie stanu"
+        );
+        typ_zadania.setItems(rolaList);
+        sala_choice.setItems(Model.getInstance().getAllRooms());
+    }
+
+    private void initData(){
+        Model.getInstance().clearAllRooms();
+        Model.getInstance().setAllRooms();
     }
 }
