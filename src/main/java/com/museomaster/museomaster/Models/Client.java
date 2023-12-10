@@ -76,6 +76,9 @@ public class Client {
         return rola;
     }
 
+    public String getRola() {
+        return rola.get();
+    }
 
     public StringProperty nazwaUzytkownikaProperty() {
         return nazwaUzytkownika;

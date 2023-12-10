@@ -5,10 +5,7 @@ import com.museomaster.museomaster.Models.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.Objects;
@@ -20,9 +17,11 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
     public ComboBox role_combobox;
     public ListView ser_found_list;
     public Button give_task;
+    public Label error_lbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Model.getInstance().clearWorkersAssigned();
         give_task.setOnAction(e-> {
             if(!Model.getInstance().getWorkersAssigned().isEmpty()){
                 if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "assign")) {
@@ -32,6 +31,9 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
                 }else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "assign")){
                     Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("giveTask");
                 }
+            }
+            else{
+                error_lbl.setText("Nie wybrano pracownika");
             }
         });
 

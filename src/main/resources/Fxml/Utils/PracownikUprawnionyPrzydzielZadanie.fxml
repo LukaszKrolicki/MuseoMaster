@@ -32,5 +32,6 @@
             <Button fx:id="give_task" mnemonicParsing="false" text="Przydziel zadanie" />
          </children>
       </VBox>
+      <Label fx:id="error_lbl" layoutX="18.0" layoutY="730.0" textFill="RED" />
    </children>
 </AnchorPane>
