@@ -33,7 +33,7 @@ public class WyborZabytkuCell implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         id_zad.textProperty().bind(exhibit.idZabytkuProperty().asString());
-        ex_subject.textProperty().bind(exhibit.nazwa_zabytku_tfProperty());
+        ex_name.textProperty().bind(exhibit.nazwa_zabytku_tfProperty());
         ex_subject.textProperty().bind(exhibit.tematyka_tfProperty());
 
         ex_desc_btn.setOnAction(e-> Model.getInstance().getViewFactory().showExDescWindow(exhibit));
@@ -49,5 +49,5 @@ public class WyborZabytkuCell implements Initializable {
                 }
         );
     }
-}
+    }
 

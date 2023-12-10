@@ -26,11 +26,20 @@ public class WyborZabytkowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initData();
         add_button.setOnAction(e-> {
-                    String nazwa;
-                    for(Client client : Model.getInstance().getWorkersAssigned()){
-                        nazwa=Model.getInstance().getClient().getNazwaUzytkownika();
-                        Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
-                    }
+            String nazwa;
+            for(Client client : Model.getInstance().getWorkersAssigned()){
+                nazwa=Model.getInstance().getClient().getNazwaUzytkownika();
+                Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
+                for(Exhibit ex : Model.getInstance().getExAssigned()){
+                    Integer ex_id=ex.idZabytkuProperty().getValue();
+                    Integer worker_id=client.getIdPracownika();
+                    Model.getInstance().getDataBaseDriver().createEksponatZadanie(worker_id,ex_id);
+                }
+            }
+
+            for(Exhibit ex : Model.getInstance().getExAssigned()){
+                Model.getInstance().getDataBaseDriver().UpdateEx(typ_zadania.getValue().toString(),sala_choice.getValue().toString(),ex.idZabytkuProperty().getValue());
+            }
 
 
             if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "wyborZabytkow")){
@@ -45,6 +54,7 @@ public class WyborZabytkowController implements Initializable {
         }
 
         );
+
         System.out.println(Model.getInstance().getExhibits());
         lista_wybranych_zab.setItems(Model.getInstance().getSearchedExhibits());
         lista_wybranych_zab.setCellFactory(e->new WyborZabytkuCellFactory());

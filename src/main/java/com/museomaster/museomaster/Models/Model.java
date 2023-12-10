@@ -397,6 +397,7 @@ public class Model {
         }
 
 
+
         //Zwykly pracownik
         ////////////////////////////////////////////////////////////////
         public ObservableList<Zadanie> getTasks () {

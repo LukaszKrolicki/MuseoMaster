@@ -24,12 +24,14 @@ public class PracownikUprawnionyPrzydzielZadanie implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         give_task.setOnAction(e-> {
-            if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "assign")) {
-                Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("giveTask");
-            } else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "task_add")){
-                Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("przydzielZadanie");
-            }else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "assign")){
-                Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("giveTask");
+            if(!Model.getInstance().getWorkersAssigned().isEmpty()){
+                if(Objects.equals(Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().get(), "assign")) {
+                    Model.getInstance().getViewFactory().getPermissionWorkerSelectedMenuItem().set("giveTask");
+                } else if(Objects.equals(Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().get(), "task_add")){
+                    Model.getInstance().getViewFactory().getKuratorSelectedMenuItem().set("przydzielZadanie");
+                }else if(Objects.equals(Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().get(), "assign")){
+                    Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("giveTask");
+                }
             }
         });
 

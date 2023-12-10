@@ -224,18 +224,33 @@ public class DataBaseDriver {
         return resultSet;
     }
 
-    public void UpdateEx(String status,Integer idPracownika, String doceloweMiejsce, Integer idEksponatu){
+    public void UpdateEx(String status,String doceloweMiejsce, Integer idEksponatu){
         Statement statement;
 
 
         try{
             statement=this.conn.createStatement();
-            statement.executeUpdate("Update eksponat SET status='"+status+"', ZadaniePracownikidPracownika='" + idPracownika + "', docMiejscePrzech='" + doceloweMiejsce + "', ZadanieIdZadania='" + doceloweMiejsce + "' Where idEksponatu='"+idEksponatu+"';");
+            statement.executeUpdate("Update eksponat SET status='"+status+"', docMiejscePrzech='" + doceloweMiejsce + "' Where idEksponatu='"+idEksponatu+"';");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public void createEksponatZadanie(Integer idPracownika, Integer idZabytku){
+        String status = "wTrackcie";
+        Statement statement ;
+        try{
+            statement=this.conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT MAX(idZadania) FROM zadanie2;");
+            int highestId = 0;
+            if (resultSet.next()) {
+                highestId = resultSet.getInt(1);
+            }
+            statement.executeUpdate("INSERT INTO eksponat_zadanie (idZadania,idPracownika,idZabytku) VALUES ('"+highestId+"','"+idPracownika+"','"+idZabytku+"');");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     /////////////////////////////////////////////////////////////////////////
