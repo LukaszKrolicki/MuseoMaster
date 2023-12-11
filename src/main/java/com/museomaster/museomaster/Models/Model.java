@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.scene.control.ListView;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
