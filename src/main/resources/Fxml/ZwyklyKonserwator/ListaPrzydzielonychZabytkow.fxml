@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="755.0" styleClass="lista_zabytkow" stylesheets="@../../Styles/ZwyklyKonserwatorStyles/ListaPrzydzielonychZabytkow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ListaPrzydzielonychZaabytkowController">
+<AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="lista_zabytkow" stylesheets="@../../Styles/ZwyklyKonserwatorStyles/ListaPrzydzielonychZabytkow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.ZwyklyKonswerwator.ListaPrzydzielonychZaabytkowController">
     <Label layoutX="14.0" layoutY="23.0" text="Lista przydzielonych Zabytków:" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
         <font>
             <Font size="18.0" />
         </font>
     </Label>
-    <ListView fx:id="lista_przydziel_zab" layoutX="14.0" layoutY="64.0" prefHeight="672.0" prefWidth="720.0" styleClass="clients_container" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="64.0" />
-   <Button fx:id="zatwierdz_btn" layoutX="18.0" layoutY="736.0" mnemonicParsing="false" text="Zatwierdź" />
+    <ListView fx:id="lista_przydziel_zab" layoutX="14.0" layoutY="64.0" prefHeight="651.0" prefWidth="815.0" styleClass="clients_container" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="64.0" />
+   <Button fx:id="zatwierdz_btn" layoutX="18.0" layoutY="715.0" mnemonicParsing="false" text="Zatwierdź" />
 </AnchorPane>
