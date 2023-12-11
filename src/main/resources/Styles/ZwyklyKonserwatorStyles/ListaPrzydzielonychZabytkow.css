@@ -17,3 +17,13 @@
     -fx-background-color: #EEEEEE;
     -fx-padding: 10 0 10 0;
 }
+
+.lista_zabytkow Button {
+    -fx-background-color: linear-gradient(to right, #008022,#00f742);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+    -fx-pref-width: 200;
+    -fx-font-size: 1.4em;
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
