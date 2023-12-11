@@ -17,12 +17,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
+import java.util.Objects;
 
 public class ViewFactory {
     //Typ konta
@@ -428,8 +431,13 @@ public class ViewFactory {
         catch(Exception e){
             e.printStackTrace();
         }
-
         Stage stage = new Stage();
+        try {
+            Image icon = new Image(Objects.requireNonNull(ViewFactory.class.getResourceAsStream("/AppLogo/museum.jpg")));
+            stage.getIcons().add(icon);
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        }
         stage.setScene(scene);
         stage.setTitle("MuesoMaster");
         stage.setResizable(false);
