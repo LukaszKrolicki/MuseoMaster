@@ -20,8 +20,6 @@ public class AdminUserListController implements Initializable {
     }
 
     private void initData(){
-        if(Model.getInstance().getClients().isEmpty()){
-            Model.getInstance().setClient();
-        }
+        Model.getInstance().setClient();
     }
 }
