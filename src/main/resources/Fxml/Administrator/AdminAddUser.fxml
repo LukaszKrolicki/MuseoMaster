@@ -21,7 +21,7 @@
       <VBox layoutX="14.0" layoutY="54.0" prefHeight="577.0" prefWidth="798.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <children>
             <Label text="Imię:" />
-            <TextField fx:id="name_input" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" />
+            <TextField fx:id="name_input" prefHeight="30.0" prefWidth="171.0" />
             <Label text="Nazwisko:" />
             <TextField fx:id="second_name_input" />
             <Label text="E-mail:" />

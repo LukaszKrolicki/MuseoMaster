@@ -399,10 +399,8 @@ public class ViewFactory {
             case "listaWyszukanychZab" -> view = lista_wyszukanych_zab;
             default -> view = kuratorDashboard;
         }
-        /**
-         * Próba zmiany widoku kuratora
-         * Gdy wystąpi błąd wypisywany jest błąd
-         */
+         // Próba zmiany widoku kuratora
+         // Gdy wystąpi błąd wypisywany jest ten błąd
         if(view==null){
             try{
                 view = new FXMLLoader(getClass().getResource(fxmlPath)).load();
