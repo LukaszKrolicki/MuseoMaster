@@ -9,13 +9,13 @@
     <children>
       <CheckBox fx:id="check_przzeniesione" layoutX="758.0" layoutY="15.0" mnemonicParsing="false" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
           <Label fx:id="id_zad" layoutX="29.0" layoutY="20.0" text="2215" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="20.0" />
-          <Label fx:id="nazwa_zabytku" layoutX="90.0" layoutY="22.0" text="Faraona" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="20.0" />
-          <Label fx:id="skad_przeniesc_zabytek" layoutX="174.0" layoutY="23.0" text="Magazyn2115" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="20.0">
+          <Label fx:id="nazwa_zabytku" layoutX="90.0" layoutY="22.0" prefHeight="18.0" prefWidth="153.0" text="Faraona" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="20.0" />
+          <Label fx:id="skad_przeniesc_zabytek" layoutX="174.0" layoutY="23.0" text="Magazyn2115" AnchorPane.leftAnchor="240.0" AnchorPane.topAnchor="20.0">
          <graphic>
             <FontAwesomeIconView fill="#ff0505" glyphName="SIGN_OUT" size="20" />
          </graphic>
       </Label>
-          <Label fx:id="dokad_przeniesc_zabytek" layoutX="371.0" layoutY="30.0" text="WystawaNr3" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="20.0">
+          <Label fx:id="dokad_przeniesc_zabytek" layoutX="371.0" layoutY="30.0" text="WystawaNr3" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="20.0">
          <graphic>
             <FontAwesomeIconView fill="#14bf0b" glyphName="SIGN_IN" size="20" />
          </graphic>

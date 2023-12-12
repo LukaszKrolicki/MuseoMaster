@@ -13,8 +13,13 @@ public class ListaWyszukanychZabytkowController implements Initializable {
     public ListView<Exhibit> exhibits_list;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         exhibits_list.setItems(Model.getInstance().getSearchedExhibits());
         exhibits_list.setCellFactory(e -> new ExhibitCellFactory());
+    }
+
+    public void initData(){
+        Model.getInstance().clearEx();
     }
 
 }

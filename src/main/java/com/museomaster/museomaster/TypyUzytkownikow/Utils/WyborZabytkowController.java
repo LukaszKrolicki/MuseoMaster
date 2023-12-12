@@ -60,13 +60,15 @@ public class WyborZabytkowController implements Initializable {
         lista_wybranych_zab.setCellFactory(e->new WyborZabytkuCellFactory());
 
         ObservableList<String> rolaList = FXCollections.observableArrayList(
-                "Przenieś", "Konserwacja", "Sprawdzanie stanu"
+                "Przenieś"
         );
-        typ_zadania.setItems(rolaList);
+
+        typ_zadania.setValue("Przenieś");
         sala_choice.setItems(Model.getInstance().getAllRooms());
     }
 
     private void initData(){
+        Model.getInstance().clearEx();
         Model.getInstance().clearAllRooms();
         Model.getInstance().setAllRooms();
     }

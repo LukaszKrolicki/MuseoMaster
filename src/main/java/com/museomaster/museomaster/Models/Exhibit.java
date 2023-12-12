@@ -14,6 +14,7 @@ public class Exhibit {
     private final StringProperty tematyka_tf;
     private final StringProperty tworca_tf;
     private final StringProperty akt_miej_przech_tf;
+    private final StringProperty docelowe_miej_przech;
     private final StringProperty opis_ta;
     private final IntegerProperty WystawaidWystawy;
     private final IntegerProperty ZadanieidZadania;
@@ -25,7 +26,8 @@ public class Exhibit {
 
     private MediaPlayer NormalExListMedia=null;
     private Thread NormalExListThread=null;
-    public Exhibit(Integer idZabytku, String nazwa_zabytku_tf, String okres_powstawnia_tf, String tematyka_tf, String tworca_tf, String akt_miej_przech_tf, String opis_ta, Integer WystawaidWystawy, Integer ZadanieidZadania, Integer SalaidSali, Integer ZadaniePracownikidPracownika) {
+    public Exhibit(Integer idZabytku, String nazwa_zabytku_tf, String okres_powstawnia_tf, String tematyka_tf, String tworca_tf, String akt_miej_przech_tf, String opis_ta, Integer WystawaidWystawy, Integer ZadanieidZadania, Integer SalaidSali, Integer ZadaniePracownikidPracownika
+    ,String docelowe_miej_przech) {
         this.idZabytku = new SimpleIntegerProperty(this, "idEksponatu", idZabytku);
         this.nazwa_zabytku_tf =  new SimpleStringProperty(this, "nazwaEksponatu", nazwa_zabytku_tf);
         this.okres_powstawnia_tf = new SimpleStringProperty(this,"okresPowstania",okres_powstawnia_tf);
@@ -37,6 +39,48 @@ public class Exhibit {
         this.ZadanieidZadania = new SimpleIntegerProperty(this, "ZadanieidZadania", ZadanieidZadania);
         this.SalaidSali = new SimpleIntegerProperty(this, "SalaidSali", SalaidSali);
         this.ZadaniePracownikidPracownika = new SimpleIntegerProperty(this, "ZadaniePracownikidPracownika", ZadaniePracownikidPracownika);
+        this.docelowe_miej_przech = new SimpleStringProperty(this, "docelowe_miej_przech", docelowe_miej_przech);
+    }
+
+    Integer idZad;
+    Integer idZadEx;
+
+    public Exhibit(Integer idZabytku, String nazwa_zabytku_tf, String akt_miej_przech_tf, String docelowe_miej_przech, Integer idZad, Integer idZadEx) {
+        this.idZabytku = new SimpleIntegerProperty(this, "idEksponatu", idZabytku);
+        this.nazwa_zabytku_tf =  new SimpleStringProperty(this, "nazwaEksponatu", nazwa_zabytku_tf);
+        this.akt_miej_przech_tf = new SimpleStringProperty(this, "aktualMiejscePrzech", akt_miej_przech_tf);
+        this.docelowe_miej_przech = new SimpleStringProperty(this, "docelowe_miej_przech", docelowe_miej_przech);
+        this.idZad=idZad;
+        this.idZadEx=idZadEx;
+
+        this.okres_powstawnia_tf = new SimpleStringProperty(this,"okresPowstania","");
+        this.tematyka_tf = new SimpleStringProperty(this,"tematyka", "");
+        this.tworca_tf = new SimpleStringProperty(this, "twórca", "");
+        this.opis_ta = new SimpleStringProperty(this, "opis", "");
+        this.WystawaidWystawy = new SimpleIntegerProperty(this, "WystawaidWystawy", -1);
+        this.ZadanieidZadania = new SimpleIntegerProperty(this, "ZadanieidZadania", -1);
+        this.SalaidSali = new SimpleIntegerProperty(this, "SalaidSali", -1);
+        this.ZadaniePracownikidPracownika = new SimpleIntegerProperty(this, "ZadaniePracownikidPracownika", -1);
+    }
+
+    public Integer getIdZad() {
+        return idZad;
+    }
+
+    public Integer getIdZadEx() {
+        return idZadEx;
+    }
+
+    public String getDocelowe_miej_przech() {
+        return docelowe_miej_przech.get();
+    }
+
+    public StringProperty docelowe_miej_przechProperty() {
+        return docelowe_miej_przech;
+    }
+
+    public void setDocelowe_miej_przech(String docelowe_miej_przech) {
+        this.docelowe_miej_przech.set(docelowe_miej_przech);
     }
 
     public MediaPlayer getNormalExListMedia() {

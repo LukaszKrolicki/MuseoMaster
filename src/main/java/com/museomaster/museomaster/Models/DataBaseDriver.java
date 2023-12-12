@@ -2,11 +2,14 @@ package com.museomaster.museomaster.Models;
 
 
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddUser;
+import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class DataBaseDriver {
@@ -676,4 +679,63 @@ public class DataBaseDriver {
         }
     }
     ////////////////////////////////////////////////////////////////
+
+
+
+
+
+    //Pracownik Techniczny
+    ////////////////////////////////////////////////////////////////
+    public ResultSet getTechnicianEx(Integer idZadania, Integer idPracownika){
+        Statement statement;
+        ResultSet resultSet =null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT idZabytku, idEksponatZadanie FROM eksponat_zadanie WHERE idZadania='"+idZadania+"' AND idPracownika='"+idPracownika+"';");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+
+    public ResultSet getExById(Integer idEx){
+        Statement statement;
+        ResultSet resultSet =null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT idEksponatu, nazwaEksponatu, docMiejscePrzech, aktualMiejscePrzech FROM eksponat WHERE idEksponatu='" + idEx + "';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public void UpdateExPlaceAndStatu(String status,String aktualneMiejsce, Integer idEksponatu){
+        Statement statement;
+        String doc="-";
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("UPDATE eksponat SET status='" + status + "', docMiejscePrzech='" + doc + "', aktualMiejscePrzech='" + aktualneMiejsce + "' WHERE idEksponatu='" + idEksponatu + "';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteEx_Task(Integer id){
+        Statement statement;
+
+        try{
+            statement=this.conn.createStatement();
+            statement.executeUpdate("DELETE FROM eksponat_zadanie WHERE idEksponatZadanie ='"+id+"';");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //////////////////////////////////////  ///////////////////////
 }

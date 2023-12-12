@@ -12,11 +12,14 @@ import java.util.ResourceBundle;
 
 public class ExhibitCell implements Initializable {
     private final Exhibit exhibit;
+
+    private ListView<Exhibit> listView;
+
     public Label id_zab;
     public Label nazwa_zab;
     public Label tematyka_zab;
     public Button usun_btn;
-    private ListView<Exhibit> listView;
+
 
     public ExhibitCell(Exhibit exhibit, ListView<Exhibit> listView) {
         this.exhibit = exhibit;
