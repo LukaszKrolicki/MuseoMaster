@@ -416,7 +416,12 @@ public class Model {
         this.endDate = endDate;
     }
 
+    public void changeDesc(String x){
+        desc=x.concat(":  "+desc);
+        System.out.println(desc);
+    }
     public void createTask(Integer idPracownika, String nazwaUzytkownia, String nazwaNadajacego) {
+
         Model.getInstance().getDataBaseDriver().createTask(idPracownika, desc, subject, starDate, endDate, nazwaNadajacego, nazwaUzytkownia);
     }
 

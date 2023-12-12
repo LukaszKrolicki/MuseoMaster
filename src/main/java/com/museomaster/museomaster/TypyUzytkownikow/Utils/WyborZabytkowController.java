@@ -13,6 +13,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -29,6 +31,12 @@ public class WyborZabytkowController implements Initializable {
             String nazwa;
             for(Client client : Model.getInstance().getWorkersAssigned()){
                 nazwa=Model.getInstance().getClient().getNazwaUzytkownika();
+                List<Integer> exhibitIds = new ArrayList<>();
+                for (Exhibit exhibit : Model.getInstance().getExAssigned()) {
+                    int exhibitId = exhibit.idZabytkuProperty().get();
+                    exhibitIds.add(exhibitId);
+                }
+                Model.getInstance().changeDesc("Przenieś zabytki o ID: " +exhibitIds.toString());
                 Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
                 for(Exhibit ex : Model.getInstance().getExAssigned()){
                     Integer ex_id=ex.idZabytkuProperty().getValue();

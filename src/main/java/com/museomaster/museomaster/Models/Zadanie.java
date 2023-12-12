@@ -71,6 +71,8 @@ public class Zadanie {
         return opis.get();
     }
 
+
+
     public StringProperty opisProperty() {
         return opis;
     }
