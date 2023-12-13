@@ -20,7 +20,7 @@ public class AdminAddUser implements Initializable {
     public TextField email_input;
     public TextField phone_input;
     public TextField age_input;
-    public ComboBox role_comboBox;
+    public ComboBox<String> role_comboBox;
     public TextField unique_name_input;
     public CheckBox permission_checkbox;
     public Button create_user_button;
@@ -32,21 +32,27 @@ public class AdminAddUser implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         create_user_button.setOnAction(e->createUser());
-        permission_checkbox.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
-                    permissionFlag=newVal;
-                }
+        permission_checkbox.selectedProperty().addListener((observableValue, oldVal, newVal) -> permissionFlag=newVal
         );
         ObservableList<String> rolaList = FXCollections.observableArrayList(
                 "Admin", "Pracownik", "Pracownik Techniczny", "Kurator"
         );
+        name_input.textProperty().addListener((observable, oldValue, newValue) ->
+                {
+                    try {
+                        createClientAddress();
+                    } catch (StringIndexOutOfBoundsException ignored) {}
+                }
 
-        name_input.textProperty().addListener((observable, oldValue, newValue) -> {
-            createClientAddress();
-        });
+        );
+        second_name_input.textProperty().addListener((observable, oldValue, newValue) ->
+                {
+                    try {
+                        createClientAddress();
+                    } catch (StringIndexOutOfBoundsException ignored) {}
+                }
 
-        second_name_input.textProperty().addListener((observable, oldValue, newValue) -> {
-            createClientAddress();
-        });
+        );
         role_comboBox.setItems(rolaList);
     }
 
@@ -65,7 +71,7 @@ public class AdminAddUser implements Initializable {
             String femail = email_input.getText();
             Integer fphone = Integer.parseInt(phone_input.getText());
             Integer fage = Integer.parseInt(age_input.getText());
-            String rola = role_comboBox.getValue().toString();
+            String rola = role_comboBox.getValue();
             String fusername = unique_name_input.getText();
             Integer permission = 0;
             String fpassword = haslo_input.getText();
@@ -97,6 +103,8 @@ public class AdminAddUser implements Initializable {
         age_input.setText("");
         unique_name_input.setText("");
         haslo_input.setText("");
+        role_comboBox.setValue(null);
+        permission_checkbox.setSelected(false);
     }
 
 }
