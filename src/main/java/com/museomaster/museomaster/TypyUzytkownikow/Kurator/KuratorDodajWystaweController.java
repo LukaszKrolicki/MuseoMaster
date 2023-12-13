@@ -12,6 +12,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa odpowiedzialna za dodawanie wystawy
+ */
 public class KuratorDodajWystaweController implements Initializable {
     public TextField ex_name_input;
     public ComboBox<String> room_combobox;
@@ -23,11 +26,16 @@ public class KuratorDodajWystaweController implements Initializable {
     public Button create_ex_button;
     public Text error_lbl;
 
+    /**
+     * Funckja initialize jest odpowiedizlana za inicjalizację wyświetlanie danych oraz za obsługę zdarzeń
+     * @param url -> Lokalizacja używana do rozwiązywania ścieżek względnych dla obiektu root lub null, jeśli lokalizacja nie jest znana.
+     * @param resourceBundle -> Zasoby użyte do zlokalizowania obiektu głównego lub null, jeśli obiekt główny nie został zlokalizowany.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initData();
-        room_combobox.setItems(Model.getInstance().getRooms());
-        create_ex_button.setOnAction(e -> createExhibition());
+        initData(); // inicjalizujemy dane
+        room_combobox.setItems(Model.getInstance().getRooms()); // wypełniamy listę możlwiymi pomieszczeniam
+        create_ex_button.setOnAction(e -> createExhibition()); //
     }
     private void createExhibition(){
         try{
