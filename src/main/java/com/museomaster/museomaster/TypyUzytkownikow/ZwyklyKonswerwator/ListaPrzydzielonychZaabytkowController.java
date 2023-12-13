@@ -34,7 +34,7 @@ public class ListaPrzydzielonychZaabytkowController implements Initializable {
                 System.out.println(ex);
                 Model.getInstance().getDataBaseDriver().UpdateExPlaceAndStatu("", ex.getDocelowe_miej_przech(), ex.idZabytkuProperty().get());
                 Model.getInstance().getDataBaseDriver().deleteEx_Task(ex.getIdZadEx());
-
+                ex.setChecked(false);
             }
             try {
                 InitData();

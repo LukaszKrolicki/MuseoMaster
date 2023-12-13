@@ -26,6 +26,8 @@ public class Exhibit {
 
     private MediaPlayer NormalExListMedia=null;
     private Thread NormalExListThread=null;
+
+    private Boolean checked=false;
     public Exhibit(Integer idZabytku, String nazwa_zabytku_tf, String okres_powstawnia_tf, String tematyka_tf, String tworca_tf, String akt_miej_przech_tf, String opis_ta, Integer WystawaidWystawy, Integer ZadanieidZadania, Integer SalaidSali, Integer ZadaniePracownikidPracownika
     ,String docelowe_miej_przech) {
         this.idZabytku = new SimpleIntegerProperty(this, "idEksponatu", idZabytku);
@@ -63,12 +65,21 @@ public class Exhibit {
         this.ZadaniePracownikidPracownika = new SimpleIntegerProperty(this, "ZadaniePracownikidPracownika", -1);
     }
 
+
     public Integer getIdZad() {
         return idZad;
     }
 
     public Integer getIdZadEx() {
         return idZadEx;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
+
+    public Boolean getChecked() {
+        return checked;
     }
 
     public String getDocelowe_miej_przech() {

@@ -37,14 +37,18 @@ public class WyborZabytkuCell implements Initializable {
         ex_subject.textProperty().bind(exhibit.tematyka_tfProperty());
 
         ex_desc_btn.setOnAction(e-> Model.getInstance().getViewFactory().showExDescWindow(exhibit));
+        ex_checkbox.setSelected(exhibit.getChecked());
 
         ex_checkbox.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
                     permissionFlag=newVal;
                     if(permissionFlag){
                         Model.getInstance().assignEx(exhibit);
+                        exhibit.setChecked(true);
                     }
                     else{
                         Model.getInstance().removeEx(exhibit);
+                        exhibit.setChecked(false);
+
                     }
                 }
         );

@@ -39,6 +39,7 @@ public class WyborZabytkowController implements Initializable {
                 Model.getInstance().changeDesc("Przenieś zabytki o ID: " +exhibitIds.toString());
                 Model.getInstance().createTask(client.getIdPracownika(),client.getNazwaUzytkownika(),nazwa);
                 for(Exhibit ex : Model.getInstance().getExAssigned()){
+                    ex.setChecked(false);
                     Integer ex_id=ex.idZabytkuProperty().getValue();
                     Integer worker_id=client.getIdPracownika();
                     Model.getInstance().getDataBaseDriver().createEksponatZadanie(worker_id,ex_id);

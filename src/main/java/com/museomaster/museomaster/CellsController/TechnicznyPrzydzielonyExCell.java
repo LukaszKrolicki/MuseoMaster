@@ -37,14 +37,17 @@ public class TechnicznyPrzydzielonyExCell implements Initializable {
         nazwa_zabytku.textProperty().bind(exhibit.nazwa_zabytku_tfProperty());
         skad_przeniesc_zabytek.textProperty().bind(exhibit.akt_miej_przech_tfProperty());
         dokad_przeniesc_zabytek.textProperty().bind(exhibit.docelowe_miej_przechProperty());
+        check_przzeniesione.setSelected(exhibit.getChecked());
 
         check_przzeniesione.selectedProperty().addListener((observableValue, oldVal, newVal) -> {
                     permissionFlag=newVal;
                     if(permissionFlag){
                         Model.getInstance().checkExhibit(exhibit);
+                        exhibit.setChecked(true);
                     }
                     else{
                         Model.getInstance().uncheckWorker(exhibit);
+                        exhibit.setChecked(false);
                     }
                 }
         );
