@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.scene.control.ListView;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -194,10 +196,32 @@ public class Model {
     }
 
     public void evaluateClient(String username, String password, String rola) {
-        ResultSet resultSet = dataBaseDriver.getClientData(username, password, rola);
+        ResultSet resultSet = dataBaseDriver.getClientData(username, password, rola); //checking normal password
+
+        try { //if normal doesnt work checking if BCRYPT works
+            System.out.println("x1");
+            if (!resultSet.next()) {
+                ResultSet hashed = Model.getInstance().getDataBaseDriver().getHashedPassword(username,rola);
+                System.out.println(hashed);
+                System.out.println("x2");
+                if (hashed.next()) {
+                    String hashedPassword=hashed.getString(1);
+                    System.out.println(hashedPassword);
+                    System.out.println("x3");
+                    if(BCrypt.checkpw(password, hashedPassword)){
+                        System.out.println("x4");
+                        password=hashedPassword;
+                        resultSet = dataBaseDriver.getClientData(username, password, rola);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         try {
             if (resultSet.next()) {
-
+                System.out.println("Logowanie się powiodło");
 
                 System.out.println("rep1");
 

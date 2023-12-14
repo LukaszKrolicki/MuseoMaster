@@ -5,20 +5,15 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="755.0" prefWidth="850.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddUser">
    <children>
-      <Label layoutX="160.0" layoutY="24.0" text="Tworzenie użytkownika">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <VBox layoutX="14.0" layoutY="54.0" prefHeight="577.0" prefWidth="798.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+      <VBox layoutX="14.0" layoutY="6.0" prefHeight="761.0" prefWidth="550.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <children>
             <Label text="Imię:" />
             <TextField fx:id="name_input" prefHeight="30.0" prefWidth="171.0" />
@@ -32,8 +27,10 @@
             <TextField fx:id="age_input" />
             <Label text="Rola:" />
             <ComboBox fx:id="role_comboBox" prefWidth="150.0" />
-            <Label text="Hasło" />
+            <Label text="Hasło (Musi zawierać przynajmniej 8 znaków w tym cyfry i znaki specjalne):" />
             <TextField fx:id="haslo_input" />
+            <Label fx:id="password_status_lbl" text="Czy silne hasło:" />
+            <ProgressBar fx:id="password_progressBar" prefHeight="27.0" prefWidth="529.0" progress="0.1" stylesheets="@../../Styles/Pracownik/Styles/ZadanieWykonane.css" />
             <Label text="Unikalna nazwa użytkownika:" />
             <TextField fx:id="unique_name_input" disable="true" />
             <Label text="Czy posiada uprawnienia do zażądzania zasobami ludzkimi?" />
