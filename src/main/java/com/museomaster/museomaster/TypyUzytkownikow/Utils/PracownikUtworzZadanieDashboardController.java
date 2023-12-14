@@ -28,7 +28,7 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
 
         ego_to_ex_btn.setOnAction(e-> {
             try{
-                if(isWorkerAssignedDifferent()){
+                if(isWorkerAssignedDifferent() && Model.getInstance().getWorkersAssigned().size()<=1){
                     LocalDate start = stard_date_datePicker.getValue();
                     java.sql.Date starDate = java.sql.Date.valueOf(start);
                     LocalDate end = end_date_datePicker.getValue();
@@ -43,8 +43,11 @@ public class PracownikUtworzZadanieDashboardController implements Initializable{
                         Model.getInstance().getViewFactory().getPermTechnicalWorkerItem().set("searchEx");
                     }
                 }
+                else if(Model.getInstance().getWorkersAssigned().size() > 1){
+                    Error_lbl.setText("Wybrano więcej niż jednego pracownika do przenoszenia");
+                }
                 else{
-                    Error_lbl.setText("Wybrani pracownicy to nie pracownicy techniczni");
+                    Error_lbl.setText("Wybrany pracownick to nie pracownick techniczny");
                 }
             }
             catch (Exception x){

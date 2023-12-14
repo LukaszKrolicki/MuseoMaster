@@ -20,6 +20,9 @@ public class ExDescController implements Initializable {
     public TextArea ex_desc_textArea;
     public Button close_btn;
 
+    public Label current_place;
+    public Label tarted_place;
+
     private Exhibit exhibit;
     public ExDescController(Exhibit exhibit) {
         this.exhibit = exhibit;
@@ -33,5 +36,7 @@ public class ExDescController implements Initializable {
         ExId_lbl.setText("ID: "+ exhibit.idZabytkuProperty().get());
         ex_year_lbl.setText("Okres powstania: "+ exhibit.okres_powstawnia_tfProperty().get());
         close_btn.setOnAction(e-> Model.getInstance().getViewFactory().closeStage((Stage)close_btn.getScene().getWindow()));
+        current_place.setText("Aktualne miejsce przechowywania: "+ exhibit.akt_miej_przech_tfProperty().get());
+        tarted_place.setText("Docelowe miejsce przechowywania: "+ exhibit.docelowe_miej_przechProperty().get());
     }
 }

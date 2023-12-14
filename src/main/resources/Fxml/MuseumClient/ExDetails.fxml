@@ -6,16 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="create_client_container" stylesheets="@../../Styles/AdministratorStyles/AdminAddUser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="400.0" prefWidth="71.0" styleClass="login_logo_container" stylesheets="@../../Styles/LoginStyles/Login.css" />
-      <Label fx:id="ExId_lbl" layoutX="83.0" layoutY="14.0" text="Id eksponatu:" AnchorPane.topAnchor="18.0" />
-      <Label fx:id="ex_name_lbl" layoutX="83.0" layoutY="32.0" text="Nazwa Eksponatu:" AnchorPane.topAnchor="42.0" />
-      <Label fx:id="ex_year_lbl" layoutX="83.0" layoutY="50.0" text="Okres powstania:" AnchorPane.topAnchor="66.0" />
-      <Label fx:id="ex_subject_lbl" layoutX="83.0" layoutY="68.0" text="Tematyka:" AnchorPane.topAnchor="90.0" />
-      <Label fx:id="ex_author_lbl" layoutX="83.0" layoutY="86.0" text="Twórca:" AnchorPane.topAnchor="114.0" />
-      <Label layoutX="83.0" layoutY="104.0" text="Opis:" AnchorPane.topAnchor="138.0" />
-      <TextArea fx:id="ex_desc_textArea" layoutX="80.0" layoutY="163.0" prefHeight="226.0" prefWidth="239.0" AnchorPane.bottomAnchor="18.0" AnchorPane.topAnchor="163.0" />
+      <VBox prefHeight="500.0" prefWidth="32.0" styleClass="login_logo_container" stylesheets="@../../Styles/LoginStyles/Login.css" />
+      <Label fx:id="ExId_lbl" layoutX="83.0" layoutY="14.0" text="Id eksponatu:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="18.0" />
+      <Label fx:id="ex_name_lbl" layoutX="83.0" layoutY="32.0" text="Nazwa Eksponatu:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="42.0" />
+      <Label fx:id="ex_year_lbl" layoutX="83.0" layoutY="50.0" text="Okres powstania:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="66.0" />
+      <Label fx:id="ex_subject_lbl" layoutX="83.0" layoutY="68.0" text="Tematyka:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="90.0" />
+      <Label fx:id="ex_author_lbl" layoutX="83.0" layoutY="86.0" text="Twórca:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="114.0" />
+      <Label layoutX="45.0" layoutY="207.0" text="Opis:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="207.0" />
+      <TextArea fx:id="ex_desc_textArea" editable="false" layoutX="80.0" layoutY="227.0" prefHeight="255.0" prefWidth="316.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="227.0" />
       <Button fx:id="close_btn" layoutX="534.0" layoutY="356.0" mnemonicParsing="false" text="Zamknij" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="18.0" />
+      <Label fx:id="current_place" layoutX="45.0" layoutY="134.0" text="Aktualne miejsce przechowywania:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="138.0" />
+      <Label fx:id="tarted_place" layoutX="44.0" layoutY="156.0" text="Docelowe miejsce przechowywania:" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="162.0" />
    </children>
 </AnchorPane>
