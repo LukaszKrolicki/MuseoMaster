@@ -4,6 +4,7 @@ import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.Models.Exhibit;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
+import com.museomaster.museomaster.TypyUzytkownikow.Kurator.ExEditController;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.ExDescController;
@@ -410,6 +411,13 @@ public class ViewFactory {
         }
 
         return view;
+    }
+
+    public void showExEditWindow(Exhibit exhibit){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Kurator/EditExhibit.fxml"));
+        ExEditController editController = new ExEditController(exhibit);
+        loader.setController(editController);
+        createStage(loader);
     }
     ////////////////////////////////////////////////////////////////
 

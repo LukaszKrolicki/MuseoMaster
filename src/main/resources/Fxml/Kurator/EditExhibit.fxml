@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="600.0" styleClass="dodajZabytek" stylesheets="@../../Styles/KuratorStyles/DodajZabytek.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <VBox prefHeight="670.0" prefWidth="600.0" styleClass="dodajZabytek" stylesheets="@../../Styles/KuratorStyles/EditExhibit.css">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edycja Eksponatu" />
+              <Label fx:id="ex_name_lbl" text="Nazwa Eksponatu:" />
+            <TextField fx:id="ex_name_tf" prefWidth="510.0" />
+              <Label fx:id="ex_year_lbl" text="Okres powstania:" />
+            <TextField fx:id="ed_okres_pow_tf" />
+              <Label fx:id="ex_subject_lbl" text="Tematyka:" />
+            <TextField fx:id="tematyka_tf" />
+              <Label fx:id="ex_author_lbl" text="Twórca:" />
+            <TextField fx:id="tworca_tf" />
+              <Label fx:id="current_place" text="Aktualne miejsce przechowywania:" />
+            <ChoiceBox fx:id="aktual_cb" prefWidth="150.0" />
+              <Label fx:id="tarted_place" text="Docelowe miejsce przechowywania:" />
+            <ChoiceBox fx:id="docel_cb" prefWidth="150.0" />
+              <Label text="Opis:" />
+              <TextArea fx:id="ex_desc_textArea" prefHeight="50.0" prefWidth="600.0" />
+              <Button fx:id="edit_btn" mnemonicParsing="false" styleClass="dodajZabytek" text="Zatwierdź" />
+            <Label fx:id="error_lbl" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

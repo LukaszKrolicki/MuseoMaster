@@ -1,0 +1,53 @@
+.dodajZabytek{
+    -fx-background-color: #EEEEEE;
+    -fx-alignments: center;
+}
+
+.dodajZabytek VBox {
+    -fx-padding: 10;
+    -fx-spacing: 15;
+}
+.dodajZabytek Text{
+    -fx-text-fill: #777777;
+    -fx-font-size: 2em;
+    font-weight: bold;
+    -fx-font-family: "Calibri Light";
+}
+
+.dodajZabytek TextField {
+    -fx-pref-width: 550;
+    -fx-pref-height: 35;
+    -fx-background-color: #FFFFFF;
+    -fx-font-size: 1.3em;
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+}
+.dodajZabytek TextArea {
+    -fx-pref-width: 550;
+    -fx-pref-height: 100;
+    -fx-background-color: #FFFFFF;
+    -fx-font-size: 1.3em;
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+}
+.dodajZabytek Button {
+    -fx-background-color: linear-gradient(to right, #008022,#00f742);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 3, 0, 0, 3);
+    -fx-pref-width: 200;
+    -fx-font-size: 1.3em;
+    -fx-font-family: "Calibri Light";
+    font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.dodajZabytek Button:hover {
+    -fx-cursor: hand;
+}
+.error_lbl {
+    -fx-text-fill: #FF0000;
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
+}
+.title_txt {
+    -fx-text-fill: #777777;
+    -fx-font-size: 1.5em;
+    -fx-font-family: "Calibri Light";
+}

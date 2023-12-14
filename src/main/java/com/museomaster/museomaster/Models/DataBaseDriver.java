@@ -337,6 +337,10 @@ public class DataBaseDriver {
 
     // Sekcja Kuratora
     private boolean createExhibitSuccessFlag;
+    private boolean editExhibitSuccessFlag;
+    public boolean geteditExhibitSuccessFlag(){
+        return editExhibitSuccessFlag;
+    }
     public boolean getCreateExhibitSuccessFlag(){
         return createExhibitSuccessFlag;
     }
@@ -438,24 +442,6 @@ public class DataBaseDriver {
 
             statement = this.conn.createStatement();
             resultSet=statement.executeQuery("SELECT * FROM wystawa");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return resultSet;
-    }
-    public ResultSet getSearchedExhibitsData(String nazwa, String tworca, Integer rok1, Integer rok2, String sala){
-
-        Statement statement;
-        ResultSet resultSet = null;
-
-        try{
-            statement = this.conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
-                    "WHERE nazwaEksponatu = '"+nazwa+"' OR " +
-                    "twórca = '"+tworca+"' OR aktualMiejscePrzech = '"+sala+"' OR " +
-                    "okresPowstania BETWEEN '"+rok1+"' AND '"+rok2+"'");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -603,6 +589,16 @@ public class DataBaseDriver {
         }
 
         return resultSet;
+    }
+    public void editExhibit(Integer idZabytku, String nazwaZabytku, Integer okresPowstania, String tematyka, String tworca, String aktMiejscePrzechowywania, String docMiejcePrzech, String opis){
+        Statement statement;
+        try{
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE eksponat SET nazwaEksponatu = '"+nazwaZabytku+"', okresPowstania = '"+okresPowstania+"', tematyka = '"+tematyka+"', twórca = '"+tworca+"', aktualMiejscePrzech = '"+aktMiejscePrzechowywania+"', docMiejscePrzech = '"+docMiejcePrzech+"', opis = '"+opis+"' WHERE idEksponatu = '"+idZabytku+"';");
+            editExhibitSuccessFlag = true;
+        } catch (SQLException e) {
+            editExhibitSuccessFlag = false;
+        }
     }
 
 

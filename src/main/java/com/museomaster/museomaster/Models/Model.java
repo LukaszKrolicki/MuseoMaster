@@ -510,7 +510,9 @@ public class Model {
     public ObservableList<Exhibit> getExhibits() {
         return exhibits;
     }
-
+    public void clearExhibits(){
+        exhibits.clear();
+    }
     public void setExhibits() {
         ResultSet resultSet = dataBaseDriver.getAllExhibitsData();
         try {

@@ -18,8 +18,10 @@ public class ListaZabytkowController implements Initializable {
         ex_list.setCellFactory(e -> new ExhibitCellFactory());
     }
     private void initData(){
-        if(Model.getInstance().getExhibits().isEmpty()){
-            Model.getInstance().setExhibits();
-        }
+        Model.getInstance().clearExhibits();
+        Model.getInstance().setExhibits();
+    }
+    public ListView<Exhibit> getEx_list() {
+        return ex_list;
     }
 }
