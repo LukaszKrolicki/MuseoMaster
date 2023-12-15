@@ -641,6 +641,45 @@ public class DataBaseDriver {
         return resultSet;
     }
 
+    public boolean checkEmailExists(String email) {
+        Statement statement;
+        ResultSet resultSet = null;
+        boolean emailExists = false;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT email FROM zwyklyUzytkownik WHERE email = '" + email + "'");
+            emailExists = resultSet.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return emailExists;
+    }
+
+    public boolean checkUsernameExists(String username) {
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try {
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT nazwaUzytkownika FROM zwyklyUzytkownik WHERE nazwaUzytkownika = '" + username + "'");
+            return resultSet.next(); // Returns true if the result set is not empty
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Close the result set and statement
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public void createNormalClient(String email, String haslo, String nazwaUzytkownika){
         Statement statement ;
         ResultSet resultSet;
@@ -663,6 +702,21 @@ public class DataBaseDriver {
         } catch (SQLException e) {
 
         }
+    }
+
+    public ResultSet getHashedPasswordNormalUser(String username){
+        Statement statement;
+        ResultSet resultSet =null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet=statement.executeQuery("SELECT haslo FROM zwyklyuzytkownik WHERE nazwaUzytkownika='"+username+"';");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
     }
 
     public boolean getMusicFile(Integer idZabytku) throws SQLException, IOException {
