@@ -7,6 +7,7 @@ import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.Konser
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.ExEditController;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
+import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.EmailVerification;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.ExDescController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.MuseumClientDashboard;
 import com.museomaster.museomaster.TypyUzytkownikow.Pracownik.PracownikController;
@@ -92,6 +93,14 @@ public class ViewFactory {
 
     }
 
+    public void showEmailValidation(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/MuseumClient/EmailVerification.fxml"));
+        EmailVerification userController = new EmailVerification();
+        loader.setController(userController);
+        createStage(loader);
+
+    }
+
     public Label normalUserErr;
     public void set_normal_user_err_label(Label err){
         this.normalUserErr=err;
@@ -128,6 +137,22 @@ public class ViewFactory {
         loader.setController(userController);
         createStage(loader);
 
+    }
+
+    public void showRegisterSuccesWindow(){
+        StackPane pane = new StackPane();
+        VBox vBox = new VBox(5);
+        vBox.setAlignment(Pos.CENTER);
+        Label message = new Label("Rejestracja zakończona sukcesem!");
+        vBox.getChildren().addAll(message);
+        pane.getChildren().add(vBox);
+        Scene scene = new Scene(pane, 300,100);
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);//it closes when click elsewhere
+        stage.setTitle("Message");
+        stage.setScene(scene);
+        stage.show();
     }
 
     ////////////////////////////////////////////////////////////////

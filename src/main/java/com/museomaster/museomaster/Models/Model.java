@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.scene.control.ListView;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Model {
     private static Model model;
@@ -194,10 +197,32 @@ public class Model {
     }
 
     public void evaluateClient(String username, String password, String rola) {
-        ResultSet resultSet = dataBaseDriver.getClientData(username, password, rola);
+        ResultSet resultSet = dataBaseDriver.getClientData(username, password, rola); //checking normal password
+
+        try { //if normal doesnt work checking if BCRYPT works
+            System.out.println("x1");
+            if (!resultSet.isBeforeFirst()) {
+                ResultSet hashed = Model.getInstance().getDataBaseDriver().getHashedPassword(username,rola);
+                System.out.println(hashed);
+                System.out.println("x2");
+                if (hashed.next()) {
+                    String hashedPassword=hashed.getString(1);
+                    System.out.println(hashedPassword);
+                    System.out.println("x3");
+                    if(BCrypt.checkpw(password, hashedPassword)){
+                        System.out.println("x4");
+                        password=hashedPassword;
+                        resultSet = dataBaseDriver.getClientData(username, password, rola);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         try {
             if (resultSet.next()) {
-
+                System.out.println("Logowanie się powiodło");
 
                 System.out.println("rep1");
 
@@ -224,9 +249,33 @@ public class Model {
     ////////////////////////////////////////////////////////////////
     public void evaluateNormalUser(String username, String password) {
         ResultSet resultSet = dataBaseDriver.getNormalClientData(username, password);
-        try {
-            if (resultSet.next()) {
 
+        try { //if normal doesnt work checking if BCRYPT works
+            System.out.println("x1");
+            if (!resultSet.isBeforeFirst()) {
+                System.out.println("x222");
+                ResultSet hashed = Model.getInstance().getDataBaseDriver().getHashedPasswordNormalUser(username);
+                System.out.println(hashed);
+                System.out.println("x2");
+                if (hashed.next()) {
+                    String hashedPassword=hashed.getString(1);
+                    System.out.println(hashedPassword);
+                    System.out.println("x3");
+                    if(BCrypt.checkpw(password, hashedPassword)){
+                        System.out.println("x4");
+                        password=hashedPassword;
+                        resultSet = dataBaseDriver.getNormalClientData(username,password);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            System.out.println("b1");
+            if (resultSet.next()) {
+                System.out.println("b2");
                 this.setNormalClientLoginSuccess(true);
             }
         } catch (SQLException e) {
@@ -234,7 +283,45 @@ public class Model {
         }
     }
 
-    ////////////////////////////////////////////////////////////////
+    private String ValidationCode;
+
+    public void setValidationCode(){
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder validationCode = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < 6; i++) {
+            int index = random.nextInt(characters.length());
+            validationCode.append(characters.charAt(index));
+        }
+
+        this.ValidationCode = validationCode.toString();
+    }
+
+    public String getValidationCode(){
+        return ValidationCode;
+    }
+
+    String email;
+    String pass;
+    String username;
+    public void setNormalUserVars(String username, String email, String pass){
+        this.email = email;
+        this.username=username;
+        this.pass=pass;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+////////////////////////////////////////////////////////////////
 
     //Admin sekcja
     ////////////////////////////////////////////////////////////////

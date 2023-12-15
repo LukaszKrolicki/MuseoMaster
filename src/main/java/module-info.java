@@ -4,6 +4,8 @@ module com.museomaster.museomaster {
     requires java.sql;
     requires de.jensd.fx.glyphs.fontawesome;
     requires javafx.media;
+    requires jbcrypt;
+    requires spring.context.support;
 
 
     opens com.museomaster.museomaster to javafx.fxml;
