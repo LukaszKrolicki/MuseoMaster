@@ -734,4 +734,120 @@ public class DataBaseDriver {
     }
 
     //////////////////////////////////////  ///////////////////////
+
+    //Utility methods
+    /////////////////////////////////////////////////////////////
+    private String doc = "null";
+    public ResultSet getExhibitByNameForTask(String nazwa){
+
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE nazwaEksponatu LIKE '"+nazwa+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByTopicForTask(String topic){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE tematyka LIKE '"+topic+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByAuthorForTask(String autor){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE twórca LIKE '"+autor+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitBySecYearForTask(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania <= '"+year+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByFirstYearForTask(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania >= '"+year+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByYearsForTask(Integer year1, Integer year2){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania BETWEEN '"+year1+"' AND '"+year2+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByPlaceForTask(String miejsce){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE aktualMiejscePrzech = '"+miejsce+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    ////////////////////////////////////////////////////////////////////////
 }

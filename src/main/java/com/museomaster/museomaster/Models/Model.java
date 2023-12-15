@@ -86,6 +86,12 @@ public class Model {
     private final ObservableList<Exhibit> exhibitsChecked;
 
     ////////////////////////////////////////////////////////////////
+
+    //Utility
+    ////////////////////////////////////////////////////////////////
+    private final ObservableList<Exhibit> exhibitsSearchedForTask;
+
+    ////////////////////////////////////////////////////////////////
     private Model() {
 
         this.viewFactory = new ViewFactory();
@@ -132,6 +138,11 @@ public class Model {
         this.exIds = FXCollections.observableArrayList();
         this.exhibitsAssigned = FXCollections.observableArrayList();
         this.exhibitsChecked = FXCollections.observableArrayList();
+        ///////////////////////////////
+
+        //Utility Settings
+        ////////////////////////////////
+        this.exhibitsSearchedForTask = FXCollections.observableArrayList();
         ///////////////////////////////
 
 
@@ -616,6 +627,62 @@ public class Model {
         }
     }
 
+    public ObservableList<Exhibit> getSearchedExhibitsForTask() {
+        return exhibitsSearchedForTask;
+    }
+    public void clearExhibitsSearchedForTask(){
+        exhibitsSearchedForTask.clear();
+    }
+
+    public void setExhibitsSearchedForTask(String nazwa, String autor, String topic, Integer rok1, Integer rok2, String
+            miejsce) {
+        ResultSet resultSet;
+        if (!Objects.equals(nazwa, "")) {
+            resultSet = dataBaseDriver.getExhibitByNameForTask(nazwa);
+        } else {
+            if (!Objects.equals(topic, "")) {
+                resultSet = dataBaseDriver.getExhibitByTopicForTask(topic);
+            } else {
+                if (!Objects.equals(autor, "")) {
+                    resultSet = dataBaseDriver.getExhibitByAuthorForTask(autor);
+                } else {
+                    if (rok1 == 10000 && rok2 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitBySecYearForTask(rok2);
+                    } else if (rok2 == 10000 && rok1 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitByFirstYearForTask(rok1);
+                    } else if (rok1 != 10000 && rok2 != 10000) {
+                        resultSet = dataBaseDriver.getExhibitByYearsForTask(rok1, rok2);
+                    } else {
+                        if (!Objects.equals(miejsce, null)) {
+                            resultSet = dataBaseDriver.getExhibitByPlaceForTask(miejsce);
+                        } else {
+                            resultSet = dataBaseDriver.getExhibitByYearsForTask(-1000000, 2024);
+                        }
+                    }
+                }
+            }
+        }
+
+        try {
+            while (resultSet.next()) {
+                Integer idZabytku = resultSet.getInt("idEksponatu");
+                String nazwaEksponatu = resultSet.getString("nazwaEksponatu");
+                String okresPowstania = resultSet.getString("okresPowstania");
+                String tematyka = resultSet.getString("tematyka");
+                String tworca = resultSet.getString("twórca");
+                String aktualMiejscePrzech = resultSet.getString("aktualMiejscePrzech");
+                String opis = resultSet.getString("opis");
+                Integer WystawaidWystawy = resultSet.getInt("WystawaidWystawy");
+                Integer ZadanieidZadania = resultSet.getInt("ZadanieidZadania");
+                Integer SalaidSali = resultSet.getInt("SalaidSali");
+                Integer ZadaniePracownikidPracownika = resultSet.getInt("ZadaniePracownikidPracownika");
+                exhibitsSearchedForTask.add(new Exhibit(idZabytku, nazwaEksponatu, okresPowstania, tematyka, tworca, aktualMiejscePrzech, opis,
+                        WystawaidWystawy, ZadanieidZadania, SalaidSali, ZadaniePracownikidPracownika,""));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public ObservableList<String> getRooms() {
         return rooms;
     }
@@ -751,6 +818,7 @@ public class Model {
         System.out.println(exhibitsChecked);
         return exhibitsChecked;
     }
+
 ////////////////////////////////////////////////////////////////
 
 }

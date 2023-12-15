@@ -64,9 +64,9 @@ public class WyborZabytkowController implements Initializable {
 
         );
 
-        System.out.println(Model.getInstance().getExhibits());
-        lista_wybranych_zab.setItems(Model.getInstance().getSearchedExhibits());
-        lista_wybranych_zab.setCellFactory(e->new WyborZabytkuCellFactory());
+        //System.out.println(Model.getInstance().getExhibits());
+        lista_wybranych_zab.setItems(Model.getInstance().getSearchedExhibitsForTask());
+        lista_wybranych_zab.setCellFactory(e -> new WyborZabytkuCellFactory());
 
         ObservableList<String> rolaList = FXCollections.observableArrayList(
                 "Przenieś"
