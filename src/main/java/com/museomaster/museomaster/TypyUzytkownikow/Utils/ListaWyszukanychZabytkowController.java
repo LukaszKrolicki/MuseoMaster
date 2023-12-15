@@ -7,13 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ListaWyszukanychZabytkowController implements Initializable {
     public ListView<Exhibit> exhibits_list;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         exhibits_list.setItems(Model.getInstance().getSearchedExhibits());
         exhibits_list.setCellFactory(e -> new ExhibitCellFactory());
     }
