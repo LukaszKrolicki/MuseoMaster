@@ -4,6 +4,7 @@ import com.museomaster.museomaster.Enums.AccountType;
 import com.museomaster.museomaster.Models.Exhibit;
 import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdministratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony.KonserwatorUprawniony;
+import com.museomaster.museomaster.TypyUzytkownikow.Kurator.ExEditController;
 import com.museomaster.museomaster.TypyUzytkownikow.Kurator.KuratorDashboardController;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.AddNormalUser;
 import com.museomaster.museomaster.TypyUzytkownikow.MuseumClient.EmailVerification;
@@ -18,12 +19,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 import java.util.Objects;
@@ -77,7 +81,7 @@ public class ViewFactory {
      * Funckja jest odpowiedzialna na wyśiwtlanie okna Loginu w aplikacji
      */
     public void showLoginWindow(){
-        System.out.println(getClass().getResource("Fxml/Login.fxml"));
+        System.out.println(getClass().getResource("/Fxml/Login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
         createStage(loader);
     }
@@ -436,6 +440,13 @@ public class ViewFactory {
 
         return view;
     }
+
+    public void showExEditWindow(Exhibit exhibit){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Kurator/EditExhibit.fxml"));
+        ExEditController editController = new ExEditController(exhibit);
+        loader.setController(editController);
+        createStage(loader);
+    }
     ////////////////////////////////////////////////////////////////
 
     //Utility Methods
@@ -456,6 +467,7 @@ public class ViewFactory {
         }
         Stage stage = new Stage();
         try {
+
             Image icon = new Image(Objects.requireNonNull(ViewFactory.class.getResourceAsStream("/AppLogo/museum.jpg")));
             stage.getIcons().add(icon);
         } catch (NullPointerException e){
@@ -464,6 +476,7 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.setTitle("MuesoMaster");
         stage.setResizable(false);
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
     }
 

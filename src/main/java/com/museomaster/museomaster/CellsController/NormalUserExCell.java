@@ -47,11 +47,12 @@ public class NormalUserExCell implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        currentIconName = exhibit.getNormalExListIcon();
         id_lbl.textProperty().bind(exhibit.nazwa_zabytku_tfProperty());
         author_lbl.textProperty().bind(exhibit.tworca_tfProperty());
 
         desc_btn.setOnAction(e->Model.getInstance().getViewFactory().showExDescWindow(exhibit));
-        currentIconName = exhibit.getNormalExListIcon();
         playFont2.setGlyphName(currentIconName);
         currentColor=exhibit.getNormalExListColor();
         play_btn.setStyle("-fx-background-color: "+currentColor);
@@ -124,23 +125,22 @@ public class NormalUserExCell implements Initializable {
         play_btn.setStyle("-fx-background-color: #13FF00FF;");
         exhibit.setNormalExListColor("#13FF00FF");
 
-        // Get the path to the MP3 music file
-        String musicFilePath = "src/main/resources/pobrane/pobrane.mp3";
+// Get the path to the MP3 music file within the JAR
+        String musicFilePath = getClass().getResource("/pobrane/pobrane.mp3").toString();
 
-            // Create a Media object with the music file path
-            Media media = new Media(new File(musicFilePath).toURI().toString());
+// Create a Media object with the music file path
+        Media media = new Media(musicFilePath);
 
-            // Create a MediaPlayer object with the Media object
-            mediaPlayer = new MediaPlayer(media);
-            exhibit.setNormalExListMedia(mediaPlayer);
-            mediaPlayer.setOnEndOfMedia(() -> {
-                mediaPlayer.dispose();
-                Model.getInstance().setPlayAudioFlag(1);
-                System.out.println("Zagrane i zastopowane");
-                exhibit.setNormalExListThread(thread);
-                thread.interrupt();
-
-            });
+// Create a MediaPlayer object with the Media object
+        mediaPlayer = new MediaPlayer(media);
+        exhibit.setNormalExListMedia(mediaPlayer);
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.dispose();
+            Model.getInstance().setPlayAudioFlag(1);
+            System.out.println("Zagrane i zastopowane");
+            exhibit.setNormalExListThread(thread);
+            thread.interrupt();
+        });
 
             try {
                 Platform.runLater(() -> {

@@ -23,4 +23,5 @@ module com.museomaster.museomaster {
     exports com.museomaster.museomaster.TypyUzytkownikow.KonserwatorUprawniony;
     exports com.museomaster.museomaster.TypyUzytkownikow.MuseumClient;
 
+
 }

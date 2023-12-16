@@ -1,35 +1,35 @@
 .lista_przydz{
-    -fx-background-color: #e8fcff;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 10;
-    -fx-effect: dropshadow(three-pass-box, #e8fcff, 5,0,0,7);
+    -fx-effect: dropshadow(three-pass-box, #ffffff, 5,0,0,7);
 }
-
-
-.lista_przydz HBox{
-    -fx-spacing : 20;
-    -fx-alignment: Center_left;
-    -fx-padding-left : 20;
-}
-
-.lista_przydz HBox Label{
-    -fx-text-fill: #444444;
+.lista_przydz Text{
+    -fx-font-weight: bold;
     -fx-font-family: "Calibri Light";
     -fx-font-size: 1.3em;
 }
-
 .delete_btn{
     -fx-background-color: #FF0000;
     -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
 }
 .delete_btn:hover{
     -fx-cursor: hand;
 }
 .edit_btn{
     -fx-background-color: linear-gradient(to right, #f5d442,#ffd000);
-
     -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
 }
-
 .edit_btn:hover{
     -fx-cursor: hand;
 }
+.opis_btn{
+    -fx-background-color: linear-gradient(to right, #32b814, #025205);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+.edit_btn:hover{
+    -fx-cursor: hand;
+}
+

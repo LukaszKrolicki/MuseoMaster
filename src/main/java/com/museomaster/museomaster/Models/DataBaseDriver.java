@@ -19,21 +19,22 @@ public class DataBaseDriver {
         try{
 
             Properties properties = new Properties();
-            FileInputStream configFile = new FileInputStream("src/main/config/config.properties");
-            properties.load(configFile);
+
+            try (InputStream configFile = getClass().getResourceAsStream("/config.properties")) {
+                properties.load(configFile);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             String password = properties.getProperty("db.password");
 
             String url = "jdbc:mysql://127.0.0.1:3306/MuseoMaster";
-            conn = DriverManager.getConnection (url,"remoteUser",password);
+            conn = DriverManager.getConnection (url,"remoteUser","OsheePijeBoLubie123");
             System.out.println ("Database connection established");
         }
         catch(SQLException e){
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
+
 
     }
 
@@ -352,6 +353,10 @@ public class DataBaseDriver {
 
     // Sekcja Kuratora
     private boolean createExhibitSuccessFlag;
+    private boolean editExhibitSuccessFlag;
+    public boolean geteditExhibitSuccessFlag(){
+        return editExhibitSuccessFlag;
+    }
     public boolean getCreateExhibitSuccessFlag(){
         return createExhibitSuccessFlag;
     }
@@ -453,24 +458,6 @@ public class DataBaseDriver {
 
             statement = this.conn.createStatement();
             resultSet=statement.executeQuery("SELECT * FROM wystawa");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return resultSet;
-    }
-    public ResultSet getSearchedExhibitsData(String nazwa, String tworca, Integer rok1, Integer rok2, String sala){
-
-        Statement statement;
-        ResultSet resultSet = null;
-
-        try{
-            statement = this.conn.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
-                    "WHERE nazwaEksponatu = '"+nazwa+"' OR " +
-                    "twórca = '"+tworca+"' OR aktualMiejscePrzech = '"+sala+"' OR " +
-                    "okresPowstania BETWEEN '"+rok1+"' AND '"+rok2+"'");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -619,6 +606,16 @@ public class DataBaseDriver {
 
         return resultSet;
     }
+    public void editExhibit(Integer idZabytku, String nazwaZabytku, Integer okresPowstania, String tematyka, String tworca, String aktMiejscePrzechowywania, String docMiejcePrzech, String opis){
+        Statement statement;
+        try{
+            statement = this.conn.createStatement();
+            statement.executeUpdate("UPDATE eksponat SET nazwaEksponatu = '"+nazwaZabytku+"', okresPowstania = '"+okresPowstania+"', tematyka = '"+tematyka+"', twórca = '"+tworca+"', aktualMiejscePrzech = '"+aktMiejscePrzechowywania+"', docMiejscePrzech = '"+docMiejcePrzech+"', opis = '"+opis+"' WHERE idEksponatu = '"+idZabytku+"';");
+            editExhibitSuccessFlag = true;
+        } catch (SQLException e) {
+            editExhibitSuccessFlag = false;
+        }
+    }
 
 
 
@@ -728,19 +725,26 @@ public class DataBaseDriver {
         rs = pstmt.executeQuery();
         if (rs.next()) {
             // Retrieve the MP3 file data from the result set
+            System.out.println("Zaczynam");
+            System.out.println(rs.getString(4));
             InputStream inputStream = rs.getBinaryStream("Muzyka");
 
-            // Save the MP3 file to a local file
-            File outputFile = new File("src/main/resources/pobrane/pobrane.mp3");
-            FileOutputStream fos = new FileOutputStream(outputFile);
+// Save the MP3 file to a local file
+            String outputPath = getClass().getResource("/pobrane/pobrane.mp3").getPath();
 
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                fos.write(buffer, 0, bytesRead);
+            File outputFile = new File(outputPath);
+            outputFile.getParentFile().mkdirs();
+
+            try (OutputStream outputStream = new FileOutputStream(outputFile, false)) {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
             }
-
-            System.out.println(outputFile.getAbsolutePath());
+            System.out.println("Kończe");
+            // Close the input stream
+            inputStream.close();
             return true;
         } else {
             System.out.println("nie znaleziono");
@@ -807,4 +811,120 @@ public class DataBaseDriver {
     }
 
     //////////////////////////////////////  ///////////////////////
+
+    //Utility methods
+    /////////////////////////////////////////////////////////////
+    private String doc = "null";
+    public ResultSet getExhibitByNameForTask(String nazwa){
+
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE nazwaEksponatu LIKE '"+nazwa+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByTopicForTask(String topic){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE tematyka LIKE '"+topic+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByAuthorForTask(String autor){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE twórca LIKE '"+autor+"%' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitBySecYearForTask(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania <= '"+year+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByFirstYearForTask(Integer year){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania >= '"+year+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByYearsForTask(Integer year1, Integer year2){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE okresPowstania BETWEEN '"+year1+"' AND '"+year2+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    public ResultSet getExhibitByPlaceForTask(String miejsce){
+
+        Statement statement;
+        ResultSet resultSet = null;
+
+        try{
+            statement = this.conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM eksponat " +
+                    "WHERE aktualMiejscePrzech = '"+miejsce+"' AND docMiejscePrzech = '"+doc+"'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return resultSet;
+    }
+    ////////////////////////////////////////////////////////////////////////
 }

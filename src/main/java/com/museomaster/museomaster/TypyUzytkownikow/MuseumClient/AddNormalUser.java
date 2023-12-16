@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import java.io.InputStream;
 public class AddNormalUser implements Initializable {
     public TextField username_txtfld;
     public TextField email_txtfld;
@@ -63,13 +64,8 @@ public class AddNormalUser implements Initializable {
                 Model.getInstance().setValidationCode();
                 String code = Model.getInstance().getValidationCode();
                 Properties properties = new Properties();
-                FileInputStream configFile = null;
-                try {
-                    configFile = new FileInputStream("src/main/config/config.properties");
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
+
+                try (InputStream configFile = getClass().getResourceAsStream("/config.properties")) {
                     properties.load(configFile);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);

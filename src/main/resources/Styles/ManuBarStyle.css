@@ -1,0 +1,20 @@
+/* styles.css */
+
+.window {
+    -fx-background-color: #f2f2f2;
+}
+
+.title-bar {
+    -fx-background-color: #333333;
+    -fx-text-fill: red;
+}
+
+.close-button, .minimize-button, .maximize-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: RED;
+}
+
+.window-border {
+    -fx-border-color: #333333;
+    -fx-border-width: 100px;
+}
