@@ -1,15 +1,9 @@
 package com.museomaster.museomaster.Models;
 
-
-import com.museomaster.museomaster.TypyUzytkownikow.Administrator.AdminAddUser;
-import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
-
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class DataBaseDriver {

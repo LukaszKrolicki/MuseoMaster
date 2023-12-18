@@ -6,14 +6,19 @@ import com.museomaster.museomaster.CellsController.assignedTaskFactory;
 import com.museomaster.museomaster.CellsController.finishedTaskFactory;
 import com.museomaster.museomaster.Models.Model;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PracownikDashboardController implements Initializable {
     public ListView task_list_listview;
     public ListView ended_task_list_listview;
+    public Label name_lbl;
+    public Label date_lbl;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initData();
@@ -29,6 +34,8 @@ public class PracownikDashboardController implements Initializable {
     }
 
     public void initData(){
+        name_lbl.setText("Witaj " + Model.getInstance().getClient().imiePracownikaProperty().get() + "!");
+        date_lbl.setText(LocalDate.now().toString());
         Model.getInstance().clearTasks();
         Model.getInstance().clearFinishedTasks();
         Model.getInstance().setTasks("assigned");

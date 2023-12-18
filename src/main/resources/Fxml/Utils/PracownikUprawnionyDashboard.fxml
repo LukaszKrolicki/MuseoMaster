@@ -19,13 +19,13 @@
             </font>
         </Label>
         <ListView fx:id="task_ended_listview" layoutX="22.0" layoutY="317.0" prefHeight="180.0" prefWidth="811.0" AnchorPane.bottomAnchor="258.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-        <Label layoutX="18.0" layoutY="14.0" text="Witaj Łukasz Krolik!" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
+        <Label fx:id="name_label" layoutX="18.0" layoutY="14.0" text="Witaj Łukasz Krolik!" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="18.0">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label layoutX="22.0" layoutY="45.0" text="Miłego Dnia" textFill="#a4a4a4" />
-        <Label layoutX="780.0" layoutY="23.0" text="2023-03-03" textFill="#aeaeae" />
+        <Label layoutX="22.0" layoutY="45.0" text="Miłego Dnia!" textFill="#a4a4a4" />
+        <Label fx:id="date_lbl" layoutX="780.0" layoutY="23.0" text="2023-03-03" textFill="#aeaeae" />
       <Label layoutX="23.0" layoutY="497.0" text="Lista przydzielonych zadań:" AnchorPane.leftAnchor="20.0">
          <font>
             <Font size="18.0" />
